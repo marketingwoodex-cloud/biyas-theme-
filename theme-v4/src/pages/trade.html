@@ -1,0 +1,79 @@
+<!--META {"title":"Trade & Hospitality — Biya's Art Gallery","desc":"Trade and hospitality programme of Biya's Art Gallery — original art programmes for hotels, offices, embassies and interiors in Lahore and beyond.","page":"trade.html"} -->
+
+<!-- EL: Hero — paper2 room -->
+<section class="room room-paper2" style="padding-top:190px" aria-label="Trade and hospitality">
+  <div class="shell">
+    <p class="crumb" style="color:var(--muted)"><a href="index.html">Home</a> · Studio · Trade &amp; Hospitality</p>
+    <div class="grid lg:grid-cols-2 gap-10 items-end mt-10">
+      <div class="reveal">
+        <p class="kicker">For hotels &amp; homes of scale</p>
+        <h1 class="display-1 mt-6">Art, by the<br><em class="pine" style="font-style:italic">house-ful</em></h1>
+      </div>
+      <p class="lede muted reveal" data-delay="120">The trade programme carries the studio's practice into hotels, offices, embassies and developments — curated series, staged delivery and honest provenance at every scale.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EL: Sectors — numbered rows -->
+<section class="room" aria-labelledby="sectors-t">
+  <div class="shell">
+    <p class="kicker reveal">Where the work serves</p>
+    <h2 class="display-2 mt-5 mb-12 reveal" id="sectors-t">Sectors the house <em class="pine" style="font-style:italic">serves</em></h2>
+    <nav class="doors" aria-label="Sectors">
+      <a class="door reveal" href="#trade-form"><span class="d-no">S·01</span><span class="d-title">Hotels &amp; guest houses</span><span class="d-sub">Suite programmes · lobbies</span><span class="d-arr">→</span></a>
+      <a class="door reveal" href="#trade-form" data-delay="70"><span class="d-no">S·02</span><span class="d-title">Workplaces</span><span class="d-sub">Reception walls · quiet rooms</span><span class="d-arr">→</span></a>
+      <a class="door reveal" href="#trade-form" data-delay="140"><span class="d-no">S·03</span><span class="d-title">Embassies &amp; institutions</span><span class="d-sub">Cultural rooms · gifts of state</span><span class="d-arr">→</span></a>
+      <a class="door reveal" href="#trade-form" data-delay="210"><span class="d-no">S·04</span><span class="d-title">Interior studios</span><span class="d-sub">Trade terms · collaboration</span><span class="d-arr">→</span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- EL: Offerings matrix -->
+<section class="room room-ink hairline-t" aria-labelledby="off-t">
+  <div class="shell grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-4 reveal">
+      <p class="kicker">The programme</p>
+      <h2 class="display-2 mt-5" id="off-t">What a trade<br>partner <em class="gold" style="font-style:italic">receives</em></h2>
+    </div>
+    <div class="lg:col-span-8 reveal-r">
+      <table class="meta-table">
+        <tr><th style="color:#B4AB97;border-color:var(--line-2)">Curation</th><td style="border-color:var(--line-2)">A themed series designed for your rooms — not a stock order</td></tr>
+        <tr><th style="color:#B4AB97;border-color:var(--line-2)">Scale</th><td style="border-color:var(--line-2)">From single statements to full floor programmes</td></tr>
+        <tr><th style="color:#B4AB97;border-color:var(--line-2)">Delivery</th><td style="border-color:var(--line-2)">Staged by floor or wing · installed by house crew or supervised remote</td></tr>
+        <tr><th style="color:#B4AB97;border-color:var(--line-2)">Provenance</th><td style="border-color:var(--line-2)">Certificates and artist records for every work placed</td></tr>
+        <tr><th style="color:#B4AB97;border-color:var(--line-2)">Terms</th><td style="border-color:var(--line-2)">Trade pricing on confirmation · consignment for lobbies by agreement</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- EL: Plate band -->
+<section class="room" style="padding-block:0" aria-label="Trade plate band">
+  <div class="works-grid" style="gap:10px">
+    <div class="art wc-4 reveal" style="aspect-ratio:4/3"><img src="assets/img/minimal-texture-interior.jpg" alt="Workplace programme plate" loading="lazy"></div>
+    <div class="art wc-4 reveal" style="aspect-ratio:4/3" data-delay="80"><img src="assets/img/golden-leaves-interior.jpg" alt="Residence programme plate" loading="lazy"></div>
+    <div class="art wc-4 reveal" style="aspect-ratio:4/3" data-delay="160"><img src="assets/img/gallery-installation.jpg" alt="Installation plate" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- EL: Trade enquiry — static TextEditor exception -->
+<section class="room room-paper2 hairline-t" id="trade-form" aria-labelledby="tf-t">
+  <div class="shell grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-5 reveal">
+      <p class="kicker">Open a trade account</p>
+      <h2 class="display-2 mt-5" id="tf-t">Write us the <em class="pine" style="font-style:italic">project</em></h2>
+      <p class="muted mt-6" style="max-width:36ch">Property name, scope and timeline — the programme desk replies with terms and a curation call. Demo form, static for now.</p>
+    </div>
+    <form data-static class="lg:col-span-6 lg:col-start-7 grid sm:grid-cols-2 gap-7 reveal-r" aria-label="Trade enquiry (demo)">
+      <div class="field"><label for="t-org">Property / studio</label><input id="t-org" type="text" placeholder="Name of property or studio" required></div>
+      <div class="field"><label for="t-contact">Contact</label><input id="t-contact" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="t-email">Email</label><input id="t-email" type="email" placeholder="you@property.com" required></div>
+      <div class="field"><label for="t-sector">Sector</label>
+        <select id="t-sector"><option>Hotel / guest house</option><option>Workplace</option><option>Embassy / institution</option><option>Interior studio</option></select></div>
+      <div class="field sm:col-span-2"><label for="t-scope">Scope &amp; timeline</label>
+        <textarea id="t-scope" placeholder="Rooms, walls, wings — and when the first guests arrive…" required></textarea></div>
+      <button class="btn btn-ink sm:col-span-2" type="submit" style="justify-self:start">Open the conversation <span class="arr">→</span></button>
+      <p class="form-note sm:col-span-2">Demo form — connected in WordPress.</p>
+    </form>
+  </div>
+</section>
