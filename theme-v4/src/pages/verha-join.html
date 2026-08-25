@@ -1,0 +1,78 @@
+<!--META {"title":"Join & Collaborate — Punjabi Verha · Biya's Art Gallery","desc":"Join the word house — as a poet, a volunteer or a host. Collaborate with Biya's Art Gallery on Punjabi Verha evenings in Lahore.","page":"verha-join.html"} -->
+
+<!-- EL: Hero — pine split CTA -->
+<section class="page-hero room-pine" style="background:var(--pine)" aria-label="Join and collaborate">
+  <div class="ph-img" style="background-image:url('assets/img/punjab-courtyard.jpg');opacity:.2"></div>
+  <div class="ph-wash" style="background:linear-gradient(90deg,rgba(16,42,34,.97) 0%,rgba(16,42,34,.68) 55%,rgba(16,42,34,.22) 92%),linear-gradient(0deg,rgba(16,42,34,.9),transparent 58%)"></div>
+  <span class="rail">The open door</span>
+  <div class="shell ph-in">
+    <p class="crumb"><a href="index.html">Home</a> · <a href="verha-about.html">Punjabi Verha</a> · Join &amp; Collaborate</p>
+    <p class="hero-eyebrow mt-8 mb-5">Three ways in</p>
+    <h1 class="ph-title">The door is<br><em class="gold" style="font-style:italic">open</em></h1>
+    <p class="ph-lede mt-6">The word house runs on people who show up. Read below, choose a door, write two honest lines about yourself — the house replies to every letter.</p>
+  </div>
+</section>
+
+<!-- EL: Three doors -->
+<section class="room" aria-labelledby="ways-t">
+  <div class="shell">
+    <p class="kicker reveal">The ways in</p>
+    <h2 class="display-2 mt-5 mb-14 reveal" id="ways-t">Choose your <em class="pine" style="font-style:italic">door</em></h2>
+    <nav class="doors" aria-label="Ways to join">
+      <a class="door reveal" href="#join-form" id="poet">
+        <span class="d-no">IN·01</span><span class="d-title">As a poet</span>
+        <span class="d-sub">Two minutes at the next mushaira</span><span class="d-arr">→</span>
+        <span class="d-peek" style="background-image:url('assets/img/walled-city.jpg')"></span>
+      </a>
+      <a class="door reveal" href="#join-form" data-delay="80">
+        <span class="d-no">IN·02</span><span class="d-title">As a volunteer</span>
+        <span class="d-sub">Chai, chairs, recordings, letters</span><span class="d-arr">→</span>
+        <span class="d-peek" style="background-image:url('assets/img/gallery-installation.jpg')"></span>
+      </a>
+      <a class="door reveal" href="#join-form" data-delay="160" id="host">
+        <span class="d-no">IN·03</span><span class="d-title">As a host or partner</span>
+        <span class="d-sub">Bring a muqalma to your space</span><span class="d-arr">→</span>
+        <span class="d-peek" style="background-image:url('assets/img/golden-leaves-interior.jpg')"></span>
+      </a>
+    </nav>
+  </div>
+</section>
+
+<!-- EL: How joining works — 3 steps -->
+<section class="room room-paper2 hairline-t" aria-labelledby="how2-t">
+  <div class="shell grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-4 reveal">
+      <p class="kicker">How it goes</p>
+      <h2 class="display-2 mt-5" id="how2-t">Three steps,<br>no <em class="pine" style="font-style:italic">gatekeeping</em></h2>
+    </div>
+    <ol class="lg:col-span-8 m-0 p-0 list-none grid sm:grid-cols-3 gap-10">
+      <li class="reveal" style="border-top:1px solid var(--line);padding-top:20px"><p class="sec-no">01</p><h3 class="display-3 mt-3" style="font-size:1.3rem">Write two lines</h3><p class="muted mt-2" style="font-size:14.5px">Who you are, and what brings you to the word house. Poetry optional; honesty not.</p></li>
+      <li class="reveal" data-delay="100" style="border-top:1px solid var(--line);padding-top:20px"><p class="sec-no">02</p><h3 class="display-3 mt-3" style="font-size:1.3rem">Come to one mehfil</h3><p class="muted mt-2" style="font-size:14.5px">Sit, listen, drink the chai. The house decides nothing about anyone after one evening.</p></li>
+      <li class="reveal" data-delay="200" style="border-top:1px solid var(--line);padding-top:20px"><p class="sec-no">03</p><h3 class="display-3 mt-3" style="font-size:1.3rem">Find your corner</h3><p class="muted mt-2" style="font-size:14.5px">The floor, the tech table, the door, or the calendar — every regular found a corner.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- EL: Join form — static TextEditor exception -->
+<section class="room hairline-t" id="join-form" aria-label="Join form">
+  <div class="shell grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-5 reveal">
+      <p class="kicker">The letter</p>
+      <h2 class="display-2 mt-5">Write to the <em class="pine" style="font-style:italic">house</em></h2>
+      <div class="gold-rule"></div>
+      <p class="muted" style="max-width:38ch">The form below is a demo — static on purpose. When the site moves to WordPress it becomes a real letter to the house.</p>
+      <p class="nastaliq mt-10" dir="rtl" style="font-size:1.4rem;color:var(--pine)">آؤ، لِکھو، رَلو</p>
+      <p class="micro mt-2">Come, write, belong.</p>
+    </div>
+    <form data-static class="lg:col-span-6 lg:col-start-7 grid sm:grid-cols-2 gap-7 reveal-r" aria-label="Join letter (demo)">
+      <div class="field"><label for="j-name">Name</label><input id="j-name" type="text" placeholder="Your name" required></div>
+      <div class="field"><label for="j-door">I'm joining as</label>
+        <select id="j-door"><option>A poet</option><option>A volunteer</option><option>A host / partner</option><option>Just curious</option></select></div>
+      <div class="field sm:col-span-2"><label for="j-email">Email</label><input id="j-email" type="email" placeholder="you@example.com" required></div>
+      <div class="field sm:col-span-2"><label for="j-lines">Two lines about you</label>
+        <textarea id="j-lines" placeholder="Who you are, and what brings you to the word house…" required></textarea></div>
+      <button class="btn btn-ink sm:col-span-2" type="submit" style="justify-self:start">Send the letter <span class="arr">→</span></button>
+      <p class="form-note sm:col-span-2">Demo form — connected in WordPress.</p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,119 @@
+<!--META {"title":"All Artworks — Biya's Art Gallery","desc":"Browse original artworks from Biya's Art Gallery — calligraphy, The Third Art of thread, mixed media and works on paper. Filter by discipline, enquire directly.","page":"artworks.html","lightbox":true} -->
+
+<!-- EL: Page hero — ink Container + bg Image + crumb Text + Heading + lede Text + chips -->
+<section class="page-hero" aria-label="All artworks">
+  <div class="ph-img" style="background-image:url('assets/img/calligraphy-01.jpeg')" role="img" aria-label="Calligraphic work filling the wall"></div>
+  <div class="ph-wash"></div>
+  <span class="rail">The long wall</span>
+  <div class="shell ph-in">
+    <p class="crumb"><a href="index.html">Home</a> · Artworks</p>
+    <p class="hero-eyebrow mt-8 mb-6">The catalogue · works available now</p>
+    <h1 class="ph-title">The Long<br><em class="gold" style="font-style:italic">Wall</em></h1>
+    <p class="ph-lede mt-7">Every work is made by hand in the Lahore studio — catalogue references are being verified one by one, and each piece you see here can be seen in person by appointment.</p>
+    <div class="flex flex-wrap gap-3 mt-10" role="group" aria-label="Filter artworks">
+      <button class="chip is-on" data-filter="*">All works</button>
+      <button class="chip" data-filter="calligraphy">Calligraphy</button>
+      <button class="chip" data-filter="thread">The Third Art</button>
+      <button class="chip" data-filter="mixed">Mixed media</button>
+      <button class="chip" data-filter="works">Works on paper</button>
+    </div>
+  </div>
+</section>
+
+<!-- EL: Catalogue grid — Container + Image/Heading/Text columns (WP: CPT loop) -->
+<section class="room" aria-label="Catalogue">
+  <div class="shell">
+    <div class="flex items-end justify-between gap-6 mb-12 reveal">
+      <p class="micro" id="cat-count">Showing works · photographs on file</p>
+      <a class="link-arrow" href="artworks-archived.html">Archive &amp; sold <span class="arr">→</span></a>
+    </div>
+
+    <div class="works-grid" data-filter-grid>
+      <figure class="m-0 wc-6 reveal" data-cat="calligraphy">
+        <a class="art block" style="aspect-ratio:4/5" href="artwork-single.html" data-lightbox="Calligraphy Nº 1 — catalogue ref pending">
+          <img src="assets/img/calligraphy-02.jpeg" alt="Calligraphy work — study one" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·01</span><h3><a href="artwork-single.html">Gesture of Noon</a></h3>
+          <p><span class="status-dot"></span>Calligraphy · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-6 stag-1 reveal" data-cat="thread" data-delay="80">
+        <a class="art block" style="aspect-ratio:4/5" href="artwork-single.html" data-lightbox="Thread work — studio 2026">
+          <img src="assets/img/studio-01.jpg" alt="Thread work, recent studio piece" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·02</span><h3><a href="artwork-single.html">Loom Study I</a></h3>
+          <p><span class="status-dot"></span>The Third Art · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-4 reveal" data-cat="mixed">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Kaaba — mixed media plate">
+          <img src="assets/img/kaaba-mixed-media.jpg" alt="Kaaba mixed media work" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·03</span><h3><a href="artwork-single.html">Pilgrim Light</a></h3>
+          <p><span class="status-dot reserved"></span>Mixed media · Reserved</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-4 stag-2 reveal" data-cat="works" data-delay="80">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Surah Rehman — handmade folio">
+          <img src="assets/img/surah-rehman-handmade.png" alt="Surah Rehman handmade folio" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·04</span><h3><a href="artwork-single.html">Rehman Folio</a></h3>
+          <p><span class="status-dot"></span>Works on paper · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-4 reveal" data-cat="calligraphy" data-delay="160">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Ya Ali — calligraphy plate">
+          <img src="assets/img/ya-ali.jpg" alt="Ya Ali calligraphy" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·05</span><h3><a href="artwork-single.html">Ya Ali</a></h3>
+          <p><span class="status-dot"></span>Calligraphy · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-7 reveal" data-cat="thread">
+        <a class="art block" style="aspect-ratio:16/10" href="artwork-single.html" data-lightbox="Contemporary calligraphy — thread on weave">
+          <img src="assets/img/contemporary-calligraphy.jpg" alt="Contemporary thread calligraphy" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·06</span><h3><a href="artwork-single.html">Written in Weave</a></h3>
+          <p><span class="status-dot"></span>The Third Art · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-5 stag-1 reveal" data-cat="thread" data-delay="80">
+        <a class="art block" style="aspect-ratio:4/5" href="artwork-single.html" data-lightbox="Studio work 02 — thread">
+          <img src="assets/img/studio-02.jpg" alt="Thread work from the studio" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·07</span><h3><a href="artwork-single.html">Loom Study II</a></h3>
+          <p><span class="status-dot"></span>The Third Art · Available</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- EL: Interlude quote — pine Container + Heading quote -->
+<section class="quote-band room-pine" style="padding-block:clamp(72px,9vw,130px)" aria-label="Why collecting here is different">
+  <div class="shell text-center reveal">
+    <blockquote>“You are not buying an object.<br>You are adopting a <em class="gold" style="font-style:italic">night of work</em>.”</blockquote>
+    <cite>— from the studio notebook</cite>
+  </div>
+</section>
+
+<!-- EL: Rest of catalogue + CTA -->
+<section class="room" aria-label="Catalogue continued">
+  <div class="shell">
+    <div class="works-grid" data-filter-grid>
+      <figure class="m-0 wc-4 reveal" data-cat="works calligraphy">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Calligraphy study three">
+          <img src="assets/img/calligraphy-03.jpeg" alt="Calligraphy study three" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·08</span><h3><a href="artwork-single.html">Qalam Pause</a></h3>
+          <p><span class="status-dot"></span>Works on paper · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-4 stag-2 reveal" data-cat="thread" data-delay="80">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Studio work three">
+          <img src="assets/img/studio-03.jpg" alt="Studio work three" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·09</span><h3><a href="artwork-single.html">Quiet Weave</a></h3>
+          <p><span class="status-dot"></span>The Third Art · Available</p></figcaption>
+      </figure>
+      <figure class="m-0 wc-4 reveal" data-cat="mixed" data-delay="160">
+        <a class="art block" style="aspect-ratio:3/4" href="artwork-single.html" data-lightbox="Kaaba light study">
+          <img src="assets/img/kaaba-light.jpg" alt="Kaaba light study" loading="lazy"><span class="quick-view">Quick view</span></a>
+        <figcaption class="art-cap"><span class="no">C·10</span><h3><a href="artwork-single.html">Night of Light</a></h3>
+          <p><span class="status-dot sold"></span>Mixed media · Sold → <a href="artworks-archived.html" class="underline">archive</a></p></figcaption>
+      </figure>
+    </div>
+
+    <div class="hairline-t mt-24 pt-16 flex flex-wrap items-end justify-between gap-8 reveal">
+      <div>
+        <p class="kicker">Not finding the one?</p>
+        <h2 class="display-3 mt-4">A work can begin <em class="pine">with you</em>.</h2>
+        <p class="muted mt-3" style="max-width:44ch">Commissions open a conversation — size, palette, verse, room. The studio will walk with you from idea to hanging.</p>
+      </div>
+      <a class="btn btn-ink" href="commissions.html">Start a commission <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
