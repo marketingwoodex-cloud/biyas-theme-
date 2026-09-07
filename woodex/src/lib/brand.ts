@@ -87,18 +87,18 @@ export const motion = {
 } as const;
 
 export const contact = {
-  /** TODO: replace with the live details. */
-  email: "hello@woodexinterior.com",
-  phone: "+92 42 3577 0100",
-  phoneHref: "+924235770100",
-  whatsapp: "+92 300 8400 100",
-  street: "27-C Main Boulevard, Gulberg III",
+  email: "studio@woodex.interior",
+  phone: "+92 336 2259477",
+  phoneHref: "+923362259477",
+  whatsapp: "+92 336 2259477",
+  whatsappHref: "https://wa.me/923362259477",
+  street: "LG 90 Link Road, Model Town",
   city: "Lahore",
   region: "Punjab",
-  postal: "54660",
+  postal: "54700",
   country: "Pakistan",
-  hours: "Mon–Sat · 09:00–18:00 PKT",
-  mapQuery: "Main Boulevard Gulberg III, Lahore",
+  hours: "Office 10:00 – 8:30",
+  mapQuery: "Link Road, Model Town, Lahore",
 } as const;
 
 export const social = [
@@ -115,10 +115,10 @@ export const siteUrl = "https://woodexinterior.com";
  * Each lowers perceived commitment rather than raising urgency.
  */
 export const cta = {
-  primary: "Tell us about your space",
+  primary: "Start your project",
   secondary: "Get a 3D still first",
   tertiary: "See the studies",
-  quiet: "Start with your floor plan",
+  quiet: "Tell us about your space",
   work: "Walk through the work",
   estimate: "Get a BOQ estimate",
 } as const;

@@ -266,7 +266,7 @@ export default function Monolith({ className = "" }: { className?: string }) {
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0 });
     io.observe(el);
 
-    const clock = new THREE.Clock();
+    const t0 = performance.now();
     let raf = 0;
     const loop = () => {
       raf = requestAnimationFrame(loop);
@@ -275,7 +275,7 @@ export default function Monolith({ className = "" }: { className?: string }) {
       cur.x += (target.x - cur.x) * 0.06;
       cur.y += (target.y - cur.y) * 0.06;
 
-      const t = clock.getElapsedTime();
+      const t = (performance.now() - t0) / 1000;
       group.rotation.y = reduce ? 0.5 : scrollT * Math.PI * 1.5 + t * 0.06 + cur.x * 0.5;
       group.rotation.x = reduce ? 0 : cur.y * -0.16 + Math.sin(t * 0.25) * 0.015;
       group.position.y = reduce ? 0 : Math.sin(t * 0.4) * 0.05;

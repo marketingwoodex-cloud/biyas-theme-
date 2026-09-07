@@ -7,11 +7,15 @@ import { brand, contact, cta } from "@/lib/brand";
 import { services } from "@/lib/content/services";
 import { Btn } from "@/components/ui/Btn";
 
+/* Matches the live Woodex navigation. 3D Studio is promoted out of the
+   Services menu to a top-level item because it is the studio's actual
+   differentiator and takes standalone commissions — burying it in a
+   dropdown costs enquiries. */
 const NAV = [
-  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/services", label: "Services", mega: true },
+  { href: "/services/3d-visualisation-studio", label: "3D Studio" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "Studio" },
   { href: "/contact", label: "Contact" },
 ];
 

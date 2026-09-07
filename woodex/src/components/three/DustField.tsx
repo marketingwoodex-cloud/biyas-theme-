@@ -139,13 +139,13 @@ export default function DustField({ className = "" }: { className?: string }) {
     const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0 });
     io.observe(el);
 
-    const clock = new THREE.Clock();
+    const t0 = performance.now();
     let raf = 0;
     const loop = () => {
       raf = requestAnimationFrame(loop);
       if (!visible || document.hidden) return;
       pointer.lerp(target, 0.045);
-      mat.uniforms.uTime.value = clock.getElapsedTime();
+      mat.uniforms.uTime.value = (performance.now() - t0) / 1000;
       mat.uniforms.uPointer.value.copy(pointer);
       camera.position.x = pointer.x * 0.8;
       camera.position.y = pointer.y * 0.5;

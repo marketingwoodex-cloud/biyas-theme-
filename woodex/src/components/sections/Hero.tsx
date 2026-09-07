@@ -30,6 +30,8 @@ const SLIDES = [
     eyebrow: "Workplace",
     lines: ["We turn ideas", "into spaces"],
     aside: "that get built",
+    blurb:
+      "We design interiors and execute them — drawn in 3D, documented to a line-by-line BOQ, then built by our own team.",
     note: "Meridian Capital HQ — 11,400 sq ft, Lahore",
   },
   {
@@ -38,6 +40,8 @@ const SLIDES = [
     eyebrow: "Residential",
     lines: ["See it. Understand it.", "Build it."],
     aside: "stills first",
+    blurb:
+      "Every project starts as a photoreal still of your own room. Approving a picture costs an afternoon. Approving a built wall costs a week.",
     note: "Villa Noor — 8,200 sq ft, DHA Phase VI",
   },
   {
@@ -46,11 +50,14 @@ const SLIDES = [
     eyebrow: "Hospitality",
     lines: ["Drawn, documented,", "then built"],
     aside: "by one team",
+    blurb:
+      "One studio holds the drawing, the workshop and the site — so the detail you approved is the detail that gets installed.",
     note: "The Long Room — 96 covers, MM Alam Road",
   },
 ];
 
 const DURATION = 6500;
+const WORDMARK = "Interiors";
 
 export default function Hero() {
   const [i, setI] = useState(0);
@@ -63,6 +70,7 @@ export default function Hero() {
   const copyY = useTransform(scrollYProgress, [0, 1], ["0%", "-38%"]);
   const fade = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const veil = useTransform(scrollYProgress, [0, 1], [0, 0.75]);
+  const markY = useTransform(scrollYProgress, [0, 1], ["0%", "-46%"]);
 
   useEffect(() => {
     let start = performance.now();
@@ -136,10 +144,28 @@ export default function Hero() {
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(90deg, rgba(11,10,8,.92) 0%, rgba(11,10,8,.62) 38%, rgba(11,10,8,.12) 72%, rgba(11,10,8,.4) 100%), linear-gradient(0deg, rgba(11,10,8,.92) 0%, rgba(11,10,8,.15) 48%, rgba(11,10,8,.55) 100%)",
+            "linear-gradient(90deg, rgba(14,26,43,.88) 0%, rgba(14,26,43,.55) 42%, rgba(14,26,43,.08) 74%, rgba(14,26,43,.34) 100%), linear-gradient(0deg, rgba(14,26,43,.94) 0%, rgba(14,26,43,.10) 46%, rgba(14,26,43,.62) 100%)",
         }}
       />
       <motion.div className="absolute inset-0 bg-ink" style={{ opacity: veil }} />
+
+      {/* ---- Layer 2b: structural grid ----
+             Four hairline verticals at the quarter points. Linoxa runs these
+             across its hero and they do real work: they give the photograph
+             an architectural measure, and they visually anchor the headline
+             column to a system instead of letting it float. Barely visible by
+             design — you feel the order without noticing the lines. */}
+      <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden>
+        <div className="shell-wide relative h-full">
+          {[25, 50, 75].map((x) => (
+            <span
+              key={x}
+              className="absolute inset-y-0 w-px bg-bone/[0.07]"
+              style={{ left: `${x}%` }}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* ---- Layer 3: WebGL dust ---- */}
       <DustField className="pointer-events-none absolute inset-0 mix-blend-screen" />
@@ -149,37 +175,34 @@ export default function Hero() {
         style={{ y: copyY, opacity: fade }}
         className="shell-wide relative flex h-full flex-col justify-end pb-[clamp(5rem,11vh,8rem)]"
       >
-        <div className="max-w-[min(62rem,88vw)]">
+        <div className="max-w-[min(64rem,92vw)]">
           {/* Eyebrow swaps with a short vertical roll */}
-          <div className="relative mb-6 h-4 overflow-hidden">
+          <div className="relative mb-7 h-4 overflow-hidden">
             {SLIDES.map((sl, n) => (
               <span
                 key={sl.eyebrow}
-                className="t-label absolute inset-x-0 flex items-center gap-2.5 text-amber"
+                className="t-label absolute inset-x-0 flex items-center gap-2.5 text-bone"
                 style={{
                   transform: `translateY(${(n - i) * 120}%)`,
                   opacity: n === i ? 1 : 0,
                   transition: "transform .8s cubic-bezier(0.16,1,0.3,1), opacity .5s ease",
                 }}
               >
-                <span className="inline-block h-px w-7 bg-current" aria-hidden />
+                <span className="inline-block h-px w-7 bg-amber" aria-hidden />
                 {sl.eyebrow}
               </span>
             ))}
           </div>
 
-          <h1 className="t-display text-bone">
+          <h1 className="t-h1 max-w-[16ch] text-bone">
             <span className="sr-only">
               {s.lines.join(" ")} {s.aside}
             </span>
             {[0, 1].map((li) => (
-              <span key={li} className="block overflow-hidden">
+              <span key={li} className="block overflow-hidden pb-[0.06em]">
                 <span
                   className="block"
-                  style={{
-                    transform: "translateY(0)",
-                    animation: `heroIn .95s cubic-bezier(0.16,1,0.3,1) ${li * 0.09}s both`,
-                  }}
+                  style={{ animation: `heroIn .95s cubic-bezier(0.16,1,0.3,1) ${li * 0.09}s both` }}
                   key={`${i}-${li}`}
                   aria-hidden
                 >
@@ -187,25 +210,26 @@ export default function Hero() {
                 </span>
               </span>
             ))}
-            <span className="block overflow-hidden">
-              <span
-                className="t-aside block"
-                key={`${i}-a`}
-                style={{ animation: "heroIn .95s cubic-bezier(0.16,1,0.3,1) .18s both" }}
-                aria-hidden
-              >
-                {s.aside}
-              </span>
-            </span>
           </h1>
 
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <Btn href="/contact" variant="solid">
-              {cta.primary}
-            </Btn>
-            <Btn href="/projects" variant="ghost">
-              {cta.work}
-            </Btn>
+          {/* Linoxa's hero anatomy: the CTA sits on the baseline of the
+              headline column and the supporting paragraph sits BESIDE it,
+              not under it. Two benefits — the button lands higher in the
+              viewport where the eye already is, and the paragraph reads as
+              a caption to the action rather than as a wall to get past. */}
+          <div className="mt-9 flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-10">
+            <div className="shrink-0" style={{ animation: "heroIn .95s cubic-bezier(0.16,1,0.3,1) .26s both" }}>
+              <Btn href="/contact" variant="light">
+                {cta.primary}
+              </Btn>
+            </div>
+            <p
+              className="t-body max-w-[46ch] text-bone/70"
+              style={{ animation: "heroIn .95s cubic-bezier(0.16,1,0.3,1) .34s both" }}
+              key={`${i}-p`}
+            >
+              {s.blurb}
+            </p>
           </div>
         </div>
 
@@ -242,20 +266,24 @@ export default function Hero() {
       </motion.div>
 
       {/* ---- Kinetic wordmark ----
-             The identity's signature sign-off: the brand name set enormous,
-             cropped by the viewport edge, at low opacity. It reads as a
-             watermark pressed into the photograph rather than as a headline,
-             which is why it can be this large without competing with the H1. */}
+             In the Linoxa language this is a graphic element, not a
+             watermark: near-full-strength type with a vertical gradient,
+             set wide enough to bleed past both gutters and cropped by the
+             section edge. It reads as the word the photograph is sitting
+             on. The previous 6%-opacity version was so faint it looked
+             like a rendering fault.
+             It parallaxes UP as you scroll while the photo parallaxes DOWN,
+             so the two layers separate in Z on the very first scroll input. */}
       <motion.div
-        style={{ opacity: fade }}
-        className="pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden"
+        style={{ opacity: fade, y: markY }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 flex justify-center overflow-hidden"
         aria-hidden
       >
         <p
-          className="t-wordmark translate-y-[26%] whitespace-nowrap text-center text-bone/[0.09]"
-          style={{ fontSize: "clamp(5rem, 21vw, 20rem)" }}
+          className="t-wordmark t-wordmark-fill translate-y-[22%] whitespace-nowrap"
+          style={{ fontSize: "clamp(4.5rem, 23vw, 22rem)" }}
         >
-          Woodex
+          {WORDMARK}
         </p>
       </motion.div>
 
