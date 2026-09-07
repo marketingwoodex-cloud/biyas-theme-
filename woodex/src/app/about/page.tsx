@@ -127,7 +127,7 @@ export default function AboutPage() {
                 distance={10}
               />
               <ProofRow className="mt-6 border-t border-sand pt-6">
-                <Stat token="YEARS" label="Years delivering fit-out" />
+                <Stat token="YEARS" label="Years delivering fit-out" suffix="+" />
                 <Stat token="PROJECTS" label="Projects completed" suffix="+" />
                 <Stat value={cities.length} label="Cities served" />
               </ProofRow>

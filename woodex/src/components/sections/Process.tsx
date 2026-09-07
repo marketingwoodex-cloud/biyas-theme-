@@ -44,7 +44,7 @@ export default function Process() {
                     figure — it simply gets shorter. Cities served is a
                     verifiable fact, so it is a literal. */}
                 <ProofRow className="mt-10 border-t border-[var(--hairline-dark)] pt-8">
-                  <Stat token="YEARS" label="Years delivering fit-out" suffix="" />
+                  <Stat token="YEARS" label="Years delivering fit-out" suffix="+" />
                   <Stat token="PROJECTS" label="Projects completed" suffix="+" />
                   <Stat token="ONTIME_RATE" label="Delivered on contract date" suffix="%" />
                   <Stat value={cities.length} label="Cities served" />

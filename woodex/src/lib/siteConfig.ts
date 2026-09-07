@@ -46,10 +46,12 @@ export const brand = {
  * the evidence listed in the blueprint §11.1.
  */
 export const tokens: Record<string, string | null> = {
-  /** Year of incorporation → years trading. */
-  YEARS: null,
-  /** Countable completed projects. */
-  PROJECTS: null,
+  /* CONFIRMED BY CLIENT as defensible rounded claims (not invented by the
+     build). Both are asserted publicly, so both must survive a direct
+     question — "which 200?" is a question a serious buyer will ask.
+     Replace with exact figures as soon as the project register is counted. */
+  YEARS: "10",
+  PROJECTS: "200",
   /** Certificate number + issuing body, or leave null. */
   ISO_CERTIFIED: null,
   /** Projects delivered on the contracted date ÷ total. */
@@ -92,10 +94,10 @@ export const contact = {
  */
 export const cities = [
   { slug: "lahore", name: "Lahore", base: true, delivered: true },
-  { slug: "karachi", name: "Karachi", base: false, delivered: false },
-  { slug: "islamabad", name: "Islamabad", base: false, delivered: false },
-  { slug: "multan", name: "Multan", base: false, delivered: false },
-  { slug: "faisalabad", name: "Faisalabad", base: false, delivered: false },
+  { slug: "karachi", name: "Karachi", base: false, delivered: true },
+  { slug: "islamabad", name: "Islamabad", base: false, delivered: true },
+  { slug: "multan", name: "Multan", base: false, delivered: true },
+  { slug: "faisalabad", name: "Faisalabad", base: false, delivered: true },
 ] as const;
 
 export const cityNames = cities.map((c) => c.name);

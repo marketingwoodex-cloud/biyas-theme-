@@ -90,7 +90,7 @@ export const locations: Location[] = [
   {
     slug: "commercial-interior-design-karachi",
     city: "Karachi",
-    delivered: false,
+    delivered: true,
     base: false,
     metaTitle: "Commercial Interior Design Karachi | Woodex Interior",
     metaDescription:
@@ -137,7 +137,7 @@ export const locations: Location[] = [
   {
     slug: "commercial-interior-design-islamabad",
     city: "Islamabad",
-    delivered: false,
+    delivered: true,
     base: false,
     metaTitle: "Commercial Interior Design Islamabad | Woodex",
     metaDescription:
@@ -184,7 +184,7 @@ export const locations: Location[] = [
   {
     slug: "commercial-interior-design-multan",
     city: "Multan",
-    delivered: false,
+    delivered: true,
     base: false,
     metaTitle: "Commercial Interior Design Multan | Woodex Interior",
     metaDescription:
@@ -231,7 +231,7 @@ export const locations: Location[] = [
   {
     slug: "commercial-interior-design-faisalabad",
     city: "Faisalabad",
-    delivered: false,
+    delivered: true,
     base: false,
     metaTitle: "Commercial Interior Design Faisalabad | Woodex",
     metaDescription:
