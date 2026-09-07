@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/brand";
 import { services } from "@/lib/content/services";
 import { projects } from "@/lib/content/projects";
+import { locations } from "@/lib/content/locations";
+import { industries } from "@/lib/content/industries";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
@@ -29,5 +31,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly" as const,
       priority: 0.7,
     })),
+    ...locations.map((l) => ({
+      url: `${siteUrl}/${l.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: l.base ? 0.9 : 0.7,
+    })),
+    // Only indexed industries. Sector pages without a delivered project are
+    // noindex and must not appear here.
+    ...industries
+      .filter((i) => i.indexed)
+      .map((i) => ({
+        url: `${siteUrl}/industries/${i.slug}`,
+        lastModified: now,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      })),
   ];
 }

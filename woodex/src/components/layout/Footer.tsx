@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { brand, contact, social, cta } from "@/lib/brand";
+import { locations } from "@/lib/content/locations";
+import { indexedIndustries } from "@/lib/content/industries";
 import { Btn } from "@/components/ui/Btn";
 import Reveal from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
@@ -29,11 +31,19 @@ const PRACTICE = [
 const EXPLORE = [
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
-  { href: "/contact#studio", label: "Locations" },
-  { href: "/#insights", label: "Insights" },
-  { href: "/#faq", label: "FAQ" },
+  { href: "/process", label: "Process" },
+  { href: "/request-proposal", label: "Request a Proposal" },
   { href: "/contact", label: "Contact" },
 ];
+
+/* City pages are the highest-value SEO surface on the site, so they get a
+   dedicated footer column — a sitewide internal link to each. */
+const CITIES = locations.map((l) => ({ href: `/${l.slug}`, label: l.city }));
+
+const SECTORS = indexedIndustries.map((i) => ({
+  href: `/industries/${i.slug}`,
+  label: i.name,
+}));
 
 function Column({ title, items }: { title: string; items: { href: string; label: string }[] }) {
   return (
@@ -77,12 +87,21 @@ export default function Footer() {
           </Reveal>
 
           {/* ---- Directory ---- */}
-          <Reveal className="lg:col-span-2 lg:col-start-6">
+          <Reveal className="lg:col-span-2 lg:col-start-5">
             <Column title="Practice" items={PRACTICE} />
           </Reveal>
 
           <Reveal className="lg:col-span-2" delay={80}>
             <Column title="Explore" items={EXPLORE} />
+            {SECTORS.length > 0 && (
+              <div className="mt-10">
+                <Column title="Sectors" items={SECTORS} />
+              </div>
+            )}
+          </Reveal>
+
+          <Reveal className="lg:col-span-2" delay={120}>
+            <Column title="Cities" items={CITIES} />
           </Reveal>
 
           <Reveal className="lg:col-span-3" delay={160}>
