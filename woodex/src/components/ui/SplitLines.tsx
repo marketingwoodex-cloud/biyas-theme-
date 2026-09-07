@@ -23,7 +23,15 @@ export function SplitLines({
     <Tag className={className}>
       {lines.map((line, i) => (
         <span className="line-mask" key={i}>
-          <span style={{ transitionDelay: `${base + i * stagger}ms` }}>{line}</span>
+          <span style={{ transitionDelay: `${base + i * stagger}ms` }}>
+            {line}
+            {/* Each line sits in its own overflow-hidden block, which means the
+                accessibility tree and the clipboard see the lines butted
+                together — "We bought a" + "workshop" reads as "aworkshop".
+                A screen-reader-only space restores the word boundary without
+                affecting layout, because it lives inside the mask. */}
+            {i < lines.length - 1 && <span className="sr-only"> </span>}
+          </span>
         </span>
       ))}
     </Tag>

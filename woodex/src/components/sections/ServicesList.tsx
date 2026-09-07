@@ -201,7 +201,7 @@ export default function ServicesList() {
                   Not sure which one you need? <span className="text-bone/55">Send a floor plan.</span>
                 </p>
                 <Btn href="/contact" variant="ghost">
-                  {cta.estimate}
+                  {cta.primary}
                 </Btn>
               </div>
             </Reveal>

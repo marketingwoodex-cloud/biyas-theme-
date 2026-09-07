@@ -7,44 +7,47 @@ import { Btn, Eyebrow } from "@/components/ui/Btn";
 import Process from "@/components/sections/Process";
 import Voices from "@/components/sections/Voices";
 import Jsonld, { breadcrumbSchema } from "@/components/seo/Jsonld";
-import { brand, siteUrl, cta } from "@/lib/brand";
 import { Stat, ProofRow } from "@/components/ui/Stat";
-import { cities } from "@/lib/siteConfig";
-import { materials } from "@/lib/content/site";
+import { brand, cities, siteUrl, cta, contact, qualifier } from "@/lib/siteConfig";
 
 export const metadata: Metadata = {
   title: "About the Studio",
   description:
     "Woodex Interior is a Lahore-based commercial interior design and fit-out studio delivering across Pakistan. Disciplined process, line-item BOQ, documented handover.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
-    title: "About Woodex Interior",
-    description: brand.positioning,
+    title: "About Woodex Interior | Commercial Fit-Out Studio",
+    description: brand.proposition,
     url: `${siteUrl}/about`,
-    images: [{ url: "/img/svc-joinery.jpg", width: 1200, height: 1500 }],
+    images: [{ url: `${siteUrl}/img/svc-office.jpg`, width: 1200, height: 1500 }],
   },
 };
 
-const values = [
+/**
+ * The four principles are the four messaging pillars, stated as operating
+ * commitments rather than adjectives. Each one is checkable — a client can
+ * hold us to it — which is the difference between a value and a slogan.
+ */
+const PRINCIPLES = [
   {
     n: "01",
-    t: "Own the whole chain",
-    d: "Design, manufacture and site under one roof. Not because it is efficient — because it removes the place where quality usually leaks out.",
+    t: "Design that performs",
+    d: "A commercial space has a job: seat a headcount, move a customer, host a client. We plan against that job first. If a decision looks good and works badly, it does not go in.",
   },
   {
     n: "02",
-    t: "Specify less, detail more",
-    d: "Six materials, endlessly detailed, beats sixty materials loosely coordinated. Restraint is the cheapest luxury there is.",
+    t: "Controlled execution",
+    d: "A line-item BOQ before the contract, provisional sums declared as provisional, and a written variation policy. No work proceeds until the change is priced and you have signed it.",
   },
   {
     n: "03",
-    t: "Measure what nobody photographs",
-    d: "Reveals, tolerances, reverberation, lux. The things a client cannot name are the things they feel first.",
+    t: "Pre-build clarity",
+    d: "3D stills, working drawings, a finish schedule and MEP clash detection — all before anything is ordered. The most expensive revision is the one made on site.",
   },
   {
     n: "04",
-    t: "Say the difficult thing early",
-    d: "If the budget cannot buy the drawing, we say so at week one, not at week fourteen with a variation order.",
+    t: "Professional handover",
+    d: "Joint snagging, as-builts, O&M manual, warranties and commissioning records. You should receive a documented asset, not a set of keys and a phone number.",
   },
 ];
 
@@ -68,93 +71,135 @@ export default function AboutPage() {
 
       <PageHero
         eyebrow="The studio"
-        lines={[<>We bought a</>, <>workshop so the</>, <><span className="t-aside">drawing</span> would win.</>]}
-        sub={brand.positioning}
-        image="/img/svc-joinery.jpg"
-        imageAlt="Woodex joinery workshop: stacked walnut panels, hand tools and sawdust in window light"
-        crumbs={[
-          { name: "Home", path: "/" },
-          { name: "About", path: "/about" },
+        lines={[
+          <span key="a">We are judged on</span>,
+          <span key="b">
+            the <span className="t-aside">handover</span>,
+          </span>,
+          <span key="c">not the render.</span>,
         ]}
+        sub={brand.proposition}
+        image="/img/svc-office.jpg"
+        imageAlt="Corporate office interior delivered by Woodex Interior, Lahore"
+        crumbs={[{ name: "About", path: "/about" }]}
+        /* Structural facts only. No invented team size, founding year or
+           workshop area — every figure here is either verifiable or a token. */
         meta={[
-          { k: "Founded", v: "2007, Lahore" },
-          { k: "Team", v: "42 across studio & shop" },
-          { k: "Workshop", v: "18,000 sq ft" },
           { k: "Focus", v: "Commercial fit-out" },
+          { k: "Studio", v: contact.city },
+          { k: "Coverage", v: `${cities.length} cities` },
+          { k: "Pricing", v: "Line-item BOQ" },
         ]}
       />
 
-      {/* Founder story */}
+      {/* Why we work this way — an industry truth, not a fabricated anecdote */}
       <section className="bg-bone text-ink">
         <div className="shell-wide act">
-          <div className="grid gap-x-12 gap-y-14 lg:grid-cols-12">
+          <div className="grid gap-x-16 gap-y-14 lg:grid-cols-12">
             <Reveal className="lg:col-span-6">
-              <Eyebrow tone="clay">Origin</Eyebrow>
+              <Eyebrow tone="clay">Why we work this way</Eyebrow>
               <SplitLines
                 as="h2"
                 className="t-h1 mt-6"
-                lines={[<>Almost right</>, <>is <span className="t-aside !text-bronze">wrong</span>.</>]}
+                lines={[
+                  <span key="a">Split contracts</span>,
+                  <span key="b">
+                    fail in the <span className="t-aside">seams</span>.
+                  </span>,
+                ]}
               />
               <div className="mt-9 max-w-[54ch] space-y-5">
                 <p className="t-lede text-ink/80">
-                  In 2007 our founder stood in a finished reception looking at a shadow gap
-                  that should have been six millimetres. It was fourteen. The veneer above it
-                  ran the wrong way. The client had noticed before he had.
+                  Most commercial fit-outs do not fail dramatically. They fail in small,
+                  defensible increments — a long-lead item ordered late, a services clash
+                  found after the ceiling grid is up, a finish substituted because the
+                  original was unavailable and nobody was asked.
                 </p>
                 <p className="t-body text-clay">
-                  Nobody had been careless. The drawing was good, the joiner was skilled, the
-                  contractor was competent. But three companies had each made one small,
-                  defensible compromise, and the room had absorbed all three.
+                  Individually each costs a few days and nobody is at fault. Together they
+                  are how a sixteen-week programme becomes twenty-two, and how a specification
+                  a client approved becomes a space they did not expect. When the designer,
+                  the contractor and the joiner answer to three different parties, every
+                  interface becomes a negotiation and every delay becomes someone else&apos;s
+                  responsibility.
                 </p>
                 <p className="t-body text-clay">
-                  He spent the next two years buying machines. Today the studio and the
-                  workshop share a car park, and the person who draws a detail can walk
-                  forty metres to watch it being cut. That is the entire strategy. It is not
-                  clever, but it is the only version of this business we know how to run.
+                  We run design, documentation and site delivery under one contract for
+                  exactly that reason. Not because it is more efficient — because it removes
+                  the place where accountability usually leaks out.
                 </p>
-                <p className="font-medium text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.02em] text-ink">
-                  {brand.promise}
-                </p>
+                <p className="t-h4 pt-2 text-ink">{brand.wedge}</p>
               </div>
+
+              <ProofRow className="mt-10 border-t border-sand pt-8">
+                <Stat token="YEARS" label="Years delivering fit-out" suffix="+" />
+                <Stat token="PROJECTS" label="Projects completed" suffix="+" />
+                <Stat value={cities.length} label="Cities served" />
+                <Stat token="ISO_CERTIFIED" label="Quality management" />
+              </ProofRow>
             </Reveal>
 
-            <Reveal className="lg:col-span-5 lg:col-start-8">
+            <Reveal className="lg:col-span-5 lg:col-start-8" delay={120}>
               <Parallax
-                src="/img/detail-joinery.jpg"
-                alt="Macro detail: quarter-sawn walnut meeting a brushed bronze inlay and honed travertine with a precise shadow gap"
+                src="/img/proj-01.jpg"
+                alt="Boardroom interior in a corporate office fit-out, Lahore"
                 className="wipe aspect-[4/5] w-full"
                 sizes="(max-width:900px) 100vw, 40vw"
                 distance={10}
               />
-              <ProofRow className="mt-6 border-t border-sand pt-6">
-                <Stat token="YEARS" label="Years delivering fit-out" suffix="+" />
-                <Stat token="PROJECTS" label="Projects completed" suffix="+" />
-                <Stat value={cities.length} label="Cities served" />
-              </ProofRow>
+              {/* Clearly marked slot. The founder's real story belongs here and
+                  cannot be written by anyone but the founder. */}
+              <div className="card mt-6">
+                <p className="t-label text-bronze">Founder&apos;s note</p>
+                <p className="t-body mt-4 text-clay">
+                  [Founder statement pending. One paragraph, first person: the project that
+                  made you change how the business runs. Name the failure, not the
+                  achievement — it is more persuasive and it is what a client recognises.]
+                </p>
+                <p className="t-meta mt-4 text-clay">
+                  [Name] · [Role]
+                </p>
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-ink">
+      {/* Principles */}
+      <section className="bg-ink text-bone">
         <div className="shell-wide act">
-          <Reveal className="mb-14">
-            <Eyebrow>How we work</Eyebrow>
-            <SplitLines
-              as="h2"
-              className="t-h1 mt-6 max-w-[16ch] text-bone"
-              lines={[<>Four rules we</>, <>refuse to <span className="t-aside">bend</span>.</>]}
-            />
+          <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <Eyebrow>How we operate</Eyebrow>
+              <SplitLines
+                as="h2"
+                className="t-h1 mt-6"
+                lines={[
+                  <span key="a">Four commitments</span>,
+                  <span key="b">you can hold us to.</span>,
+                ]}
+              />
+            </div>
+            <div
+              className="fade-up lg:col-span-4 lg:col-start-9"
+              style={{ transitionDelay: "220ms" }}
+            >
+              <p className="t-body text-bone/55">
+                Not values — operating commitments. Each one is checkable, and each one has
+                a document attached to it.
+              </p>
+            </div>
           </Reveal>
 
-          <div className="grid gap-x-10 gap-y-2 md:grid-cols-2">
-            {values.map((v, i) => (
-              <Reveal key={v.n} delay={i * 90}>
-                <div className="fade-up border-t border-[var(--hairline-dark)] py-9">
-                  <span className="t-meta text-bronze">{v.n}</span>
-                  <h3 className="t-h3 mt-4 text-bone">{v.t}</h3>
-                  <p className="t-body mt-3 max-w-[42ch] text-clay">{v.d}</p>
+          <div className="mt-14 grid gap-4 sm:grid-cols-2">
+            {PRINCIPLES.map((v, i) => (
+              <Reveal key={v.n} delay={i * 70}>
+                <div className="card-dark fade-up h-full">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="t-h4 text-bone">{v.t}</h3>
+                    <span className="t-num text-sm text-bronze-light">{v.n}</span>
+                  </div>
+                  <p className="t-body mt-4 text-bone/55">{v.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -162,33 +207,37 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Materials */}
+      {/* Who we work with */}
       <section className="bg-oat text-ink">
-        <div className="shell-wide act">
-          <Reveal className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
-              <Eyebrow tone="clay">Specification</Eyebrow>
-              <SplitLines as="h2" className="t-h1 mt-6" lines={[<>The palette,</>, <>in <span className="t-aside !text-bronze">full</span>.</>]} />
-            </div>
-            <p className="fade-up t-body text-clay lg:col-span-4 lg:col-start-9">
-              Six materials specified across every project since 2019. Consistency is what
-              lets a portfolio read as a body of work rather than a collection of jobs.
-            </p>
-          </Reveal>
-
-          <div className="grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
-            {materials.map((m, i) => (
-              <Reveal key={m.name} delay={i * 70}>
-                <div className="fade-up border-t border-sand py-7">
-                  <div className="flex items-baseline justify-between">
-                    <h3 className="t-h3 !text-[1.3rem]">{m.name}</h3>
-                    <span className="t-meta text-bronze">{String(i + 1).padStart(2, "0")}</span>
-                  </div>
-                  <p className="t-meta mt-2 text-clay">{m.spec}</p>
-                  <p className="t-body mt-3 max-w-[34ch] text-ink/70">{m.note}</p>
-                </div>
-              </Reveal>
-            ))}
+        <div className="shell act">
+          <div className="grid gap-x-16 gap-y-10 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <Eyebrow tone="clay">Who we work with</Eyebrow>
+              <h2 className="t-h2 mt-6 max-w-[18ch]">Commercial first, and openly so.</h2>
+            </Reveal>
+            <Reveal className="lg:col-span-6 lg:col-start-7" delay={100}>
+              <ul className="list-ul t-body text-clay">
+                <li>
+                  <strong className="text-ink">Business owners and CEOs</strong> — planning a
+                  move, an expansion or a rebrand, who want one accountable partner rather
+                  than a supply chain to manage.
+                </li>
+                <li>
+                  <strong className="text-ink">Office and facility managers</strong> — running
+                  a live site, where phasing, disruption and reporting matter as much as the
+                  design.
+                </li>
+                <li>
+                  <strong className="text-ink">Architects and specifiers</strong> — who need a
+                  fit-out partner that reads drawings properly and comments on buildability
+                  before quoting.
+                </li>
+              </ul>
+              <p className="t-meta mt-8 rounded-[var(--r-md)] border border-sand bg-mist px-5 py-4 text-clay">
+                {qualifier} Residential enquiries are welcome, but they are handled separately
+                and lead times differ.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -197,17 +246,22 @@ export default function AboutPage() {
       <Voices />
 
       <section className="bg-bone text-ink">
-        <div className="shell-wide act text-center">
+        <div className="shell act text-center">
           <Reveal>
-            <Eyebrow tone="clay" className="justify-center">Work with us</Eyebrow>
-            <SplitLines
-              as="h2"
-              className="t-h1 mx-auto mt-6 max-w-[18ch]"
-              lines={[<>Bring us a plan</>, <>and a <span className="t-aside !text-bronze">problem</span>.</>]}
-            />
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Btn href="/request-proposal" variant="light">{cta.primary}</Btn>
-              <Btn href="/portfolio" variant="light">{cta.work}</Btn>
+            <h2 className="t-h2 mx-auto max-w-[22ch]">
+              Tell us what you have and where you are in the process.
+            </h2>
+            <p className="t-body mx-auto mt-6 max-w-[50ch] text-clay">
+              You will get scope, an indicative BOQ structure, a programme and a budget band
+              — in writing.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Btn href="/request-proposal" variant="light">
+                {cta.primary}
+              </Btn>
+              <Btn href="/portfolio" variant="light">
+                {cta.work}
+              </Btn>
             </div>
           </Reveal>
         </div>

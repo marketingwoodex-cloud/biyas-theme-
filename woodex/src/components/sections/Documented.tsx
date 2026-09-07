@@ -77,7 +77,7 @@ export default function Documented() {
                   From approved still to <span className="t-aside">BOQ and site</span>.
                 </p>
                 <Btn href="/contact" variant="ghost">
-                  {cta.estimate}
+                  {cta.primary}
                 </Btn>
               </div>
             </Reveal>
