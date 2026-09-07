@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
   },
 
   // Long-lived immutable caching for fonts and generated imagery.
+  /* Interim aliases. /portfolio and /case-studies are phase 7 of the blueprint;
+     until they exist these redirect to the current work index so the navigation
+     never dead-ends. Delete both when the real routes land. */
+  async redirects() {
+    return [
+      { source: "/portfolio", destination: "/projects", permanent: false },
+      { source: "/case-studies", destination: "/projects", permanent: false },
+    ];
+  },
+
   async headers() {
     return [
       {

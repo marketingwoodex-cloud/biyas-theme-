@@ -53,15 +53,15 @@ export default function ProjectsPage() {
         lines={[<>Built, not</>, <><span className="t-aside">rendered</span>.</>]}
         sub="Six projects across workplace, home and hospitality. Each entry leads with the number the client cared about — covers recovered, reverberation measured, days saved — because that is what a portfolio is actually for."
         image="/img/hero-01.jpg"
-        imageAlt="Fluted walnut reception wall with amber reveals and travertine floor"
+        imageAlt="Fluted walnut reception wall with bronze reveals and travertine floor"
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Projects", path: "/projects" },
         ]}
         meta={[
-          { k: "Projects", v: "340+ delivered" },
+          { k: "Coverage", v: "5 cities" },
           { k: "Sectors", v: "Four" },
-          { k: "On schedule", v: "96%" },
+          { k: "Reporting", v: "Weekly, written" },
           { k: "Since", v: "2007" },
         ]}
       />
@@ -87,11 +87,11 @@ export default function ProjectsPage() {
 
                   <div className={`lg:col-span-4 ${i % 2 ? "lg:order-1 lg:col-start-1" : "lg:col-start-9"}`}>
                     <div className="flex items-center gap-4">
-                      <span className="t-meta text-amber">{p.index}</span>
+                      <span className="t-meta text-bronze">{p.index}</span>
                       <span className="t-label text-clay">{p.sector}</span>
                     </div>
                     <h2 className="t-h2 mt-4">
-                      <Link href={`/projects/${p.slug}`} className="transition-colors duration-500 hover:text-amber" data-cursor="link">
+                      <Link href={`/projects/${p.slug}`} className="transition-colors duration-500 hover:text-bronze" data-cursor="link">
                         {p.title}
                       </Link>
                     </h2>
@@ -134,7 +134,7 @@ export default function ProjectsPage() {
               lines={[<>The next one</>, <>could be <span className="t-aside">yours</span>.</>]}
             />
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Btn href="/contact" variant="solid">{cta.primary}</Btn>
+              <Btn href="/request-proposal" variant="solid">{cta.primary}</Btn>
               <Btn href="/services" variant="ghost">{cta.tertiary}</Btn>
             </div>
           </Reveal>

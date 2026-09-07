@@ -59,24 +59,32 @@ export const materials = [
   { name: "Contract Wool Felt", spec: "Charcoal & moss, 12mm", note: "Acoustics you can see. Absorbs speech, not warmth." },
 ] as const;
 
+/**
+ * PLACEHOLDER. The brief forbids invented testimonials.
+ * Structure is real so the component works; every entry is unattributed and
+ * flagged. Replace only with quotes you hold written approval for.
+ */
 export const testimonials = [
   {
-    text: "We had been quoted by two contractors and a design studio. Woodex was the only one who arrived with a laser measure instead of a portfolio.",
-    who: "Managing Partner",
-    role: "Meridian Capital",
-    sector: "Workplace",
+    text: "[Client quote pending approval. Use a sentence describing a measurable outcome, not an adjective.]",
+    who: "Client Name",
+    role: "Financial Services",
+    sector: "Office",
+    placeholder: true,
   },
   {
-    text: "We approved a picture of our own living room. When we walked in eleven weeks later it was the same room. That still surprises me.",
-    who: "Homeowner",
-    role: "Villa Noor",
-    sector: "Residential",
+    text: "[Client quote pending approval.]",
+    who: "Client Name",
+    role: "Retail Group",
+    sector: "Retail",
+    placeholder: true,
   },
   {
-    text: "Fourteen weeks, one number, no variations we did not approve in writing. I have not had that experience before.",
-    who: "Operations Director",
-    role: "Hospitality group",
-    sector: "F&B",
+    text: "[Client quote pending approval.]",
+    who: "Client Name",
+    role: "Healthcare",
+    sector: "Pharmacy",
+    placeholder: true,
   },
 ] as const;
 
@@ -117,7 +125,7 @@ export const journal = [
 export const homeFaqs = [
   {
     q: "What does Woodex Interior actually do?",
-    a: "We design interiors and execute them. Every project starts as a photoreal 3D still, is documented to a line-by-line BOQ, and is built by our own site team with joinery made in our own workshop — 500+ projects delivered, ISO 9001 certified.",
+    a: "We design commercial interiors and execute them. Every project starts as a photoreal 3D still, is documented to a line-item BOQ, and is built under one contract with a named project manager and a dated programme.",
   },
   {
     q: "Why do you insist on 3D stills before anything else?",

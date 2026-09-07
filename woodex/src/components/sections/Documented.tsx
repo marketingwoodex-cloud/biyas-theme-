@@ -62,7 +62,7 @@ export default function Documented() {
                   <div className="card fade-up group h-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1">
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="t-h3 !text-[1.15rem] text-ink">{d.t}</h3>
-                      <span className="t-meta shrink-0 text-amber">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="t-meta shrink-0 text-bronze">{String(i + 1).padStart(2, "0")}</span>
                     </div>
                     <p className="t-body mt-3 text-clay">{d.d}</p>
                   </div>

@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <section className="relative flex min-h-[86svh] items-center bg-ink">
       <div className="shell-wide py-32">
-        <p className="t-label text-amber">Error 404</p>
+        <p className="t-label text-bronze">Error 404</p>
         <h1 className="t-display mt-6 max-w-[14ch] text-bone">
           This room doesn&apos;t <span className="t-aside">exist</span>.
         </h1>
@@ -27,8 +27,8 @@ export default function NotFound() {
               data-cursor="link"
               className="group flex items-baseline gap-3 border-b border-[var(--hairline-dark)] py-4 transition-[padding] duration-500 hover:pl-2"
             >
-              <span className="t-meta text-amber/60">{s.index}</span>
-              <span className="font-medium text-lg text-bone transition-colors group-hover:text-amber-light">
+              <span className="t-meta text-bronze/60">{s.index}</span>
+              <span className="font-medium text-lg text-bone transition-colors group-hover:text-bronze-light">
                 {s.title}
               </span>
             </Link>

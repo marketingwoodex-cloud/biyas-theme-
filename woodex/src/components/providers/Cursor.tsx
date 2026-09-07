@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Custom cursor: a hard amber dot that tracks 1:1 (so clicking feels precise)
+ * Custom cursor: a hard bronze dot that tracks 1:1 (so clicking feels precise)
  * and a lagging ring that interpolates (so movement feels weighted).
  * The ring changes state from `data-cursor` attributes anywhere in the tree.
  */

@@ -70,7 +70,7 @@ export default function Footer() {
               Have a space in mind? Tell us what you have and where you are in the process.
             </p>
             <div className="fade-up mt-8" style={{ transitionDelay: "240ms" }}>
-              <Btn href="/contact" variant="light">
+              <Btn href="/request-proposal" variant="light">
                 {cta.primary}
               </Btn>
             </div>

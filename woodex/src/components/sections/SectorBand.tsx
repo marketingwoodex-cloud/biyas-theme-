@@ -18,7 +18,7 @@ export default function SectorBand() {
         {sectors.map((s) => (
           <span key={s} className="flex items-center whitespace-nowrap">
             <span className="t-h3 px-8 font-medium text-bone/80 lg:px-12">{s}</span>
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-amber" aria-hidden />
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-bronze" aria-hidden />
           </span>
         ))}
       </Marquee>

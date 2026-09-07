@@ -35,7 +35,7 @@ export default function FeaturedWork() {
               lines={[
                 <>Rooms we built,</>,
                 <>
-                  and what they <span className="t-aside !text-amber">changed</span>.
+                  and what they <span className="t-aside !text-bronze">changed</span>.
                 </>,
               ]}
             />
@@ -72,12 +72,12 @@ export default function FeaturedWork() {
                     got clipped. Everything now lives in one flow that wraps. */}
                 <div className="mt-6 border-t border-sand pt-5">
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                    <span className="t-num text-sm text-amber">{p.index}</span>
+                    <span className="t-num text-sm text-bronze">{p.index}</span>
                     <span className="t-label text-clay">{p.sector}</span>
                     <span className="ml-auto t-meta text-clay/70">{p.year}</span>
                   </div>
 
-                  <h3 className="t-h3 mt-3 transition-colors duration-500 group-hover:text-amber">
+                  <h3 className="t-h3 mt-3 transition-colors duration-500 group-hover:text-bronze">
                     {p.title}
                   </h3>
 
@@ -91,10 +91,20 @@ export default function FeaturedWork() {
                     <span className="pill">
                       <span className="pill-figure">{p.area}</span>
                     </span>
+                    {/* Unverified figures are greyed and labelled. A metric the
+                        client has not signed off is not a proof point yet. */}
                     {p.result.slice(0, 2).map((r) => (
-                      <span key={r.label} className="pill">
-                        <span className="pill-figure">{r.value}</span>
-                        <span className="pill-note">{r.label}</span>
+                      <span
+                        key={r.label}
+                        className="pill"
+                        title={r.verified ? undefined : "Pending client verification"}
+                      >
+                        <span className={r.verified ? "pill-figure" : "pill-figure opacity-45"}>
+                          {r.value}
+                        </span>
+                        <span className={r.verified ? "pill-note" : "pill-note opacity-60"}>
+                          {r.label}
+                        </span>
                       </span>
                     ))}
                   </div>

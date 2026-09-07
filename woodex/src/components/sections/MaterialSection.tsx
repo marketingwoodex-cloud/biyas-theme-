@@ -44,7 +44,7 @@ export default function MaterialSection() {
               one idea. We specify from a fixed set and detail it obsessively — so an office
               and a villa built four years apart still feel like the same hand.
             </p>
-            <p className="t-meta mt-8 text-amber-light">
+            <p className="t-meta mt-8 text-bronze-light">
               Drag or scroll to turn the column →
             </p>
           </Reveal>
@@ -55,7 +55,7 @@ export default function MaterialSection() {
             {/* Static fallback caption — also carries the meaning if WebGL fails */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 text-center">
               <p className="t-label text-bone/45">
-                Fluted walnut · amber band · travertine base
+                Fluted walnut · bronze band · travertine base
               </p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function MaterialSection() {
                     <p className="font-medium text-xl leading-tight">
                       {m.name}
                     </p>
-                    <p className="t-meta shrink-0 text-amber/80">{String(i + 1).padStart(2, "0")}</p>
+                    <p className="t-meta shrink-0 text-bronze/80">{String(i + 1).padStart(2, "0")}</p>
                   </div>
                   <p className="t-meta mt-1.5 text-bone/50">{m.spec}</p>
                   <p className="t-body mt-2 max-w-[34ch] text-bone/70">{m.note}</p>

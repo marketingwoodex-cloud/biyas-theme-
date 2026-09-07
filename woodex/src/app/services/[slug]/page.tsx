@@ -115,7 +115,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                   {s.headline}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Btn href="/contact" variant="light">
+                  <Btn href="/request-proposal" variant="light">
                     {cta.primary}
                   </Btn>
                 </div>
@@ -134,12 +134,12 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
 
               {/* Outcomes — the reason to buy, in four scannable lines */}
               <div className="mt-12 border-t border-sand pt-8">
-                <p className="t-label text-amber">What you get</p>
+                <p className="t-label text-bronze">What you get</p>
                 <ul className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
                   {s.outcomes.map((o, i) => (
                     <li key={o} className="fade-up flex items-start gap-3" style={{ transitionDelay: `${i * 80}ms` }}>
                       <svg width="14" height="11" viewBox="0 0 14 11" fill="none" className="mt-1.5 shrink-0" aria-hidden>
-                        <path d="M1 5.5 5 9.5 13 1" stroke="var(--color-amber)" strokeWidth="1.4" />
+                        <path d="M1 5.5 5 9.5 13 1" stroke="var(--color-bronze)" strokeWidth="1.4" />
                       </svg>
                       <span className="t-body text-ink">{o}</span>
                     </li>
@@ -174,8 +174,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <Reveal key={d.t} delay={i * 60}>
                 <div className="fade-up group h-full border-t border-[var(--hairline-dark)] py-8 transition-colors duration-500">
                   <div className="flex items-baseline gap-4">
-                    <span className="t-meta text-amber/70">{String(i + 1).padStart(2, "0")}</span>
-                    <h3 className="t-h3 !text-[1.25rem] text-bone transition-colors duration-500 group-hover:text-amber-light">
+                    <span className="t-meta text-bronze/70">{String(i + 1).padStart(2, "0")}</span>
+                    <h3 className="t-h3 !text-[1.25rem] text-bone transition-colors duration-500 group-hover:text-bronze-light">
                       {d.t}
                     </h3>
                   </div>
@@ -198,7 +198,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
         />
         <div className="pointer-events-none absolute inset-0 flex items-end">
           <div className="shell-wide pb-12">
-            <p className="t-label text-amber-light">{s.kicker}</p>
+            <p className="t-label text-bronze-light">{s.kicker}</p>
             <p className="font-medium mt-3 max-w-[20ch] text-[clamp(1.75rem,4vw,3.25rem)] leading-[1.02] tracking-[-0.03em] text-bone">
               {s.headline}
             </p>
@@ -234,10 +234,10 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                     />
                   </div>
                   <div className="mt-4 flex items-center gap-3">
-                    <span className="t-label text-amber">{p.sector}</span>
+                    <span className="t-label text-bronze">{p.sector}</span>
                     <span className="t-meta text-clay/70">{p.year}</span>
                   </div>
-                  <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-amber">{p.title}</h3>
+                  <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-bronze">{p.title}</h3>
                   <p className="t-body mt-2 text-clay">{p.summary}</p>
                 </Link>
               </Reveal>
@@ -266,8 +266,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
                   className="group flex items-center justify-between gap-4 border-b border-[var(--hairline-dark)] py-4 transition-[padding] duration-500 hover:pl-2"
                 >
                   <span className="flex items-baseline gap-3">
-                    <span className="t-meta text-amber/60">{o.index}</span>
-                    <span className="font-medium text-lg text-bone transition-colors group-hover:text-amber-light">
+                    <span className="t-meta text-bronze/60">{o.index}</span>
+                    <span className="font-medium text-lg text-bone transition-colors group-hover:text-bronze-light">
                       {o.title}
                     </span>
                   </span>

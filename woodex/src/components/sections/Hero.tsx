@@ -26,7 +26,7 @@ import { cta, contact } from "@/lib/brand";
 const SLIDES = [
   {
     img: "/img/hero-01.jpg",
-    alt: "Fluted walnut reception wall with amber reveals and honed travertine floor, raked by afternoon light",
+    alt: "Fluted walnut reception wall with bronze reveals and honed travertine floor, raked by afternoon light",
     eyebrow: "Workplace",
     lines: ["We turn ideas", "into spaces"],
     aside: "that get built",
@@ -46,7 +46,7 @@ const SLIDES = [
   },
   {
     img: "/img/hero-03.jpg",
-    alt: "Boutique hospitality lobby with sculptural end-grain walnut reception desk and ribbed amber screen",
+    alt: "Boutique hospitality lobby with sculptural end-grain walnut reception desk and ribbed bronze screen",
     eyebrow: "Hospitality",
     lines: ["Drawn, documented,", "then built"],
     aside: "by one team",
@@ -188,7 +188,7 @@ export default function Hero() {
                   transition: "transform .8s cubic-bezier(0.16,1,0.3,1), opacity .5s ease",
                 }}
               >
-                <span className="inline-block h-px w-7 bg-amber" aria-hidden />
+                <span className="inline-block h-px w-7 bg-bronze" aria-hidden />
                 {sl.eyebrow}
               </span>
             ))}
@@ -219,7 +219,7 @@ export default function Hero() {
               a caption to the action rather than as a wall to get past. */}
           <div className="mt-9 flex flex-col gap-7 sm:flex-row sm:items-start sm:gap-10">
             <div className="shrink-0" style={{ animation: "heroIn .95s cubic-bezier(0.16,1,0.3,1) .26s both" }}>
-              <Btn href="/contact" variant="light">
+              <Btn href="/request-proposal" variant="light">
                 {cta.primary}
               </Btn>
             </div>
@@ -250,7 +250,7 @@ export default function Hero() {
                 </span>
                 <span className="relative block h-px w-10 bg-[var(--hairline-dark)] sm:w-16">
                   <span
-                    className="absolute inset-y-0 left-0 bg-amber"
+                    className="absolute inset-y-0 left-0 bg-bronze"
                     style={{
                       width: n === i ? `${progress * 100}%` : n < i ? "100%" : "0%",
                       opacity: n === i ? 1 : 0.25,
@@ -294,7 +294,7 @@ export default function Hero() {
       >
         <span className="t-label text-clay">Scroll</span>
         <span className="relative block h-10 w-px overflow-hidden bg-[var(--hairline-dark)]">
-          <span className="absolute inset-x-0 h-4 bg-amber" style={{ animation: "cue 2.2s cubic-bezier(0.76,0,0.24,1) infinite" }} />
+          <span className="absolute inset-x-0 h-4 bg-bronze" style={{ animation: "cue 2.2s cubic-bezier(0.76,0,0.24,1) infinite" }} />
         </span>
       </motion.div>
 

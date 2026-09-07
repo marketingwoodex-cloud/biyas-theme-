@@ -81,7 +81,7 @@ export default function ContactForm() {
   if (sent) {
     return (
       <div className="card mt-10" role="status">
-        <p className="t-label text-amber">Received</p>
+        <p className="t-label text-bronze">Received</p>
         <p className="t-h2 mt-5 text-ink">Thank you — that&apos;s enough to start.</p>
         <p className="t-body mt-5 max-w-[46ch] text-clay">
           A human will reply within one working day. If you have a floor plan, reply to that
@@ -108,7 +108,7 @@ export default function ContactForm() {
             />
             <label htmlFor={f.id} className="field-label">
               {f.label}
-              {f.req && <span className="text-amber"> *</span>}
+              {f.req && <span className="text-bronze"> *</span>}
             </label>
           </div>
         ))}
@@ -133,7 +133,7 @@ export default function ContactForm() {
       <div className="field-wrap">
         <textarea id="brief" name="brief" rows={4} required placeholder=" " className="field resize-none" />
         <label htmlFor="brief" className="field-label">
-          Tell us about your space <span className="text-amber">*</span>
+          Tell us about your space <span className="text-bronze">*</span>
         </label>
       </div>
 

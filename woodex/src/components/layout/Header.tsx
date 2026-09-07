@@ -98,7 +98,7 @@ export default function Header() {
           <Link href="/" className="group flex items-baseline gap-3" aria-label={`${brand.fullName} — home`} data-cursor="link">
             <span className="t-h3 leading-none tracking-[-0.03em] text-bone">
               {brand.name}
-              <span className="text-amber">.</span>
+              <span className="text-bronze">.</span>
             </span>
             <span className="t-label hidden text-clay sm:block">Interior</span>
           </Link>
@@ -124,10 +124,10 @@ export default function Header() {
           </nav>
 
           <div className="hidden items-center gap-6 lg:flex">
-            <a href={`tel:${contact.phoneHref}`} className="t-meta text-clay transition-colors hover:text-amber" data-cursor="link">
+            <a href={`tel:${contact.phoneHref}`} className="t-meta text-clay transition-colors hover:text-bronze" data-cursor="link">
               {contact.phone}
             </a>
-            <Btn href="/contact" variant="solid" className="!py-3 !px-6">
+            <Btn href="/request-proposal" variant="solid" className="!py-3 !px-6">
               {cta.primary}
             </Btn>
           </div>
@@ -164,7 +164,7 @@ export default function Header() {
           >
             <div className="shell-wide grid grid-cols-4 gap-x-8 gap-y-1 py-9">
               <div className="col-span-1 pr-8">
-                <p className="t-label text-amber">What we do</p>
+                <p className="t-label text-bronze">What we do</p>
                 <p className="t-body mt-4 max-w-[22ch] text-clay">
                   Seven disciplines, one contract. Design, manufacture and site — never subcontracted apart.
                 </p>
@@ -180,8 +180,8 @@ export default function Header() {
                     data-cursor="link"
                     className="group flex items-baseline gap-4 border-b border-[var(--hairline-dark)] py-3.5 transition-[padding] duration-500 hover:pl-2"
                   >
-                    <span className="t-meta w-6 shrink-0 text-amber/70">{s.index}</span>
-                    <span className="flex-1 font-medium text-lg text-bone transition-colors group-hover:text-amber-light">
+                    <span className="t-meta w-6 shrink-0 text-bronze/70">{s.index}</span>
+                    <span className="flex-1 font-medium text-lg text-bone transition-colors group-hover:text-bronze-light">
                       {s.title}
                     </span>
                     <span className="t-meta text-clay opacity-0 transition-opacity group-hover:opacity-100">{s.kicker}</span>
@@ -236,7 +236,7 @@ export default function Header() {
             <a href={`mailto:${contact.email}`} className="t-meta text-clay">
               {contact.email}
             </a>
-            <Btn href="/contact" variant="solid" className="mt-2 w-full justify-between">
+            <Btn href="/request-proposal" variant="solid" className="mt-2 w-full justify-between">
               {cta.primary}
             </Btn>
           </div>

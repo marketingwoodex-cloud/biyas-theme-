@@ -1,9 +1,9 @@
 import Reveal from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { Eyebrow } from "@/components/ui/Btn";
-import { Counter } from "@/components/ui/Counter";
 import { process } from "@/lib/content/site";
-import { stats } from "@/lib/brand";
+import { Stat, ProofRow } from "@/components/ui/Stat";
+import { cities } from "@/lib/siteConfig";
 
 /**
  * ACT VI — THE METHOD
@@ -39,17 +39,16 @@ export default function Process() {
                   Friday, and no work executed before it is priced and approved.
                 </p>
 
-                <div className="mt-10 grid grid-cols-2 gap-y-8 border-t border-[var(--hairline-dark)] pt-8">
-                  {stats.map((s) => (
-                    <div key={s.label}>
-                      <p className="num text-bone">
-                        <Counter to={s.value} suffix={s.suffix} />
-                      </p>
-                      <p className="t-meta mt-2 text-clay">{s.label}</p>
-                      <p className="t-meta text-clay/50">{s.note}</p>
-                    </div>
-                  ))}
-                </div>
+                {/* Token-driven. <Stat> renders nothing when a token is
+                    unresolved, so this row can never display an invented
+                    figure — it simply gets shorter. Cities served is a
+                    verifiable fact, so it is a literal. */}
+                <ProofRow className="mt-10 border-t border-[var(--hairline-dark)] pt-8">
+                  <Stat token="YEARS" label="Years delivering fit-out" suffix="" />
+                  <Stat token="PROJECTS" label="Projects completed" suffix="+" />
+                  <Stat token="ONTIME_RATE" label="Delivered on contract date" suffix="%" />
+                  <Stat value={cities.length} label="Cities served" />
+                </ProofRow>
               </Reveal>
             </div>
           </div>
@@ -60,7 +59,7 @@ export default function Process() {
               <Reveal key={p.n} className="group">
                 <div className="fade-up flex gap-6 border-b border-[var(--hairline-dark)] py-9 transition-colors duration-500 hover:bg-bone/[0.02] sm:gap-10 sm:py-11">
                   <div className="shrink-0">
-                    <span className="t-label text-amber">{p.n}</span>
+                    <span className="t-label text-bronze">{p.n}</span>
                     {/* Connector line: draws the sequence literally. */}
                     {i < process.length - 1 && (
                       <span className="mx-auto mt-4 block h-full w-px bg-[var(--hairline-dark)]" aria-hidden />

@@ -1,3 +1,9 @@
+/**
+ * PLACEHOLDER PROJECT DATA.
+ * Every `result` carries `verified: false` and renders greyed with a
+ * "pending client verification" note until the client signs off the figure.
+ * Replace with real projects; do not publish an unverified number as fact.
+ */
 import type { Project } from "./types";
 
 /**
@@ -20,7 +26,7 @@ export const projects: Project[] = [
     image: "/img/proj-01.jpg",
     gallery: ["/img/proj-01.jpg", "/img/svc-office.jpg", "/img/detail-joinery.jpg"],
     summary:
-      "A private investment firm's floor rebuilt around a single arrival sequence in fluted walnut, amber and travertine.",
+      "A private investment firm's floor rebuilt around a single arrival sequence in fluted walnut, bronze and travertine.",
     brief:
       "Meridian were closing eight-figure mandates in a reception that looked like a dentist's waiting room. They needed a floor that carried the weight of the conversations happening inside it — without reading as a bank.",
     approach: [
@@ -28,11 +34,11 @@ export const projects: Project[] = [
       "Open plan was re-planned around an acoustic gradient — trading desks at the loud end, analysts at the quiet end, four phone rooms in between. Reverberation was targeted at 0.6s and verified on site.",
       "The boardroom table is a single six-metre walnut slab, dry-assembled in our shop, delivered through a window opening on a Sunday morning.",
     ],
-    materials: ["American black walnut, log-matched", "Unlacquered amber reveals", "Honed silver travertine", "Charcoal wool acoustic felt"],
+    materials: ["American black walnut, log-matched", "Unlacquered bronze reveals", "Honed silver travertine", "Charcoal wool acoustic felt"],
     result: [
-      { value: "0.58s", label: "Measured reverberation, open plan" },
-      { value: "16 wks", label: "Site programme, delivered on date" },
-      { value: "100%", label: "Joinery made in our own shop" },
+      { value: "0.58s", label: "Measured reverberation, open plan", verified: false },
+      { value: "16 wks", label: "Site programme, delivered on date", verified: false },
+      { value: "100%", label: "Joinery made in our own shop", verified: false },
     ],
     quote: {
       text: "The reception does the first ten minutes of the pitch for us. We stopped explaining who we are.",
@@ -54,19 +60,19 @@ export const projects: Project[] = [
     image: "/img/proj-02.jpg",
     gallery: ["/img/proj-02.jpg", "/img/svc-residential.jpg", "/img/detail-joinery.jpg"],
     summary:
-      "A family villa unified by one oak-and-amber palette that runs from the entrance hall to the last wardrobe pull.",
+      "A family villa unified by one oak-and-bronze palette that runs from the entrance hall to the last wardrobe pull.",
     brief:
       "The house had been built by three suppliers across two years. Nothing matched, and the family had stopped using half the ground floor.",
     approach: [
-      "We stripped the fragmented finishes and set a single palette: white oak, plaster, honed marble, unlacquered amber. Every room now shares at least two of the four.",
+      "We stripped the fragmented finishes and set a single palette: white oak, plaster, honed marble, unlacquered bronze. Every room now shares at least two of the four.",
       "The kitchen island was re-templated after the substrate went in, so the waterfall edge meets the floor without a scribe strip.",
       "Ninety-one metres of wardrobes, the bedheads, the media wall and the library were manufactured in one batch to guarantee colour continuity.",
     ],
-    materials: ["European white oak, rift sawn", "Polished plaster", "Honed Calacatta marble", "Unlacquered amber hardware"],
+    materials: ["European white oak, rift sawn", "Polished plaster", "Honed Calacatta marble", "Unlacquered bronze hardware"],
     result: [
-      { value: "91 m", label: "Bespoke joinery, single batch" },
-      { value: "4", label: "Materials across the whole house" },
-      { value: "2 mm", label: "Installed tolerance" },
+      { value: "91 m", label: "Bespoke joinery, single batch", verified: false },
+      { value: "4", label: "Materials across the whole house", verified: false },
+      { value: "2 mm", label: "Installed tolerance", verified: false },
     ],
     quote: {
       text: "For the first time the house feels like one house instead of four renovations.",
@@ -88,7 +94,7 @@ export const projects: Project[] = [
     image: "/img/proj-03.jpg",
     gallery: ["/img/proj-03.jpg", "/img/svc-hospitality.jpg", "/img/detail-joinery.jpg"],
     summary:
-      "A 96-cover dining room planned back-of-house first, then dressed in caramel leather, fluted timber and antique amber.",
+      "A 96-cover dining room planned back-of-house first, then dressed in caramel leather, fluted timber and antique bronze.",
     brief:
       "The operator had a strong menu and a room that could only seat 68 without servers colliding. They needed covers, not decoration.",
     approach: [
@@ -96,11 +102,11 @@ export const projects: Project[] = [
       "Banquettes were built with solid walnut returns rather than veneer, because that is the edge a chair leg hits four hundred times a night.",
       "Lighting runs on a timeclock: 3000K at 60% for lunch, 2700K warm-dim to 22% after eight.",
     ],
-    materials: ["Fluted walnut columns", "Caramel contract leather, 100k rub", "Antique amber sconces", "Sealed nero marquina bistro tops"],
+    materials: ["Fluted walnut columns", "Caramel contract leather, 100k rub", "Antique bronze sconces", "Sealed nero marquina bistro tops"],
     result: [
-      { value: "+28", label: "Covers recovered from re-planning" },
-      { value: "13 wks", label: "Shell to opening night" },
-      { value: "2,700K", label: "Warm-dim after 20:00" },
+      { value: "+28", label: "Covers recovered from re-planning", verified: false },
+      { value: "13 wks", label: "Shell to opening night", verified: false },
+      { value: "2,700K", label: "Warm-dim after 20:00", verified: false },
     ],
     quote: {
       text: "They planned the kitchen route before they showed us a single mood board. That is why it works on a Friday.",
@@ -122,7 +128,7 @@ export const projects: Project[] = [
     image: "/img/svc-retail.jpg",
     gallery: ["/img/svc-retail.jpg", "/img/detail-joinery.jpg", "/img/proj-01.jpg"],
     summary:
-      "A flagship prototyped as a repeatable kit — travertine plinths, amber rails, CRI-95 lighting — documented for rollout.",
+      "A flagship prototyped as a repeatable kit — travertine plinths, bronze rails, CRI-95 lighting — documented for rollout.",
     brief:
       "One store was opening, four more were budgeted. The client needed a design that got cheaper and faster each time it was built.",
     approach: [
@@ -130,11 +136,11 @@ export const projects: Project[] = [
       "Lighting was locked to CRI 95+ with three beam angles, so fabric colour reads identically in every unit.",
       "We issued a 40-page standards manual with a fixed bill of materials, which cut unit two's install to nine days.",
     ],
-    materials: ["Cream travertine plinths", "Brushed amber rails", "Micro-cement alcoves", "Oak chevron parquet"],
+    materials: ["Cream travertine plinths", "Brushed bronze rails", "Micro-cement alcoves", "Oak chevron parquet"],
     result: [
-      { value: "6 wks", label: "Flagship, shell to open" },
-      { value: "9 days", label: "Unit two install time" },
-      { value: "CRI 95+", label: "Colour accuracy on merchandise" },
+      { value: "6 wks", label: "Flagship, shell to open", verified: false },
+      { value: "9 days", label: "Unit two install time", verified: false },
+      { value: "CRI 95+", label: "Colour accuracy on merchandise", verified: false },
     ],
   },
   {
@@ -161,9 +167,9 @@ export const projects: Project[] = [
     ],
     materials: ["End-grain white oak counter", "Espresso-limewashed brick", "Brass shelving", "Ochre terrazzo"],
     result: [
-      { value: "−40%", label: "Peak queue dwell at the door" },
-      { value: "2.4 m", label: "Order-to-collect separation" },
-      { value: "9 wks", label: "On site" },
+      { value: "−40%", label: "Peak queue dwell at the door", verified: false },
+      { value: "2.4 m", label: "Order-to-collect separation", verified: false },
+      { value: "9 wks", label: "On site", verified: false },
     ],
   },
   {
@@ -180,19 +186,19 @@ export const projects: Project[] = [
     image: "/img/proj-05.jpg",
     gallery: ["/img/proj-05.jpg", "/img/svc-joinery.jpg", "/img/detail-joinery.jpg"],
     summary:
-      "A single-room commission: full-height walnut bookcases, an integrated amber ladder track and a green marble drinks cabinet.",
+      "A single-room commission: full-height walnut bookcases, an integrated bronze ladder track and a green marble drinks cabinet.",
     brief:
       "A collector with 4,000 volumes and a room that was structurally out of square by 34mm corner to corner.",
     approach: [
       "Every bay was individually dimensioned from a laser survey rather than repeated at a nominal width, so the reveals read parallel even though the walls are not.",
-      "The ladder track was let into a amber channel flush with the shelf face — no surface-mounted rail.",
+      "The ladder track was let into a bronze channel flush with the shelf face — no surface-mounted rail.",
       "Shelves were engineered at 22mm with a concealed steel spine to hold a 1.1m span without deflection.",
     ],
     materials: ["American black walnut, oiled", "Verde alpi marble", "Brass ladder track", "Concealed steel shelf spines"],
     result: [
-      { value: "34 mm", label: "Out-of-square absorbed invisibly" },
-      { value: "1.1 m", label: "Unsupported shelf span, zero deflection" },
-      { value: "4,000", label: "Volumes housed" },
+      { value: "34 mm", label: "Out-of-square absorbed invisibly", verified: false },
+      { value: "1.1 m", label: "Unsupported shelf span, zero deflection", verified: false },
+      { value: "4,000", label: "Volumes housed", verified: false },
     ],
   },
 ];

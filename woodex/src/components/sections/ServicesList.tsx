@@ -22,7 +22,7 @@ import { cta } from "@/lib/brand";
  *  · One card, six dividers — not six cards. Six separate cards would ask for
  *    six equal-weight decisions; rows inside one container read as a menu you
  *    scan top to bottom, which is how people actually choose a service.
- *  · The active row is marked by an amber rail and a brightened title, so at
+ *  · The active row is marked by an bronze rail and a brightened title, so at
  *    any moment exactly one thing is selected. No ambiguity, no hover fog.
  *  · Every row is a real link with its own focus state, so the whole thing
  *    works on keyboard and on touch, where hover does not exist.
@@ -99,7 +99,7 @@ export default function ServicesList() {
               {/* Caption chip — the identity's rounded-card motif, at small scale */}
               <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
                 <div className="rounded-[var(--r-md)] bg-ink/55 p-5 backdrop-blur-md sm:p-6">
-                  <p className="t-label text-amber">{s.kicker}</p>
+                  <p className="t-label text-bronze">{s.kicker}</p>
                   <p className="t-h4 mt-2.5 text-bone">{s.headline}</p>
                   <Link
                     href={`/services/${s.slug}`}
@@ -135,7 +135,7 @@ export default function ServicesList() {
                       {/* Active rail */}
                       <span
                         aria-hidden
-                        className="absolute inset-y-0 left-0 w-[2px] origin-top bg-amber"
+                        className="absolute inset-y-0 left-0 w-[2px] origin-top bg-bronze"
                         style={{
                           transform: `scaleY(${on ? 1 : 0})`,
                           transition: "transform .6s cubic-bezier(0.16,1,0.3,1)",
@@ -145,7 +145,7 @@ export default function ServicesList() {
                       <span
                         className="t-meta w-7 shrink-0 pt-1"
                         style={{
-                          color: on ? "var(--color-amber)" : "var(--color-clay)",
+                          color: on ? "var(--color-bronze)" : "var(--color-clay)",
                           transition: "color .4s ease",
                         }}
                       >

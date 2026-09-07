@@ -6,7 +6,7 @@ import * as THREE from "three";
 /**
  * THE MATERIAL MONOLITH — the site's 3D centrepiece.
  *
- * A fluted walnut column banded in unlacquered amber, standing on honed
+ * A fluted walnut column banded in unlacquered bronze, standing on honed
  * travertine. It is not decoration: it is the studio's palette rendered as
  * a physical object you can rotate. Scroll drives the turn, cursor drives
  * the tilt, so the section rewards both passive and active users.
@@ -127,7 +127,7 @@ export default function Monolith({ className = "" }: { className?: string }) {
     group.add(column);
 
     /* Brass bands — the studio's signature metal, used at ~5% of surface. */
-    const amberMat = new THREE.MeshPhysicalMaterial({
+    const bronzeMat = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#c08a3e"),
       metalness: 1,
       roughness: 0.24,
@@ -136,12 +136,12 @@ export default function Monolith({ className = "" }: { className?: string }) {
     });
 
     [1.72, -1.72].forEach((y) => {
-      const band = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.13, 128), amberMat);
+      const band = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.13, 128), bronzeMat);
       band.position.y = y;
       group.add(band);
     });
 
-    const collar = new THREE.Mesh(new THREE.TorusGeometry(1.11, 0.028, 16, 160), amberMat);
+    const collar = new THREE.Mesh(new THREE.TorusGeometry(1.11, 0.028, 16, 160), bronzeMat);
     collar.rotation.x = Math.PI / 2;
     group.add(collar);
 
@@ -172,7 +172,7 @@ export default function Monolith({ className = "" }: { className?: string }) {
 
     /* ---------------------------------------------------------------
        LIGHTING — a single warm key raking from the left (matching the
-       photography), a cool fill, and a amber rim to separate the object
+       photography), a cool fill, and a bronze rim to separate the object
        from the dark ground.
        --------------------------------------------------------------- */
 

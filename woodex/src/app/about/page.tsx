@@ -4,17 +4,18 @@ import Reveal from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { Parallax } from "@/components/ui/Parallax";
 import { Btn, Eyebrow } from "@/components/ui/Btn";
-import { Counter } from "@/components/ui/Counter";
 import Process from "@/components/sections/Process";
 import Voices from "@/components/sections/Voices";
 import Jsonld, { breadcrumbSchema } from "@/components/seo/Jsonld";
-import { brand, stats, siteUrl, cta } from "@/lib/brand";
+import { brand, siteUrl, cta } from "@/lib/brand";
+import { Stat, ProofRow } from "@/components/ui/Stat";
+import { cities } from "@/lib/siteConfig";
 import { materials } from "@/lib/content/site";
 
 export const metadata: Metadata = {
   title: "About the Studio",
   description:
-    "Woodex Interior is a Lahore-based interior architecture and turnkey fit-out studio with its own joinery workshop. Eighteen years, 340+ spaces, one accountable team.",
+    "Woodex Interior is a Lahore-based commercial interior design and fit-out studio delivering across Pakistan. Disciplined process, line-item BOQ, documented handover.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Woodex Interior",
@@ -79,7 +80,7 @@ export default function AboutPage() {
           { k: "Founded", v: "2007, Lahore" },
           { k: "Team", v: "42 across studio & shop" },
           { k: "Workshop", v: "18,000 sq ft" },
-          { k: "Delivered", v: "340+ spaces" },
+          { k: "Focus", v: "Commercial fit-out" },
         ]}
       />
 
@@ -92,7 +93,7 @@ export default function AboutPage() {
               <SplitLines
                 as="h2"
                 className="t-h1 mt-6"
-                lines={[<>Almost right</>, <>is <span className="t-aside !text-amber">wrong</span>.</>]}
+                lines={[<>Almost right</>, <>is <span className="t-aside !text-bronze">wrong</span>.</>]}
               />
               <div className="mt-9 max-w-[54ch] space-y-5">
                 <p className="t-lede text-ink/80">
@@ -120,21 +121,16 @@ export default function AboutPage() {
             <Reveal className="lg:col-span-5 lg:col-start-8">
               <Parallax
                 src="/img/detail-joinery.jpg"
-                alt="Macro detail: quarter-sawn walnut meeting a brushed amber inlay and honed travertine with a precise shadow gap"
+                alt="Macro detail: quarter-sawn walnut meeting a brushed bronze inlay and honed travertine with a precise shadow gap"
                 className="wipe aspect-[4/5] w-full"
                 sizes="(max-width:900px) 100vw, 40vw"
                 distance={10}
               />
-              <div className="mt-6 grid grid-cols-2 gap-6 border-t border-sand pt-6">
-                {stats.slice(0, 2).map((s) => (
-                  <div key={s.label}>
-                    <p className="num">
-                      <Counter to={s.value} suffix={s.suffix} />
-                    </p>
-                    <p className="t-meta mt-2 text-clay">{s.label}</p>
-                  </div>
-                ))}
-              </div>
+              <ProofRow className="mt-6 border-t border-sand pt-6">
+                <Stat token="YEARS" label="Years delivering fit-out" />
+                <Stat token="PROJECTS" label="Projects completed" suffix="+" />
+                <Stat value={cities.length} label="Cities served" />
+              </ProofRow>
             </Reveal>
           </div>
         </div>
@@ -156,7 +152,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <Reveal key={v.n} delay={i * 90}>
                 <div className="fade-up border-t border-[var(--hairline-dark)] py-9">
-                  <span className="t-meta text-amber">{v.n}</span>
+                  <span className="t-meta text-bronze">{v.n}</span>
                   <h3 className="t-h3 mt-4 text-bone">{v.t}</h3>
                   <p className="t-body mt-3 max-w-[42ch] text-clay">{v.d}</p>
                 </div>
@@ -172,7 +168,7 @@ export default function AboutPage() {
           <Reveal className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <Eyebrow tone="clay">Specification</Eyebrow>
-              <SplitLines as="h2" className="t-h1 mt-6" lines={[<>The palette,</>, <>in <span className="t-aside !text-amber">full</span>.</>]} />
+              <SplitLines as="h2" className="t-h1 mt-6" lines={[<>The palette,</>, <>in <span className="t-aside !text-bronze">full</span>.</>]} />
             </div>
             <p className="fade-up t-body text-clay lg:col-span-4 lg:col-start-9">
               Six materials specified across every project since 2019. Consistency is what
@@ -186,7 +182,7 @@ export default function AboutPage() {
                 <div className="fade-up border-t border-sand py-7">
                   <div className="flex items-baseline justify-between">
                     <h3 className="t-h3 !text-[1.3rem]">{m.name}</h3>
-                    <span className="t-meta text-amber">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="t-meta text-bronze">{String(i + 1).padStart(2, "0")}</span>
                   </div>
                   <p className="t-meta mt-2 text-clay">{m.spec}</p>
                   <p className="t-body mt-3 max-w-[34ch] text-ink/70">{m.note}</p>
@@ -207,10 +203,10 @@ export default function AboutPage() {
             <SplitLines
               as="h2"
               className="t-h1 mx-auto mt-6 max-w-[18ch]"
-              lines={[<>Bring us a plan</>, <>and a <span className="t-aside !text-amber">problem</span>.</>]}
+              lines={[<>Bring us a plan</>, <>and a <span className="t-aside !text-bronze">problem</span>.</>]}
             />
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <Btn href="/contact" variant="light">{cta.primary}</Btn>
+              <Btn href="/request-proposal" variant="light">{cta.primary}</Btn>
               <Btn href="/projects" variant="light">{cta.work}</Btn>
             </div>
           </Reveal>

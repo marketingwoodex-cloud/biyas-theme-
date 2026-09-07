@@ -103,8 +103,8 @@ export default function ServicesPage() {
         ]}
         meta={[
           { k: "Services", v: "Six" },
-          { k: "Projects", v: "500+ delivered" },
-          { k: "Certified", v: "ISO 9001" },
+          { k: "Contract", v: "Single point" },
+          { k: "Pricing", v: "Line-item BOQ" },
           { k: "Warranty", v: "12 months" },
         ]}
       />
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Btn href="/contact" variant="light">{cta.primary}</Btn>
+                <Btn href="/request-proposal" variant="light">{cta.primary}</Btn>
                 <Btn href="/projects" variant="light">{cta.work}</Btn>
               </div>
             </Reveal>
@@ -180,18 +180,18 @@ export default function ServicesPage() {
 
                   <div className={`lg:col-span-6 ${i % 2 ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
                     <div className="flex items-center gap-4">
-                      <span className="t-meta text-amber">{s.index}</span>
+                      <span className="t-meta text-bronze">{s.index}</span>
                       <span className="h-px w-8 bg-[var(--hairline-dark)]" aria-hidden />
                       <span className="t-label text-clay">{s.kicker}</span>
                     </div>
 
                     <h3 className="t-h2 mt-5 text-bone">
-                      <Link href={`/services/${s.slug}`} className="transition-colors duration-500 hover:text-amber" data-cursor="link">
+                      <Link href={`/services/${s.slug}`} className="transition-colors duration-500 hover:text-bronze" data-cursor="link">
                         {s.title}
                       </Link>
                     </h3>
 
-                    <p className="font-medium mt-4 text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.25] text-amber-light">
+                    <p className="font-medium mt-4 text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.25] text-bronze-light">
                       {s.headline}
                     </p>
 
@@ -200,7 +200,7 @@ export default function ServicesPage() {
                     <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                       {s.deliverables.slice(0, 6).map((d) => (
                         <li key={d.t} className="flex items-start gap-3">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden />
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-bronze" aria-hidden />
                           <span className="t-meta text-bone/80">{d.t}</span>
                         </li>
                       ))}

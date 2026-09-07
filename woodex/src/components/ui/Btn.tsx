@@ -117,18 +117,18 @@ export function TextLink({
   );
 }
 
-/** Small uppercase mono label with a leading amber tick. */
+/** Small uppercase mono label with a leading bronze tick. */
 export function Eyebrow({
   children,
   className = "",
-  tone = "amber",
+  tone = "bronze",
 }: {
   children: ReactNode;
   className?: string;
-  tone?: "amber" | "clay" | "bone";
+  tone?: "bronze" | "clay" | "bone";
 }) {
   const color =
-    tone === "amber" ? "text-amber" : tone === "clay" ? "text-clay" : "text-bone/60";
+    tone === "bronze" ? "text-bronze" : tone === "clay" ? "text-clay" : "text-bone/60";
   return (
     <span className={`t-label inline-flex items-center gap-2.5 ${color} ${className}`}>
       <span className="inline-block h-1.5 w-1.5 rounded-full bg-current" aria-hidden />

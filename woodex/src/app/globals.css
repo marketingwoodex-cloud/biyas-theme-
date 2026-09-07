@@ -8,16 +8,17 @@
 
 @theme {
   /* --- Colour ------------------------------------------------------------ */
-  --color-ink: #0e1a2b;
-  --color-soot: #15243a;
-  --color-char: #1d3049;
-  --color-bone: #f5f2ea;
-  --color-oat: #eae5d9;
-  --color-sand: #d9d2c3;
-  --color-clay: #6e7686;
-  --color-amber: #c08a45;
-  --color-amber-light: #e0b274;
-  --color-mist: #ffffff;
+  --color-ink: #1c1c1c;        /* charcoal — true black crushes shadow detail */
+  --color-soot: #262523;       /* second dark ground */
+  --color-char: #33312e;       /* card fill on dark */
+  --color-bone: #f7f5f2;       /* off-white — warmer than #fff, no cold seam */
+  --color-oat: #efebe5;        /* third ground */
+  --color-sand: #dad4cc;       /* rules and hairlines */
+  --color-slate: #3a3a3a;      /* body copy on light — 9.4:1 */
+  --color-clay: #6e6a65;       /* muted copy — 4.6:1 on off-white */
+  --color-bronze: #a9764b;     /* the only chroma. Cap at 3% of any viewport */
+  --color-bronze-light: #c79a6d;
+  --color-mist: #ffffff;       /* card surface only, never a page ground */
 
   /* --- Type --------------------------------------------------------------
      One grotesk family does display AND body. Contrast comes from weight,
@@ -34,10 +35,10 @@
   --font-mono: var(--f-sans), system-ui, sans-serif;
 
   /* --- Radius: a brand signature. Nothing in this system is sharp. ------- */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
 
   /* --- Motion ------------------------------------------------------------ */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -50,18 +51,19 @@
   --act: clamp(5.5rem, 11vw, 11rem);
   --hairline: color-mix(in oklab, var(--color-clay) 34%, transparent);
   --hairline-dark: color-mix(in oklab, var(--color-bone) 15%, transparent);
+  /* Radius: slight, not soft. The brief asks for sharp-to-lightly-rounded. */
   --shell: 96rem;
-  --r-sm: 10px;
-  --r-md: 16px;
-  --r-lg: 24px;
-  --r-xl: 32px;
+  --r-sm: 2px;
+  --r-md: 4px;
+  --r-lg: 4px;
+  --r-xl: 6px;
 
   /* Shadows. Tuned to the navy, not to black: a neutral shadow over a cream
      card on a navy page turns grey and dirty. These are navy-tinted, so the
      card looks lifted rather than smudged. */
-  --shadow-sm: 0 1px 2px rgba(14, 26, 43, 0.04), 0 2px 8px rgba(14, 26, 43, 0.04);
-  --shadow-md: 0 2px 4px rgba(14, 26, 43, 0.04), 0 12px 28px rgba(14, 26, 43, 0.07);
-  --shadow-lg: 0 4px 8px rgba(14, 26, 43, 0.05), 0 28px 64px rgba(14, 26, 43, 0.12);
+  --shadow-sm: 0 1px 2px rgba(28, 28, 28, 0.04), 0 2px 8px rgba(28, 28, 28, 0.04);
+  --shadow-md: 0 2px 4px rgba(28, 28, 28, 0.04), 0 12px 28px rgba(28, 28, 28, 0.07);
+  --shadow-lg: 0 4px 8px rgba(28, 28, 28, 0.05), 0 28px 64px rgba(28, 28, 28, 0.12);
 }
 
 /* --- Reset / base -------------------------------------------------------- */
@@ -87,12 +89,12 @@ body {
 }
 
 ::selection {
-  background: var(--color-amber);
+  background: var(--color-bronze);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-amber-light);
+  outline: 2px solid var(--color-bronze-light);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -180,9 +182,9 @@ html.lenis body {
   line-height: 1.55;
 }
 
-/* The "aside" voice — one amber word per heading, never more. */
+/* The "aside" voice — one bronze word per heading, never more. */
 .t-aside {
-  color: var(--color-amber);
+  color: var(--color-bronze);
 }
 
 .t-lede {
@@ -530,7 +532,7 @@ html.lenis body {
   color: var(--color-bone);
 }
 .btn-solid::before {
-  background: var(--color-amber);
+  background: var(--color-bronze);
 }
 .btn-solid .btn-badge {
   background: var(--color-bone);
@@ -674,13 +676,13 @@ html.lenis body {
   width: 6px;
   height: 6px;
   margin: -3px 0 0 -3px;
-  background: var(--color-amber);
+  background: var(--color-bronze);
 }
 .cursor-ring {
   width: 38px;
   height: 38px;
   margin: -19px 0 0 -19px;
-  border: 1px solid color-mix(in oklab, var(--color-amber) 62%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-bronze) 62%, transparent);
   transition:
     width 0.35s var(--ease-out-expo),
     height 0.35s var(--ease-out-expo),
@@ -692,14 +694,14 @@ html.lenis body {
   width: 70px;
   height: 70px;
   margin: -35px 0 0 -35px;
-  background: color-mix(in oklab, var(--color-amber) 14%, transparent);
-  border-color: var(--color-amber);
+  background: color-mix(in oklab, var(--color-bronze) 14%, transparent);
+  border-color: var(--color-bronze);
 }
 .cursor-ring[data-state="view"] {
   width: 104px;
   height: 104px;
   margin: -52px 0 0 -52px;
-  background: var(--color-amber);
+  background: var(--color-bronze);
   border-color: transparent;
 }
 @media (hover: none), (pointer: coarse) {
@@ -743,7 +745,7 @@ html.lenis body {
 }
 
 .field:focus {
-  border-bottom-color: var(--color-amber);
+  border-bottom-color: var(--color-bronze);
 }
 
 .field-label {
@@ -766,7 +768,7 @@ html.lenis body {
 }
 
 .field:focus + .field-label {
-  color: var(--color-amber);
+  color: var(--color-bronze);
 }
 
 /* Chip toggles */
@@ -817,7 +819,7 @@ html.lenis body {
 
 /* --- Lists ---------------------------------------------------------------
    Style-guide lists, restyled so they never render as browser defaults.
-   Unordered uses a small amber rule rather than a bullet — a dot is generic,
+   Unordered uses a small bronze rule rather than a bullet — a dot is generic,
    a rule echoes the eyebrow tick and ties the list to the type system.
    ------------------------------------------------------------------------- */
 .list-ul {
@@ -842,7 +844,7 @@ html.lenis body {
   top: 0.8em;
   width: 0.75rem;
   height: 1px;
-  background: var(--color-amber);
+  background: var(--color-bronze);
 }
 
 .list-ol {
@@ -869,7 +871,7 @@ html.lenis body {
   top: 0;
   font-variant-numeric: tabular-nums;
   font-weight: 500;
-  color: var(--color-amber);
+  color: var(--color-bronze);
 }
 
 /* --- Rich text -----------------------------------------------------------
@@ -887,12 +889,12 @@ html.lenis body {
 .rt h6 { font-size: 1.125rem; line-height: 1.55; font-weight: 400; margin-top: 2rem; }
 
 .rt p { font-size: 1rem; line-height: 1.62; }
-.rt a { color: var(--color-amber); text-decoration: underline; text-underline-offset: 3px; }
+.rt a { color: var(--color-bronze); text-decoration: underline; text-underline-offset: 3px; }
 .rt strong { font-weight: 500; color: inherit; }
 .rt img { border-radius: var(--r-lg); margin-top: 2.5rem; }
 
 .rt blockquote {
-  border-left: 2px solid var(--color-amber);
+  border-left: 2px solid var(--color-bronze);
   padding-left: 1.5rem;
   font-size: clamp(1.2rem, 1.7vw, 1.562rem);
   line-height: 1.4;
@@ -996,8 +998,8 @@ html.lenis body {
 
 .form-success {
   border-radius: var(--r-md);
-  border: 1px solid color-mix(in oklab, var(--color-amber) 40%, transparent);
-  background: color-mix(in oklab, var(--color-amber) 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-bronze) 40%, transparent);
+  background: color-mix(in oklab, var(--color-bronze) 8%, transparent);
   padding: 1rem 1.25rem;
 }
 
@@ -1047,7 +1049,7 @@ html.lenis body {
   left: 0.75rem;
   z-index: 200;
   transform: translateY(-160%);
-  background: var(--color-amber);
+  background: var(--color-bronze);
   color: var(--color-ink);
   padding: 0.75rem 1.25rem;
   border-radius: 999px;

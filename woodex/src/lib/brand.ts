@@ -25,7 +25,7 @@ export const brand = {
 
   /** Positioning statement — used in About + schema.org. */
   positioning:
-    "Woodex Interior is an interior design and execution studio. We draw the space in 3D before anything is bought, document it to BOQ, and build it with our own team — 500+ projects, ISO 9001 certified.",
+    "Woodex Interior is a commercial-first interior design and fit-out studio in Lahore, delivering across Pakistan. We draw the space in 3D before anything is bought, document it to a line-item BOQ, and build it under one contract.",
 
   /** The single most important sentence on the site. */
   promise: "Drawn. Then built.",
@@ -57,11 +57,11 @@ export const palette = {
   oat: { hex: "#EAE5D9", why: "Third light ground so the page can breathe twice without repeating." },
   sand: { hex: "#D9D2C3", why: "Hairlines and dividers on cream. Reads as a pencil line, not a UI border." },
   clay: { hex: "#6E7686", why: "Secondary copy. Cool grey-blue so it belongs to the navy, not the cream." },
-  amber: {
+  bronze: {
     hex: "#C08A45",
     why: "The only chroma. Pulled from the tungsten light inside every project photo. ≤3% of any view.",
   },
-  amberLight: { hex: "#E0B274", why: "Amber on navy grounds, where the base tone loses contrast." },
+  bronzeLight: { hex: "#E0B274", why: "Amber on navy grounds, where the base tone loses contrast." },
   mist: { hex: "#FFFFFF", why: "Card fill on cream. Pure white is allowed on a surface, never as a page ground." },
 } as const;
 
@@ -115,21 +115,20 @@ export const siteUrl = "https://woodexinterior.com";
  * Each lowers perceived commitment rather than raising urgency.
  */
 export const cta = {
-  primary: "Start your project",
-  secondary: "Get a 3D still first",
+  primary: "Request a Proposal",
+  secondary: "View Case Studies",
   tertiary: "See the studies",
   quiet: "Tell us about your space",
   work: "Walk through the work",
-  estimate: "Get a BOQ estimate",
+  estimate: "Request a Proposal",
 } as const;
 
-/** The live numbers. */
-export const stats = [
-  { value: 500, suffix: "+", label: "Projects delivered", note: "Since inception" },
-  { value: 20, suffix: "yrs", label: "Founder experience", note: "Hands on site" },
-  { value: 10, suffix: "+", label: "Years executing", note: "Own site teams" },
-  { value: 9001, suffix: "", label: "ISO certified", note: "Quality management" },
-] as const;
+/**
+ * Stats are now token-driven — see src/lib/siteConfig.ts.
+ * Components read `tokens` through <Stat>, which renders NOTHING when a value
+ * is unresolved. Do not reintroduce hardcoded figures here.
+ */
+export const stats = [] as const;
 
 /** Sector band — matches the live marquee. */
 export const sectors = [

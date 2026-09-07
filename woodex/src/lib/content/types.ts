@@ -35,7 +35,8 @@ export type Project = {
   brief: string;
   approach: string[];
   materials: string[];
-  result: { value: string; label: string }[];
+  /** `verified` gates whether the figure may be shown as fact. */
+  result: { value: string; label: string; verified?: boolean }[];
   quote?: { text: string; who: string; role: string };
 };
 

@@ -33,7 +33,7 @@ export default function FaqBlock({
         <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
-              <Eyebrow tone={light ? "clay" : "amber"}>{title}</Eyebrow>
+              <Eyebrow tone={light ? "clay" : "bronze"}>{title}</Eyebrow>
               <SplitLines
                 as="h2"
                 className="t-h2 mt-6"
@@ -62,7 +62,7 @@ export default function FaqBlock({
                           <span
                             className={`relative mt-1.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors duration-500 ${
                               isOpen
-                                ? "border-amber bg-amber text-ink"
+                                ? "border-bronze bg-bronze text-ink"
                                 : light
                                   ? "border-sand text-ink"
                                   : "border-[var(--hairline-dark)] text-bone"

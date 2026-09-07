@@ -13,7 +13,7 @@ export default function TrustBar() {
         {clients.map((c) => (
           <span key={c} className="flex items-center whitespace-nowrap">
             <span className="t-meta px-8 text-clay">{c}</span>
-            <span className="h-1 w-1 rounded-full bg-amber/50" aria-hidden />
+            <span className="h-1 w-1 rounded-full bg-bronze/50" aria-hidden />
           </span>
         ))}
       </Marquee>

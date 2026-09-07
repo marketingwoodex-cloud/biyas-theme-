@@ -105,7 +105,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                   {p.brief}
                 </p>
                 {svc && (
-                  <Link href={`/services/${svc.slug}`} className="ulink t-label mt-8 inline-block text-amber" data-cursor="link">
+                  <Link href={`/services/${svc.slug}`} className="ulink t-label mt-8 inline-block text-bronze" data-cursor="link">
                     Service: {svc.title} →
                   </Link>
                 )}
@@ -117,14 +117,14 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
               <ol className="mt-7 space-y-8">
                 {p.approach.map((a, i) => (
                   <li key={i} className="fade-up flex gap-5 border-b border-sand pb-8" style={{ transitionDelay: `${i * 90}ms` }}>
-                    <span className="t-meta shrink-0 text-amber">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="t-meta shrink-0 text-bronze">{String(i + 1).padStart(2, "0")}</span>
                     <p className="t-lede max-w-[54ch] text-ink/85">{a}</p>
                   </li>
                 ))}
               </ol>
 
               <div className="mt-10">
-                <p className="t-label text-amber">Material palette</p>
+                <p className="t-label text-bronze">Material palette</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.materials.map((m) => (
                     <span key={m} className="pill"><span className="pill-note">
@@ -175,7 +175,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <div className="mt-8 grid gap-8 sm:grid-cols-3">
                   {p.result.map((r) => (
                     <div key={r.label}>
-                      <p className="num text-amber-light">{r.value}</p>
+                      <p className="num text-bronze-light">{r.value}</p>
                       <p className="t-meta mt-2 max-w-[18ch] text-clay">{r.label}</p>
                     </div>
                   ))}
@@ -196,7 +196,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                   &ldquo;{p.quote.text}&rdquo;
                 </p>
               </blockquote>
-              <p className="t-meta mt-8 text-amber-light">
+              <p className="t-meta mt-8 text-bronze-light">
                 {p.quote.who} · {p.quote.role}
               </p>
             </Reveal>
@@ -216,7 +216,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <Btn href={`/projects/${next.slug}`} variant="ghost">
                   Open {next.title}
                 </Btn>
-                <Btn href="/contact" variant="solid">
+                <Btn href="/request-proposal" variant="solid">
                   {cta.primary}
                 </Btn>
               </div>
