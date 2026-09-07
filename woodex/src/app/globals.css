@@ -716,6 +716,30 @@ html.lenis body {
   color: var(--color-bone);
 }
 
+/* --- Preloader safety net ------------------------------------------------
+   The intro overlay is React-driven, which means a JS failure — a blocked
+   chunk, a hydration error, a slow network — would leave a full-screen navy
+   panel covering the site with no way out. This CSS removes it on a timer
+   regardless of whether React is alive, so the page can never be bricked by
+   its own loading screen. Belt and braces: the animation is the braces.
+   ------------------------------------------------------------------------- */
+.preloader {
+  animation: preloaderFailsafe 0.4s linear 3.4s forwards;
+}
+
+@keyframes preloaderFailsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader {
+    display: none !important;
+  }
+}
+
 /* ==========================================================================
    ACCESSIBILITY
    ========================================================================== */

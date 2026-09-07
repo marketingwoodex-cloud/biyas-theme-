@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  /* The dev server is proxied through a sandbox preview host. Without this,
+     Next blocks /_next/hmr and every other dev resource as cross-origin —
+     client JS never boots, hydration never completes, and the page is stuck
+     on whatever the server rendered. Dev-only; ignored in production. */
+  allowedDevOrigins: ["*.e2b.app", "*.app.github.dev", "*.gitpod.io", "localhost"],
+
   images: {
     // Explicit ladder so `quality` props are honoured instead of warned about.
     qualities: [70, 75, 76, 78, 80, 82, 90],

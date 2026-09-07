@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const WORDS = ["Grain", "Precision", "Presence"];
+const WORDS = ["Drawn", "Documented", "Built"];
 
 /**
  * Loading sequence — 2.4s maximum, and it earns the time.
@@ -33,7 +33,6 @@ export default function Preloader() {
       if (seen || reduce) {
         setPhase("done");
         document.documentElement.dataset.intro = "done";
-        document.body.style.overflow = "";
         return;
       }
 
@@ -53,17 +52,12 @@ export default function Preloader() {
       window.setTimeout(() => {
         setPhase("done");
         document.documentElement.dataset.intro = "done";
-        document.body.style.overflow = "";
       }, 1150);
     };
 
-    if (!seen && !reduce) document.body.style.overflow = "hidden";
     raf = requestAnimationFrame(tick);
 
-    return () => {
-      cancelAnimationFrame(raf);
-      document.body.style.overflow = "";
-    };
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   if (phase === "done") return null;
@@ -71,7 +65,7 @@ export default function Preloader() {
   const opening = phase === "open";
 
   return (
-    <div className="fixed inset-0 z-[100] pointer-events-none" aria-hidden>
+    <div className="preloader fixed inset-0 z-[100] pointer-events-none" aria-hidden>
       {/* Two panels split vertically — a curtain, not a fade. */}
       <div
         className="absolute inset-x-0 top-0 h-1/2 bg-ink"
