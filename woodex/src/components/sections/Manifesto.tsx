@@ -32,7 +32,7 @@ export default function Manifesto() {
                 className="fade-up absolute -bottom-10 -right-6 w-[58%] max-w-[17rem] border border-sand/60 bg-bone p-5 shadow-[0_24px_60px_-24px_rgba(11,10,8,.35)] sm:-right-10"
                 style={{ transitionDelay: "420ms" }}
               >
-                <p className="t-label text-brass">Shop standard</p>
+                <p className="t-label text-amber">Shop standard</p>
                 <p className="num mt-3 text-ink">2mm</p>
                 <p className="t-meta mt-2 text-clay">
                   Manufacturing tolerance across every unit we build.
@@ -51,7 +51,7 @@ export default function Manifesto() {
               lines={[
                 <>We started because</>,
                 <>
-                  the drawing kept <span className="t-aside !text-brass">losing</span>.
+                  the drawing kept <span className="t-aside">losing</span>.
                 </>,
               ]}
             />
@@ -82,7 +82,7 @@ export default function Manifesto() {
                 ["Delivery", "Our own site team"],
               ].map(([k, v], n) => (
                 <div key={k} className="fade-up" style={{ transitionDelay: `${300 + n * 90}ms` }}>
-                  <p className="t-label text-brass">{k}</p>
+                  <p className="t-label text-amber">{k}</p>
                   <p className="t-body mt-2 text-ink">{v}</p>
                 </div>
               ))}

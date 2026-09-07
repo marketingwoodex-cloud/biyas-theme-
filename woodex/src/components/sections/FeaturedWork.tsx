@@ -35,7 +35,7 @@ export default function FeaturedWork() {
               lines={[
                 <>Rooms we built,</>,
                 <>
-                  and what they <span className="t-aside !text-brass">changed</span>.
+                  and what they <span className="t-aside !text-amber">changed</span>.
                 </>,
               ]}
             />
@@ -68,10 +68,10 @@ export default function FeaturedWork() {
                 <div className="mt-5 flex items-start justify-between gap-6 border-t border-sand pt-4">
                   <div>
                     <div className="flex items-center gap-3">
-                      <span className="t-meta text-brass">{p.index}</span>
+                      <span className="t-meta text-amber">{p.index}</span>
                       <span className="t-label text-clay">{p.sector}</span>
                     </div>
-                    <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-brass">
+                    <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-amber">
                       {p.title}
                     </h3>
                     <p className="t-body mt-2 max-w-[46ch] text-clay">{p.summary}</p>

@@ -25,22 +25,22 @@ export default function ServicesList() {
       <div className="shell-wide act">
         <Reveal className="grid gap-8 border-b border-[var(--hairline-dark)] pb-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <Eyebrow>Full-suite capability</Eyebrow>
+            <Eyebrow>What we do</Eyebrow>
             <SplitLines
               as="h2"
               className="t-h1 mt-6 text-bone"
               lines={[
-                <>Seven disciplines.</>,
+                <>Six services you</>,
                 <>
-                  One <span className="t-aside">contract</span>.
+                  can <span className="t-aside">actually buy</span>.
                 </>,
               ]}
             />
           </div>
           <div className="fade-up lg:col-span-4 lg:col-start-9" style={{ transitionDelay: "240ms" }}>
             <p className="t-body text-clay">
-              Most studios design and hand off. We hold the whole chain — which is why the
-              detail you approve is the detail that gets installed.
+              Not capabilities. Not disciplines. Six things you can point at, price and
+              commission — each one drawn in 3D before it is built.
             </p>
           </div>
         </Reveal>
@@ -59,12 +59,12 @@ export default function ServicesList() {
                 >
                   {/* Brass wash that wipes in from the left on hover */}
                   <span
-                    className="pointer-events-none absolute inset-y-0 left-0 -z-0 w-full origin-left scale-x-0 bg-gradient-to-r from-brass/[0.09] to-transparent transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
+                    className="pointer-events-none absolute inset-y-0 left-0 -z-0 w-full origin-left scale-x-0 bg-gradient-to-r from-amber/[0.09] to-transparent transition-transform duration-[700ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100"
                     aria-hidden
                   />
-                  <span className="t-meta relative w-7 shrink-0 text-brass/70">{s.index}</span>
+                  <span className="t-meta relative w-7 shrink-0 text-amber/70">{s.index}</span>
                   <span className="relative flex-1">
-                    <span className="t-h3 block text-bone transition-colors duration-500 group-hover:text-brass-light">
+                    <span className="t-h3 block text-bone transition-colors duration-500 group-hover:text-amber-light">
                       {s.title}
                     </span>
                     <span className="t-meta mt-1.5 block max-w-[46ch] text-clay">{s.headline}</span>
@@ -73,7 +73,7 @@ export default function ServicesList() {
                     <span className="t-label text-clay opacity-0 transition-opacity duration-500 group-hover:opacity-100">
                       {s.kicker}
                     </span>
-                    <span className="grid h-10 w-10 place-items-center rounded-full border border-[var(--hairline-dark)] text-bone transition-all duration-500 group-hover:border-brass group-hover:bg-brass group-hover:text-ink">
+                    <span className="grid h-10 w-10 place-items-center rounded-full border border-[var(--hairline-dark)] text-bone transition-all duration-500 group-hover:border-amber group-hover:bg-amber group-hover:text-ink">
                       <svg width="14" height="9" viewBox="0 0 16 10" fill="none" aria-hidden>
                         <path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" strokeWidth="1.3" />
                       </svg>
@@ -105,7 +105,7 @@ export default function ServicesList() {
                   />
                 ))}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 p-7">
-                  <p className="t-label text-brass-light">{services[active].kicker}</p>
+                  <p className="t-label text-amber-light">{services[active].kicker}</p>
                   <p className="t-h3 mt-2 text-bone">{services[active].title}</p>
                 </div>
               </div>
@@ -116,7 +116,7 @@ export default function ServicesList() {
                 </p>
                 <div className="relative h-px flex-1 mx-6 bg-[var(--hairline-dark)]">
                   <span
-                    className="absolute inset-y-0 left-0 bg-brass transition-[width] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    className="absolute inset-y-0 left-0 bg-amber transition-[width] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
                     style={{ width: `${((active + 1) / services.length) * 100}%` }}
                   />
                 </div>

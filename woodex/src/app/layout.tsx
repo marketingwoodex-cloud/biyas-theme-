@@ -10,32 +10,20 @@ import Preloader from "@/components/providers/Preloader";
 import { brand, contact, siteUrl, social } from "@/lib/brand";
 
 /* --------------------------------------------------------------------------
-   TYPE PAIRING
-   Display — Instrument Serif: high-contrast, slightly literary. It carries
-   the "architecture as authorship" idea without the dated luxury-serif cliche.
-   Sans   — Inter Tight: a neutral grotesk with tight defaults, so UI text
-   sits quietly beside a very loud display face.
-   Mono   — JetBrains Mono: labels, indices and specification data. Mono reads
-   as *measurement*, which is exactly the brand's claim.
+   TYPE — one grotesk, worked hard.
+   The live Woodex identity uses a single neutral grotesk for everything from
+   the 8rem hero to 11px labels. Hierarchy is carried by weight, scale and
+   tracking rather than by a second typeface, which is why the pages read as
+   one voice instead of a magazine spread.
+   Mono is reserved for micro-type — indices, labels, specification data —
+   where it reads as *measurement*, which is literally the brand's claim.
 
    PERFORMANCE
-   Self-hosted, latin subset only, woff2, ~128 KB total for four faces.
-   Two are variable, so the whole weight range costs one file. `display: swap`
-   plus an explicit size-adjust fallback keeps CLS at zero — no third-party
-   request sits on the critical path.
+   Self-hosted, latin subset, woff2. Inter Tight is variable so the whole
+   100–900 range costs one 44 KB file. `display: swap` plus an explicit
+   size-adjust fallback keeps CLS at zero, and nothing sits on a third-party
+   critical path.
    -------------------------------------------------------------------------- */
-
-const display = localFont({
-  src: [
-    { path: "../fonts/instrument-serif-latin-400-normal.woff2", weight: "400", style: "normal" },
-    { path: "../fonts/instrument-serif-latin-400-italic.woff2", weight: "400", style: "italic" },
-  ],
-  variable: "--f-display",
-  display: "swap",
-  preload: true,
-  fallback: ["Times New Roman", "Georgia", "serif"],
-  adjustFontFallback: "Times New Roman",
-});
 
 const sans = localFont({
   src: [{ path: "../fonts/inter-tight-latin-wght-normal.woff2", weight: "100 900", style: "normal" }],
@@ -54,9 +42,8 @@ const mono = localFont({
   fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
 });
 
-
 export const viewport: Viewport = {
-  themeColor: "#0B0A08",
+  themeColor: "#0E1A2B",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -163,7 +150,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body className="grain antialiased">
         <script
           type="application/ld+json"

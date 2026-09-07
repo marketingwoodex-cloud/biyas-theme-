@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { services } from "@/lib/content/services";
 import { cta } from "@/lib/brand";
+import { BtnSubmit } from "@/components/ui/Btn";
 
 /**
  * Enquiry form.
@@ -10,10 +11,9 @@ import { cta } from "@/lib/brand";
  *  · Underline fields, not boxes — reads as a form to fill, not a wall to face.
  *  · Budget / timeline / service are chips, not selects: one tap, no dropdown
  *    anxiety, and every option is visible so nobody has to guess the range.
- *  · Only four fields are required, and the required ones are the four that
- *    let us actually reply.
- *  · The submit label is a deliverable ("Get a fit-out estimate"), never "Send".
- *  · Chips use aria-pressed so the state is announced, not just coloured.
+ *  · Only four fields are required, and they are the four that let us reply.
+ *  · The submit label is a deliverable, never "Send".
+ *  · Chips use aria-pressed so state is announced, not just coloured.
  */
 
 const BUDGETS = ["Under 5M PKR", "5–15M", "15–40M", "40M+", "Not sure yet"];
@@ -41,7 +41,7 @@ function Chips({
 }) {
   return (
     <fieldset>
-      <legend className="t-label text-clay/70">{legend}</legend>
+      <legend className="t-label text-clay">{legend}</legend>
       <div className="mt-4 flex flex-wrap gap-2">
         {options.map((o) => (
           <button
@@ -71,8 +71,8 @@ export default function ContactForm() {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setBusy(true);
-    // No backend wired yet — point this at your form endpoint (a route
-    // handler, Resend, Formspark, HubSpot, whatever the stack uses).
+    // No backend wired yet — point this at your endpoint (route handler,
+    // Resend, Formspark, HubSpot — whatever the stack uses).
     await new Promise((r) => setTimeout(r, 900));
     setBusy(false);
     setSent(true);
@@ -80,12 +80,13 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="mt-10 border-t border-sand pt-10" role="status">
-        <p className="t-label text-brass">Received</p>
-        <p className="t-h2 mt-5">Thank you — that&apos;s enough to start.</p>
+      <div className="card mt-10" role="status">
+        <p className="t-label text-amber">Received</p>
+        <p className="t-h2 mt-5 text-ink">Thank you — that&apos;s enough to start.</p>
         <p className="t-body mt-5 max-w-[46ch] text-clay">
           A human will reply within one working day. If you have a floor plan, reply to that
-          email with it attached and we&apos;ll turn a banded estimate around in three.
+          email with it attached and we&apos;ll turn a 3D still and a banded estimate around
+          in three.
         </p>
       </div>
     );
@@ -107,7 +108,7 @@ export default function ContactForm() {
             />
             <label htmlFor={f.id} className="field-label">
               {f.label}
-              {f.req && <span className="text-brass"> *</span>}
+              {f.req && <span className="text-amber"> *</span>}
             </label>
           </div>
         ))}
@@ -121,26 +122,26 @@ export default function ContactForm() {
         name="service"
       />
       <Chips legend="Indicative budget" options={BUDGETS} value={budget} onChange={setBudget} name="budget" />
-      <Chips legend="When do you want to start?" options={TIMELINES} value={timeline} onChange={setTimeline} name="timeline" />
+      <Chips
+        legend="When do you want to start?"
+        options={TIMELINES}
+        value={timeline}
+        onChange={setTimeline}
+        name="timeline"
+      />
 
       <div className="field-wrap">
         <textarea id="brief" name="brief" rows={4} required placeholder=" " className="field resize-none" />
         <label htmlFor="brief" className="field-label">
-          What&apos;s not working? <span className="text-brass">*</span>
+          Tell us about your space <span className="text-amber">*</span>
         </label>
       </div>
 
       <div className="flex flex-wrap items-center gap-6 border-t border-sand pt-8">
-        <button type="submit" disabled={busy} className="btn btn-light disabled:opacity-50" data-cursor="link">
-          <span className="btn-roll">
-            <span>{busy ? "Sending…" : cta.primary}</span>
-            <span aria-hidden>{busy ? "Sending…" : cta.primary}</span>
-          </span>
-          <svg className="btn-arrow shrink-0" width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden>
-            <path d="M0 5h14M10 1l4 4-4 4" stroke="currentColor" strokeWidth="1.2" />
-          </svg>
-        </button>
-        <p className="t-meta max-w-[30ch] text-clay/70">
+        <BtnSubmit busy={busy} variant="light">
+          {busy ? "Sending…" : cta.primary}
+        </BtnSubmit>
+        <p className="t-meta max-w-[30ch] text-clay">
           We reply to every enquiry. No mailing list, no follow-up sequence.
         </p>
       </div>

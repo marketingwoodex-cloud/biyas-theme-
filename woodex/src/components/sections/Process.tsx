@@ -60,7 +60,7 @@ export default function Process() {
               <Reveal key={p.n} className="group">
                 <div className="fade-up flex gap-6 border-b border-[var(--hairline-dark)] py-9 transition-colors duration-500 hover:bg-bone/[0.02] sm:gap-10 sm:py-11">
                   <div className="shrink-0">
-                    <span className="t-label text-brass">{p.n}</span>
+                    <span className="t-label text-amber">{p.n}</span>
                     {/* Connector line: draws the sequence literally. */}
                     {i < process.length - 1 && (
                       <span className="mx-auto mt-4 block h-full w-px bg-[var(--hairline-dark)]" aria-hidden />

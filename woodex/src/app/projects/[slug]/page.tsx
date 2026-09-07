@@ -101,11 +101,11 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
             <Reveal className="lg:col-span-4">
               <div className="lg:sticky lg:top-32">
                 <Eyebrow tone="clay">The brief</Eyebrow>
-                <p className="font-[family-name:var(--font-display)] mt-6 max-w-[24ch] text-[clamp(1.35rem,2.2vw,1.9rem)] leading-[1.15] tracking-[-0.02em]">
+                <p className="font-medium mt-6 max-w-[24ch] text-[clamp(1.35rem,2.2vw,1.9rem)] leading-[1.15] tracking-[-0.02em]">
                   {p.brief}
                 </p>
                 {svc && (
-                  <Link href={`/services/${svc.slug}`} className="ulink t-label mt-8 inline-block text-brass" data-cursor="link">
+                  <Link href={`/services/${svc.slug}`} className="ulink t-label mt-8 inline-block text-amber" data-cursor="link">
                     Service: {svc.title} →
                   </Link>
                 )}
@@ -117,14 +117,14 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
               <ol className="mt-7 space-y-8">
                 {p.approach.map((a, i) => (
                   <li key={i} className="fade-up flex gap-5 border-b border-sand pb-8" style={{ transitionDelay: `${i * 90}ms` }}>
-                    <span className="t-meta shrink-0 text-brass">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="t-meta shrink-0 text-amber">{String(i + 1).padStart(2, "0")}</span>
                     <p className="t-lede max-w-[54ch] text-ink/85">{a}</p>
                   </li>
                 ))}
               </ol>
 
               <div className="mt-10">
-                <p className="t-label text-brass">Material palette</p>
+                <p className="t-label text-amber">Material palette</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.materials.map((m) => (
                     <span key={m} className="t-meta rounded-full border border-sand px-4 py-2 text-clay">
@@ -175,7 +175,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <div className="mt-8 grid gap-8 sm:grid-cols-3">
                   {p.result.map((r) => (
                     <div key={r.label}>
-                      <p className="num text-brass-light">{r.value}</p>
+                      <p className="num text-amber-light">{r.value}</p>
                       <p className="t-meta mt-2 max-w-[18ch] text-clay">{r.label}</p>
                     </div>
                   ))}
@@ -188,15 +188,15 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
 
       {/* Quote */}
       {p.quote && (
-        <section className="bg-moss text-bone">
+        <section className="bg-soot text-bone">
           <div className="shell-wide act">
             <Reveal className="mx-auto max-w-[46rem] text-center">
               <blockquote>
-                <p className="font-[family-name:var(--font-display)] text-[clamp(1.6rem,3.6vw,3rem)] leading-[1.14] tracking-[-0.03em]">
+                <p className="font-medium text-[clamp(1.6rem,3.6vw,3rem)] leading-[1.14] tracking-[-0.03em]">
                   &ldquo;{p.quote.text}&rdquo;
                 </p>
               </blockquote>
-              <p className="t-meta mt-8 text-brass-light">
+              <p className="t-meta mt-8 text-amber-light">
                 {p.quote.who} · {p.quote.role}
               </p>
             </Reveal>

@@ -53,7 +53,7 @@ export default function ProjectsPage() {
         lines={[<>Built, not</>, <><span className="t-aside">rendered</span>.</>]}
         sub="Six projects across workplace, home and hospitality. Each entry leads with the number the client cared about — covers recovered, reverberation measured, days saved — because that is what a portfolio is actually for."
         image="/img/hero-01.jpg"
-        imageAlt="Fluted walnut reception wall with brass reveals and travertine floor"
+        imageAlt="Fluted walnut reception wall with amber reveals and travertine floor"
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Projects", path: "/projects" },
@@ -87,11 +87,11 @@ export default function ProjectsPage() {
 
                   <div className={`lg:col-span-4 ${i % 2 ? "lg:order-1 lg:col-start-1" : "lg:col-start-9"}`}>
                     <div className="flex items-center gap-4">
-                      <span className="t-meta text-brass">{p.index}</span>
+                      <span className="t-meta text-amber">{p.index}</span>
                       <span className="t-label text-clay">{p.sector}</span>
                     </div>
                     <h2 className="t-h2 mt-4">
-                      <Link href={`/projects/${p.slug}`} className="transition-colors duration-500 hover:text-brass" data-cursor="link">
+                      <Link href={`/projects/${p.slug}`} className="transition-colors duration-500 hover:text-amber" data-cursor="link">
                         {p.title}
                       </Link>
                     </h2>

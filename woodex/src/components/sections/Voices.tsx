@@ -22,7 +22,7 @@ export default function Voices() {
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center whitespace-nowrap">
               <span className="t-h2 px-8 text-bone/[0.13]">{brand.promise}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-brass/40" />
+              <span className="h-1.5 w-1.5 rounded-full bg-amber/40" />
             </span>
           ))}
         </Marquee>
@@ -37,9 +37,9 @@ export default function Voices() {
           {testimonials.map((t, i) => (
             <Reveal key={t.who} delay={i * 110}>
               <figure className="fade-up flex h-full flex-col border-t border-[var(--hairline-dark)] pt-7">
-                <span className="t-label text-brass">{t.sector}</span>
+                <span className="t-label text-amber">{t.sector}</span>
                 <blockquote className="mt-5 flex-1">
-                  <p className="font-[family-name:var(--font-display)] text-[clamp(1.35rem,2vw,1.75rem)] leading-[1.25] tracking-[-0.02em] text-bone">
+                  <p className="font-medium text-[clamp(1.35rem,2vw,1.75rem)] leading-[1.25] tracking-[-0.02em] text-bone">
                     &ldquo;{t.text}&rdquo;
                   </p>
                 </blockquote>

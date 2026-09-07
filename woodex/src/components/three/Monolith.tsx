@@ -6,7 +6,7 @@ import * as THREE from "three";
 /**
  * THE MATERIAL MONOLITH — the site's 3D centrepiece.
  *
- * A fluted walnut column banded in unlacquered brass, standing on honed
+ * A fluted walnut column banded in unlacquered amber, standing on honed
  * travertine. It is not decoration: it is the studio's palette rendered as
  * a physical object you can rotate. Scroll drives the turn, cursor drives
  * the tilt, so the section rewards both passive and active users.
@@ -127,7 +127,7 @@ export default function Monolith({ className = "" }: { className?: string }) {
     group.add(column);
 
     /* Brass bands — the studio's signature metal, used at ~5% of surface. */
-    const brassMat = new THREE.MeshPhysicalMaterial({
+    const amberMat = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color("#c08a3e"),
       metalness: 1,
       roughness: 0.24,
@@ -136,12 +136,12 @@ export default function Monolith({ className = "" }: { className?: string }) {
     });
 
     [1.72, -1.72].forEach((y) => {
-      const band = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.13, 128), brassMat);
+      const band = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.1, 0.13, 128), amberMat);
       band.position.y = y;
       group.add(band);
     });
 
-    const collar = new THREE.Mesh(new THREE.TorusGeometry(1.11, 0.028, 16, 160), brassMat);
+    const collar = new THREE.Mesh(new THREE.TorusGeometry(1.11, 0.028, 16, 160), amberMat);
     collar.rotation.x = Math.PI / 2;
     group.add(collar);
 
@@ -172,17 +172,17 @@ export default function Monolith({ className = "" }: { className?: string }) {
 
     /* ---------------------------------------------------------------
        LIGHTING — a single warm key raking from the left (matching the
-       photography), a cool fill, and a brass rim to separate the object
+       photography), a cool fill, and a amber rim to separate the object
        from the dark ground.
        --------------------------------------------------------------- */
 
-    scene.add(new THREE.AmbientLight(0xffe6c4, 0.35));
+    scene.add(new THREE.AmbientLight(0xbcd0e6, 0.3));
 
     const key = new THREE.DirectionalLight(0xffd9a0, 2.9);
     key.position.set(-4.2, 3.6, 3.4);
     scene.add(key);
 
-    const fill = new THREE.DirectionalLight(0x9fb6c8, 0.55);
+    const fill = new THREE.DirectionalLight(0x7ea3c8, 0.7);
     fill.position.set(4.5, -1.2, 2.2);
     scene.add(fill);
 
@@ -193,15 +193,15 @@ export default function Monolith({ className = "" }: { className?: string }) {
     // Cheap "environment": a gradient sphere used ONLY to bake a PMREM
     // reflection map. It is deliberately NOT added to the visible scene —
     // the canvas must stay transparent so the object sits on the section's
-    // own moss ground rather than inside a brown box.
+    // own navy ground rather than inside a dark box.
     const envScene = new THREE.Scene();
     const envGeo = new THREE.SphereGeometry(30, 32, 32);
     const envMat = new THREE.ShaderMaterial({
       side: THREE.BackSide,
       depthWrite: false,
       uniforms: {
-        top: { value: new THREE.Color("#6b4a2a") },
-        bottom: { value: new THREE.Color("#0b0a08") },
+        top: { value: new THREE.Color("#5c4327") },
+        bottom: { value: new THREE.Color("#0e1a2b") },
       },
       vertexShader: `varying vec3 vP; void main(){ vP = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0); }`,
       fragmentShader: `

@@ -92,7 +92,7 @@ export default function AboutPage() {
               <SplitLines
                 as="h2"
                 className="t-h1 mt-6"
-                lines={[<>Almost right</>, <>is <span className="t-aside !text-brass">wrong</span>.</>]}
+                lines={[<>Almost right</>, <>is <span className="t-aside !text-amber">wrong</span>.</>]}
               />
               <div className="mt-9 max-w-[54ch] space-y-5">
                 <p className="t-lede text-ink/80">
@@ -111,7 +111,7 @@ export default function AboutPage() {
                   forty metres to watch it being cut. That is the entire strategy. It is not
                   clever, but it is the only version of this business we know how to run.
                 </p>
-                <p className="font-[family-name:var(--font-display)] text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.02em] text-ink">
+                <p className="font-medium text-[clamp(1.4rem,2.4vw,2rem)] leading-[1.15] tracking-[-0.02em] text-ink">
                   {brand.promise}
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function AboutPage() {
             <Reveal className="lg:col-span-5 lg:col-start-8">
               <Parallax
                 src="/img/detail-joinery.jpg"
-                alt="Macro detail: quarter-sawn walnut meeting a brushed brass inlay and honed travertine with a precise shadow gap"
+                alt="Macro detail: quarter-sawn walnut meeting a brushed amber inlay and honed travertine with a precise shadow gap"
                 className="wipe aspect-[4/5] w-full"
                 sizes="(max-width:900px) 100vw, 40vw"
                 distance={10}
@@ -156,7 +156,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <Reveal key={v.n} delay={i * 90}>
                 <div className="fade-up border-t border-[var(--hairline-dark)] py-9">
-                  <span className="t-meta text-brass">{v.n}</span>
+                  <span className="t-meta text-amber">{v.n}</span>
                   <h3 className="t-h3 mt-4 text-bone">{v.t}</h3>
                   <p className="t-body mt-3 max-w-[42ch] text-clay">{v.d}</p>
                 </div>
@@ -172,7 +172,7 @@ export default function AboutPage() {
           <Reveal className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <Eyebrow tone="clay">Specification</Eyebrow>
-              <SplitLines as="h2" className="t-h1 mt-6" lines={[<>The palette,</>, <>in <span className="t-aside !text-brass">full</span>.</>]} />
+              <SplitLines as="h2" className="t-h1 mt-6" lines={[<>The palette,</>, <>in <span className="t-aside !text-amber">full</span>.</>]} />
             </div>
             <p className="fade-up t-body text-clay lg:col-span-4 lg:col-start-9">
               Six materials specified across every project since 2019. Consistency is what
@@ -186,7 +186,7 @@ export default function AboutPage() {
                 <div className="fade-up border-t border-sand py-7">
                   <div className="flex items-baseline justify-between">
                     <h3 className="t-h3 !text-[1.3rem]">{m.name}</h3>
-                    <span className="t-meta text-brass">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="t-meta text-amber">{String(i + 1).padStart(2, "0")}</span>
                   </div>
                   <p className="t-meta mt-2 text-clay">{m.spec}</p>
                   <p className="t-body mt-3 max-w-[34ch] text-ink/70">{m.note}</p>
@@ -207,7 +207,7 @@ export default function AboutPage() {
             <SplitLines
               as="h2"
               className="t-h1 mx-auto mt-6 max-w-[18ch]"
-              lines={[<>Bring us a plan</>, <>and a <span className="t-aside !text-brass">problem</span>.</>]}
+              lines={[<>Bring us a plan</>, <>and a <span className="t-aside !text-amber">problem</span>.</>]}
             />
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Btn href="/contact" variant="light">{cta.primary}</Btn>

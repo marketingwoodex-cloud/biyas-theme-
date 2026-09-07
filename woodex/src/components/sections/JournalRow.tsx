@@ -18,7 +18,7 @@ export default function JournalRow() {
             <SplitLines
               as="h2"
               className="t-h1 mt-6"
-              lines={[<>Notes from the</>, <>workshop <span className="t-aside !text-brass">floor</span>.</>]}
+              lines={[<>Notes from the</>, <>workshop <span className="t-aside !text-amber">floor</span>.</>]}
             />
           </div>
           <div className="fade-up flex lg:col-span-4 lg:col-start-9 lg:justify-end" style={{ transitionDelay: "200ms" }}>
@@ -42,14 +42,14 @@ export default function JournalRow() {
                     imgClassName="transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                   />
                   <div className="mt-5 flex items-center gap-3">
-                    <span className="t-label text-brass">{a.category}</span>
+                    <span className="t-label text-amber">{a.category}</span>
                     <span className="h-px w-4 bg-sand" aria-hidden />
                     <time className="t-meta text-clay" dateTime={a.date}>
                       {fmt(a.date)}
                     </time>
                     <span className="t-meta text-clay/60">· {a.readTime}</span>
                   </div>
-                  <h3 className="t-h3 mt-3 max-w-[24ch] transition-colors duration-500 group-hover:text-brass">
+                  <h3 className="t-h3 mt-3 max-w-[24ch] transition-colors duration-500 group-hover:text-amber">
                     {a.title}
                   </h3>
                   <p className="t-body mt-3 max-w-[42ch] text-clay">{a.excerpt}</p>

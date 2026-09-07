@@ -14,13 +14,13 @@ import { materials } from "@/lib/content/site";
  */
 export default function MaterialSection() {
   return (
-    <section className="relative overflow-hidden bg-moss text-bone">
+    <section className="relative overflow-hidden bg-soot text-bone">
       {/* Vignette so the WebGL object sits in a lit volume, not on a flat fill */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(70% 60% at 50% 45%, rgba(192,138,62,.14) 0%, transparent 70%), radial-gradient(120% 100% at 50% 100%, rgba(11,10,8,.7) 0%, transparent 60%)",
+            "radial-gradient(70% 60% at 50% 45%, rgba(192,138,69,.13) 0%, transparent 70%), radial-gradient(120% 100% at 50% 100%, rgba(14,26,43,.85) 0%, transparent 60%)",
         }}
       />
 
@@ -44,7 +44,7 @@ export default function MaterialSection() {
               one idea. We specify from a fixed set and detail it obsessively — so an office
               and a villa built four years apart still feel like the same hand.
             </p>
-            <p className="t-meta mt-8 text-brass-light">
+            <p className="t-meta mt-8 text-amber-light">
               Drag or scroll to turn the column →
             </p>
           </Reveal>
@@ -55,7 +55,7 @@ export default function MaterialSection() {
             {/* Static fallback caption — also carries the meaning if WebGL fails */}
             <div className="pointer-events-none absolute inset-x-0 bottom-0 text-center">
               <p className="t-label text-bone/45">
-                Fluted walnut · brass band · travertine base
+                Fluted walnut · amber band · travertine base
               </p>
             </div>
           </div>
@@ -70,10 +70,10 @@ export default function MaterialSection() {
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <div className="flex items-baseline justify-between gap-4">
-                    <p className="font-[family-name:var(--font-display)] text-xl leading-tight">
+                    <p className="font-medium text-xl leading-tight">
                       {m.name}
                     </p>
-                    <p className="t-meta shrink-0 text-brass/80">{String(i + 1).padStart(2, "0")}</p>
+                    <p className="t-meta shrink-0 text-amber/80">{String(i + 1).padStart(2, "0")}</p>
                   </div>
                   <p className="t-meta mt-1.5 text-bone/50">{m.spec}</p>
                   <p className="t-body mt-2 max-w-[34ch] text-bone/70">{m.note}</p>

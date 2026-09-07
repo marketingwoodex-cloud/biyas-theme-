@@ -9,6 +9,8 @@ import Process from "@/components/sections/Process";
 import Voices from "@/components/sections/Voices";
 import JournalRow from "@/components/sections/JournalRow";
 import FaqBlock from "@/components/sections/FaqBlock";
+import SectorBand from "@/components/sections/SectorBand";
+import Documented from "@/components/sections/Documented";
 import Jsonld, { faqSchema } from "@/components/seo/Jsonld";
 import { homeFaqs } from "@/lib/content/site";
 
@@ -22,21 +24,23 @@ export const metadata: Metadata = {
 /**
  * HOMEPAGE — narrative order
  *
- * I  Threshold   Hero .......... Who we are, at a glance, in three rooms
- * —  Proof       TrustBar ...... Quiet credibility before any claim
- * II Story       Manifesto ..... Why we exist (struggle → turn → resolution)
- * III Offer      ServicesList .. What you can buy
- * IV Craft       Material ...... Proof we can actually make it (3D)
- * V  Evidence    FeaturedWork .. Proof we already did, with numbers
- * VI Method      Process ....... Removes the "how will this go wrong" fear
- * VII Voices     Voices ........ Third-party confirmation
- * —  Authority   JournalRow .... Expertise signal + SEO surface
- * —  Objections  FaqBlock ...... Kills the last four reasons not to enquire
- * —  Close       Footer CTA .... One low-commitment ask
+ * I   Threshold  Hero .......... Who we are, at a glance, in three rooms
+ * —   Proof      TrustBar ...... Quiet credibility before any claim
+ * II  Story      Manifesto ..... Why we exist (struggle → turn → resolution)
+ * III Offer      ServicesList .. The six things you can actually buy
+ * IV  Craft      Material ...... Proof we can make it (WebGL monolith)
+ * —   Scope      SectorBand .... Coverage, in two seconds
+ * V   Evidence   FeaturedWork .. Proof we already did, with numbers
+ * VI  Method     Process ....... Stills → BOQ → site. Kills the risk fear
+ * VII Trust      Documented .... The six artefacts you physically receive
+ * VIII Voices    Voices ........ Third-party confirmation
+ * —   Authority  JournalRow .... Expertise signal + SEO surface
+ * —   Objections FaqBlock ...... Kills the last reasons not to enquire
+ * —   Close      Footer CTA .... One low-commitment ask
  *
- * Rhythm: dark → light → dark → deep green → light → dark → light.
- * No two adjacent acts share a ground colour, so scrolling feels like
- * moving through rooms rather than down a page.
+ * Rhythm: navy → cream → navy → navy-deep → cream → navy → oat → navy → cream.
+ * No two adjacent acts share a ground, so scrolling feels like moving through
+ * rooms rather than down a page.
  */
 export default function HomePage() {
   return (
@@ -47,8 +51,10 @@ export default function HomePage() {
       <Manifesto />
       <ServicesList />
       <MaterialSection />
+      <SectorBand />
       <FeaturedWork />
       <Process />
+      <Documented />
       <Voices />
       <JournalRow />
       <FaqBlock items={homeFaqs} />

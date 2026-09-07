@@ -48,7 +48,7 @@ export default function Footer() {
         <div className="lg:col-span-4">
           <Link href="/" className="t-h3 text-bone" data-cursor="link">
             {brand.name}
-            <span className="text-brass">.</span>
+            <span className="text-amber">.</span>
           </Link>
           <p className="t-meta mt-3 text-clay">{brand.descriptor}</p>
           <p className="t-body mt-6 max-w-[30ch] text-clay">{brand.promise}</p>
@@ -62,7 +62,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 aria-label={s.label}
                 data-cursor="link"
-                className="t-label grid h-10 w-10 place-items-center rounded-full border border-[var(--hairline-dark)] text-clay transition-colors hover:border-brass hover:bg-brass hover:text-ink"
+                className="t-label grid h-10 w-10 place-items-center rounded-full border border-[var(--hairline-dark)] text-clay transition-colors hover:border-amber hover:bg-amber hover:text-ink"
               >
                 {s.short}
               </a>
@@ -71,7 +71,7 @@ export default function Footer() {
         </div>
 
         <nav className="lg:col-span-3" aria-label="Services">
-          <p className="t-label text-brass">Services</p>
+          <p className="t-label text-amber">Services</p>
           <ul className="mt-5 space-y-2.5">
             {services.map((s) => (
               <li key={s.slug}>
@@ -84,7 +84,7 @@ export default function Footer() {
         </nav>
 
         <nav className="lg:col-span-2" aria-label="Studio">
-          <p className="t-label text-brass">Studio</p>
+          <p className="t-label text-amber">Studio</p>
           <ul className="mt-5 space-y-2.5">
             {[
               ["/about", "About"],
@@ -103,7 +103,7 @@ export default function Footer() {
         </nav>
 
         <address className="not-italic lg:col-span-3">
-          <p className="t-label text-brass">Studio &amp; workshop</p>
+          <p className="t-label text-amber">Studio &amp; workshop</p>
           <p className="t-meta mt-5 text-clay">
             {contact.street}
             <br />
@@ -125,7 +125,7 @@ export default function Footer() {
       <div className="shell-wide select-none pb-6" aria-hidden>
         <div className="rule rule-dark mb-6" />
         <p
-          className="font-[family-name:var(--font-display)] leading-[0.78] tracking-[-0.05em] text-bone/[0.07]"
+          className="t-wordmark text-bone/[0.06]"
           style={{ fontSize: "clamp(4rem, 20vw, 22rem)" }}
         >
           {brand.fullName}

@@ -79,7 +79,7 @@ export default function PageHero({
           <dl className="fade-up mt-12 grid grid-cols-2 gap-6 border-t border-[var(--hairline-dark)] pt-7 sm:grid-cols-4" style={{ transitionDelay: "520ms" }}>
             {meta.map((m) => (
               <div key={m.k}>
-                <dt className="t-label text-brass">{m.k}</dt>
+                <dt className="t-label text-amber">{m.k}</dt>
                 <dd className="t-body mt-2 text-bone">{m.v}</dd>
               </div>
             ))}

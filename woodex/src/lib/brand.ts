@@ -1,77 +1,94 @@
 /**
  * WOODEX INTERIOR — Brand System
  * ------------------------------------------------------------------
+ * Re-skinned to the live Woodex identity: midnight navy + cream,
+ * a single grotesk, heavy rounded geometry, kinetic wordmarks.
+ *
  * Single source of truth for identity, voice and contact data.
- * Swap values here when the official brand guidelines land; every
- * surface in the site reads from this file or from the CSS custom
- * properties in `globals.css` (which mirror `palette` below).
+ * Every surface reads from this file or from the token block at the
+ * top of `globals.css` (which mirrors `palette` below).
  */
 
 export const brand = {
   name: "Woodex",
   fullName: "Woodex Interior",
-  legalName: "Woodex Interior Studio",
+  legalName: "Woodex Interiors",
+
+  /** The live hero line. Everything else defers to it. */
+  tagline: "We turn ideas into spaces",
 
   /** 3-word essence — drives every art-direction decision. */
-  essence: ["Grain", "Precision", "Presence"],
+  essence: ["Drawn", "Documented", "Built"],
 
-  /** The line that appears under the logo. */
-  descriptor: "Interior Architecture & Turnkey Fit-Out",
+  /** Sits under the logo. */
+  descriptor: "Interior Design · 3D Studio · Execution",
 
   /** Positioning statement — used in About + schema.org. */
   positioning:
-    "Woodex Interior is a full-suite interior architecture and turnkey fit-out studio. We design, manufacture and install — one contract, one accountable team, one standard of finish.",
+    "Woodex Interior is an interior design and execution studio. We draw the space in 3D before anything is bought, document it to BOQ, and build it with our own team — 500+ projects, ISO 9001 certified.",
 
   /** The single most important sentence on the site. */
-  promise: "We build the room, not the render.",
+  promise: "Drawn. Then built.",
 
-  /** Voice: how Woodex sounds. */
+  /** Secondary promise, used on the process act. */
+  method: "Stills first. BOQ second. Site last.",
+
   voice: {
-    is: ["Specific", "Unhurried", "Materially literate", "Quietly confident"],
+    is: ["Plain", "Specific", "Unhurried", "Quietly certain"],
     isNot: ["Salesy", "Buzzword-heavy", "Boastful", "Cute"],
-    rule: "Name the material. Name the tolerance. Never oversell the adjective.",
+    rule: "Short sentences. Name the deliverable. Never oversell the adjective.",
   },
 } as const;
 
-/** Mirrors the CSS custom properties. Reasoning included per token. */
+/**
+ * Mirrors the CSS custom properties.
+ * Two-tone by design: midnight navy and cream do all the structural work,
+ * photography supplies every warm tone in the palette. Amber exists only as
+ * a functional highlight and is capped at ~3% of any viewport.
+ */
 export const palette = {
   ink: {
-    hex: "#0B0A08",
-    why: "Not black — a warm espresso near-black. Black reads cheap on screens; this holds the wood tone.",
+    hex: "#0E1A2B",
+    why: "Midnight navy, not black. Black flattens interior photography; navy sits under it and lets the warm light in the images read as the accent.",
   },
-  soot: { hex: "#141210", why: "Second surface for panels so sections separate without lines." },
-  char: { hex: "#1C1916", why: "Card fill on dark. Keeps depth without grey drift." },
-  bone: { hex: "#F0EAE0", why: "Paper. Warm, unbleached — the colour of plaster and linen, never #FFF." },
-  oat: { hex: "#E2D9CA", why: "Alternate light section so the page breathes between dark acts." },
-  sand: { hex: "#CDBFA9", why: "Hairlines and dividers on light. Reads as pencil, not border." },
-  clay: { hex: "#9C8A70", why: "Muted body copy on light. 4.6:1 on bone — passes AA at 16px+." },
-  brass: {
-    hex: "#C08A3E",
-    why: "The only accent. Unlacquered brass — the studio's signature metal. Used for ≤5% of any view.",
+  soot: { hex: "#15243A", why: "Second dark surface so sections separate without a border." },
+  char: { hex: "#1D3049", why: "Card fill on navy. Lifts without turning grey." },
+  bone: { hex: "#F5F2EA", why: "Cream, not white. Unbleached paper — the colour of plaster and linen." },
+  oat: { hex: "#EAE5D9", why: "Third light ground so the page can breathe twice without repeating." },
+  sand: { hex: "#D9D2C3", why: "Hairlines and dividers on cream. Reads as a pencil line, not a UI border." },
+  clay: { hex: "#6E7686", why: "Secondary copy. Cool grey-blue so it belongs to the navy, not the cream." },
+  amber: {
+    hex: "#C08A45",
+    why: "The only chroma. Pulled from the tungsten light inside every project photo. ≤3% of any view.",
   },
-  brassLight: { hex: "#E5C489", why: "Brass on dark grounds where the base tone loses contrast." },
-  moss: { hex: "#18251F", why: "One deep green act break. Stops the palette becoming monotonously brown." },
+  amberLight: { hex: "#E0B274", why: "Amber on navy grounds, where the base tone loses contrast." },
+  mist: { hex: "#FFFFFF", why: "Card fill on cream. Pure white is allowed on a surface, never as a page ground." },
+} as const;
+
+/** Corner radius is a brand signature here — nothing in the system is sharp. */
+export const radius = {
+  sm: "10px",
+  md: "16px",
+  lg: "24px",
+  xl: "32px",
+  pill: "999px",
+  why: "The live identity rounds every card and image. Sharp corners read as 'unstyled default' against it.",
 } as const;
 
 /** Motion contract — every animation on the site references these. */
 export const motion = {
   ease: {
-    out: [0.16, 1, 0.3, 1] as const, // primary reveal — fast in, long settle
-    inOut: [0.76, 0, 0.24, 1] as const, // curtains, page transitions
-    soft: [0.25, 0.46, 0.45, 0.94] as const, // parallax, camera drift
+    out: [0.16, 1, 0.3, 1] as const,
+    inOut: [0.76, 0, 0.24, 1] as const,
+    soft: [0.25, 0.46, 0.45, 0.94] as const,
   },
-  dur: {
-    micro: 0.24, // hover, cursor
-    base: 0.72, // text + image reveal
-    scene: 1.4, // act change, curtain
-  },
-  /** Reveals stagger by line, never by character, above 24px type. */
+  dur: { micro: 0.24, base: 0.72, scene: 1.4 },
   stagger: 0.07,
 } as const;
 
 export const contact = {
-  /** TODO: replace with real details from brand guidelines. */
-  email: "studio@woodexinterior.com",
+  /** TODO: replace with the live details. */
+  email: "hello@woodexinterior.com",
   phone: "+92 42 3577 0100",
   phoneHref: "+924235770100",
   whatsapp: "+92 300 8400 100",
@@ -95,25 +112,33 @@ export const siteUrl = "https://woodexinterior.com";
 
 /**
  * CTA ladder — ranked by expected click-through.
- * Each one lowers perceived commitment rather than raising urgency.
+ * Each lowers perceived commitment rather than raising urgency.
  */
 export const cta = {
-  /** #1 — concrete deliverable, zero-cost, time-boxed. */
-  primary: "Get a fit-out estimate",
-  /** #2 — low commitment, implies looking not buying. */
-  secondary: "Book a 20-min walkthrough",
-  /** #3 — no meeting required, ownership language. */
-  tertiary: "See the material board",
-  /** In-page nudges. */
+  primary: "Tell us about your space",
+  secondary: "Get a 3D still first",
+  tertiary: "See the studies",
   quiet: "Start with your floor plan",
   work: "Walk through the work",
+  estimate: "Get a BOQ estimate",
 } as const;
 
+/** The live numbers. */
 export const stats = [
-  { value: 18, suffix: "", label: "Years on site", note: "Since 2007" },
-  { value: 340, suffix: "+", label: "Spaces delivered", note: "Across 6 markets" },
-  { value: 96, suffix: "%", label: "Handover on schedule", note: "Rolling 24 months" },
-  { value: 2, suffix: "mm", label: "Joinery tolerance", note: "Shop standard" },
+  { value: 500, suffix: "+", label: "Projects delivered", note: "Since inception" },
+  { value: 20, suffix: "yrs", label: "Founder experience", note: "Hands on site" },
+  { value: 10, suffix: "+", label: "Years executing", note: "Own site teams" },
+  { value: 9001, suffix: "", label: "ISO certified", note: "Quality management" },
+] as const;
+
+/** Sector band — matches the live marquee. */
+export const sectors = [
+  "Residences",
+  "Workplaces",
+  "Hospitality",
+  "Retail",
+  "3D Studio",
+  "Renovation",
 ] as const;
 
 export type Palette = typeof palette;

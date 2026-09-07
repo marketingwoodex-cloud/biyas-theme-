@@ -59,7 +59,7 @@ export default function ContactPage() {
         lines={[<>Send us a</>, <>floor plan.</>]}
         sub="No presentation, no pitch deck, no obligation. We'll come back with a banded estimate and a scope schedule — usually within three working days."
         image="/img/hero-03.jpg"
-        imageAlt="Boutique hospitality lobby with sculptural walnut reception desk and brass screen"
+        imageAlt="Boutique hospitality lobby with sculptural walnut reception desk and amber screen"
         crumbs={[
           { name: "Home", path: "/" },
           { name: "Contact", path: "/contact" },
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   ].map((r) => (
                     <li key={r} className="flex items-start gap-3">
                       <svg width="14" height="11" viewBox="0 0 14 11" fill="none" className="mt-1.5 shrink-0" aria-hidden>
-                        <path d="M1 5.5 5 9.5 13 1" stroke="var(--color-brass)" strokeWidth="1.4" />
+                        <path d="M1 5.5 5 9.5 13 1" stroke="var(--color-amber)" strokeWidth="1.4" />
                       </svg>
                       <span className="t-meta text-clay">{r}</span>
                     </li>
@@ -145,7 +145,7 @@ export default function ContactPage() {
               <SplitLines
                 as="h2"
                 className="t-h2"
-                lines={[<>Tell us what&apos;s</>, <>not <span className="t-aside !text-brass">working</span>.</>]}
+                lines={[<>Tell us what&apos;s</>, <>not <span className="t-aside !text-amber">working</span>.</>]}
               />
               <p className="t-body mt-5 max-w-[46ch] text-clay">
                 Four fields are required. Everything else helps us give you a tighter number.

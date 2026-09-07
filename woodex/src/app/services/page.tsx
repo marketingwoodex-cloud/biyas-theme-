@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Interior Design & Fit-Out Services | Woodex Interior",
     description:
-      "Seven disciplines under one contract — design, manufacture and site delivery from a single accountable studio.",
+      "Six services you can actually buy — residential, office, restaurant, retail, craft joinery and 3D visualisation. Drawn, documented to BOQ, then built.",
     url: `${siteUrl}/services`,
     images: [{ url: "/img/svc-office.jpg", width: 1200, height: 1500 }],
   },
@@ -41,11 +41,11 @@ export const metadata: Metadata = {
 const pageFaqs = [
   {
     q: "What interior design services does Woodex offer?",
-    a: "Seven: office interior design, residential interior design, hospitality interiors, retail and showroom fit-out, bespoke joinery and millwork, turnkey fit-out with project management, and full-suite art curation. Any combination can be delivered under a single contract.",
+    a: "Six: residential interior design, office interior design, restaurant and hospitality interiors, retail and showroom fit-out, craft joinery and millwork, and 3D visualisation. Any combination can be delivered under one contract.",
   },
   {
     q: "Can I hire Woodex for design only?",
-    a: "Yes. We take design-only commissions and issue a complete tender-ready drawing set. Most clients move to design-and-build once they see the joinery package, because it removes the coordination risk — but there is no obligation to.",
+    a: "Yes. We take design-only commissions and issue a tender-ready drawing set, and the 3D studio takes visualisation-only work from other designers and developers. There is no obligation to have us build it.",
   },
   {
     q: "Do you work on both commercial and residential projects?",
@@ -75,7 +75,7 @@ export default function ServicesPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "ItemList",
-          name: "Interior design and fit-out services",
+          name: "Woodex Interior services",
           itemListElement: services.map((s, i) => ({
             "@type": "ListItem",
             position: i + 1,
@@ -93,8 +93,8 @@ export default function ServicesPage() {
 
       <PageHero
         eyebrow="Services"
-        lines={[<>Everything a room</>, <>needs, from <span className="t-aside">one</span></>, <>studio.</>]}
-        sub="Design, manufacture and site delivery are three different businesses in most projects — and three different places for a specification to get lost. We run all three, so the detail you approve is the detail that gets installed."
+        lines={[<span key="a">Six services you</span>, <span key="b">can <span className="t-aside">actually buy</span>.</span>]}
+        sub="Not capabilities. Not disciplines. Six things you can point at, price and commission — each drawn as a photoreal still, documented to a line-by-line BOQ, and built by our own team."
         image="/img/svc-office.jpg"
         imageAlt="Contemporary open-plan office interior with oak acoustic slat walls and a long solid-timber communal table"
         crumbs={[
@@ -102,9 +102,9 @@ export default function ServicesPage() {
           { name: "Services", path: "/services" },
         ]}
         meta={[
-          { k: "Disciplines", v: "Seven" },
-          { k: "Contract", v: "Single point" },
-          { k: "Joinery", v: "Made in-house" },
+          { k: "Services", v: "Six" },
+          { k: "Projects", v: "500+ delivered" },
+          { k: "Certified", v: "ISO 9001" },
           { k: "Warranty", v: "12 months" },
         ]}
       />
@@ -118,7 +118,7 @@ export default function ServicesPage() {
               <SplitLines
                 as="h2"
                 className="t-h2 mt-6"
-                lines={[<>Split contracts</>, <>fail in the <span className="t-aside !text-brass">seams</span>.</>]}
+                lines={[<span key="a">Split contracts</span>, <span key="b">fail in the <span className="t-aside">seams</span>.</span>]}
               />
             </Reveal>
             <Reveal className="lg:col-span-6 lg:col-start-7">
@@ -149,7 +149,7 @@ export default function ServicesPage() {
         <div className="shell-wide act">
           <Reveal className="mb-16 border-b border-[var(--hairline-dark)] pb-10">
             <Eyebrow>Capability index</Eyebrow>
-            <SplitLines as="h2" className="t-h1 mt-6 text-bone" lines={[<>What we do</>]} />
+            <SplitLines as="h2" className="t-h1 mt-6 text-bone" lines={[<span key="a">What we do</span>]} />
           </Reveal>
 
           <div className="space-y-24 lg:space-y-32">
@@ -180,18 +180,18 @@ export default function ServicesPage() {
 
                   <div className={`lg:col-span-6 ${i % 2 ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
                     <div className="flex items-center gap-4">
-                      <span className="t-meta text-brass">{s.index}</span>
+                      <span className="t-meta text-amber">{s.index}</span>
                       <span className="h-px w-8 bg-[var(--hairline-dark)]" aria-hidden />
                       <span className="t-label text-clay">{s.kicker}</span>
                     </div>
 
                     <h3 className="t-h2 mt-5 text-bone">
-                      <Link href={`/services/${s.slug}`} className="transition-colors duration-500 hover:text-brass" data-cursor="link">
+                      <Link href={`/services/${s.slug}`} className="transition-colors duration-500 hover:text-amber" data-cursor="link">
                         {s.title}
                       </Link>
                     </h3>
 
-                    <p className="font-[family-name:var(--font-display)] mt-4 text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.25] text-brass-light">
+                    <p className="font-medium mt-4 text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.25] text-amber-light">
                       {s.headline}
                     </p>
 
@@ -200,7 +200,7 @@ export default function ServicesPage() {
                     <ul className="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                       {s.deliverables.slice(0, 6).map((d) => (
                         <li key={d.t} className="flex items-start gap-3">
-                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brass" aria-hidden />
+                          <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber" aria-hidden />
                           <span className="t-meta text-bone/80">{d.t}</span>
                         </li>
                       ))}

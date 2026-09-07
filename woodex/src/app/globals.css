@@ -2,26 +2,38 @@
 
 /* ==========================================================================
    WOODEX INTERIOR — DESIGN SYSTEM
+   Midnight navy + cream. One grotesk. Everything rounded.
    Tokens mirror src/lib/brand.ts. Change both together.
    ========================================================================== */
 
 @theme {
   /* --- Colour ------------------------------------------------------------ */
-  --color-ink: #0b0a08;
-  --color-soot: #141210;
-  --color-char: #1c1916;
-  --color-bone: #f0eae0;
-  --color-oat: #e2d9ca;
-  --color-sand: #cdbfa9;
-  --color-clay: #9c8a70;
-  --color-brass: #c08a3e;
-  --color-brass-light: #e5c489;
-  --color-moss: #18251f;
+  --color-ink: #0e1a2b;
+  --color-soot: #15243a;
+  --color-char: #1d3049;
+  --color-bone: #f5f2ea;
+  --color-oat: #eae5d9;
+  --color-sand: #d9d2c3;
+  --color-clay: #6e7686;
+  --color-amber: #c08a45;
+  --color-amber-light: #e0b274;
+  --color-mist: #ffffff;
 
-  /* --- Type -------------------------------------------------------------- */
-  --font-display: var(--f-display), "Times New Roman", serif;
+  /* --- Type --------------------------------------------------------------
+     One grotesk family does display AND body. Contrast comes from weight,
+     scale and tracking — not from a second typeface. Mono is reserved for
+     micro-labels, indices and specification data, where it reads as
+     *measurement* rather than as decoration.
+     ----------------------------------------------------------------------- */
+  --font-display: var(--f-sans), "Helvetica Neue", Arial, sans-serif;
   --font-sans: var(--f-sans), system-ui, sans-serif;
   --font-mono: var(--f-mono), ui-monospace, monospace;
+
+  /* --- Radius: a brand signature. Nothing in this system is sharp. ------- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
 
   /* --- Motion ------------------------------------------------------------ */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -30,13 +42,15 @@
 }
 
 :root {
-  /* Fluid gutter: 24px phone → 88px desktop. One value, whole site. */
   --gutter: clamp(1.25rem, 4.4vw, 5.5rem);
-  /* Vertical rhythm between acts. */
-  --act: clamp(6rem, 12vw, 12.5rem);
-  --hairline: color-mix(in oklab, var(--color-clay) 38%, transparent);
-  --hairline-dark: color-mix(in oklab, var(--color-bone) 16%, transparent);
+  --act: clamp(5.5rem, 11vw, 11rem);
+  --hairline: color-mix(in oklab, var(--color-clay) 34%, transparent);
+  --hairline-dark: color-mix(in oklab, var(--color-bone) 15%, transparent);
   --shell: 96rem;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 24px;
+  --r-xl: 32px;
 }
 
 /* --- Reset / base -------------------------------------------------------- */
@@ -62,14 +76,14 @@ body {
 }
 
 ::selection {
-  background: var(--color-brass);
+  background: var(--color-amber);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-brass-light);
+  outline: 2px solid var(--color-amber-light);
   outline-offset: 3px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 img,
@@ -93,66 +107,67 @@ html.lenis body {
 
 /* ==========================================================================
    TYPE SCALE
-   Display is optically tightened as it grows — large serif needs negative
-   tracking to avoid looking loose; small text needs positive tracking.
+   Weight + tracking carry the hierarchy. Display sits at 600 with negative
+   tracking that tightens as size grows; micro-type sits at 500 with positive
+   tracking. A single family, worked hard.
    ========================================================================== */
 
 .t-display {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(3.25rem, 9.2vw, 10.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.035em;
+  font-weight: 600;
+  font-size: clamp(2.75rem, 7.6vw, 8rem);
+  line-height: 0.94;
+  letter-spacing: -0.038em;
 }
 
 .t-h1 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.5rem, 6.6vw, 6.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-weight: 600;
+  font-size: clamp(2.125rem, 5.2vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.034em;
 }
 
 .t-h2 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2rem, 4.4vw, 4rem);
-  line-height: 0.98;
-  letter-spacing: -0.025em;
+  font-weight: 600;
+  font-size: clamp(1.75rem, 3.6vw, 3.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
 }
 
 .t-h3 {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
-  line-height: 1.08;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.022em;
 }
 
-/* Serif italic = the studio's "aside" voice. Used sparingly, one word at a time. */
+/* The "aside" voice. Previously a serif italic; in this identity it is the
+   amber highlight — one word per heading, never more. */
 .t-aside {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--color-brass-light);
+  color: var(--color-amber);
 }
 
 .t-lede {
-  font-size: clamp(1.0625rem, 1.55vw, 1.375rem);
-  line-height: 1.5;
-  letter-spacing: -0.011em;
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  line-height: 1.52;
+  letter-spacing: -0.013em;
+  font-weight: 400;
 }
 
 .t-body {
   font-size: clamp(0.9375rem, 1.05vw, 1rem);
-  line-height: 1.68;
+  line-height: 1.66;
 }
 
-/* Mono micro-type: labels, indices, data. Never for reading. */
 .t-label {
   font-family: var(--font-mono);
   font-size: 0.6875rem;
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: 0.17em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -160,7 +175,17 @@ html.lenis body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.45;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
+}
+
+/* Giant kinetic wordmark — the identity's signature sign-off. */
+.t-wordmark {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  user-select: none;
 }
 
 /* ==========================================================================
@@ -183,7 +208,6 @@ html.lenis body {
   padding-block: var(--act);
 }
 
-/* Editorial 12-col grid, collapses to 1 under 900px. */
 .grid-12 {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -200,15 +224,15 @@ html.lenis body {
    SURFACE TREATMENTS
    ========================================================================== */
 
-/* Film grain — 4% opacity. Removes the "flat vector" feel from big colour
-   fields and unifies AI/photographic imagery with flat UI. */
+/* Film grain at 3.5% — unifies photographic imagery with flat colour fields.
+   Lower than a warm palette needs, because navy shows noise more readily. */
 .grain::after {
   content: "";
   position: fixed;
   inset: -50%;
   z-index: 60;
   pointer-events: none;
-  opacity: 0.045;
+  opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation: grainShift 0.7s steps(4) infinite;
 }
@@ -221,7 +245,6 @@ html.lenis body {
   100% { transform: translate(0, 0); }
 }
 
-/* Hairline that draws itself on scroll. */
 .rule {
   height: 1px;
   width: 100%;
@@ -233,11 +256,32 @@ html.lenis body {
   background: var(--hairline-dark);
 }
 
-/* Image mask — every photo sits behind a warm multiply so the whole site
-   shares one colour temperature regardless of source. */
+/* Card: the identity's core container. White on cream, char on navy,
+   always rounded, never a hard border. */
+.card {
+  border-radius: var(--r-lg);
+  background: var(--color-mist);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.card-dark {
+  border-radius: var(--r-lg);
+  background: var(--color-char);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.card-oat {
+  border-radius: var(--r-lg);
+  background: var(--color-oat);
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+/* Image frame. Every photo is rounded and sits behind a cool navy grade so
+   the whole site shares one temperature regardless of source. */
 .tone {
   position: relative;
   overflow: hidden;
+  border-radius: var(--r-lg);
   background: var(--color-soot);
 }
 
@@ -254,26 +298,30 @@ html.lenis body {
   pointer-events: none;
   background: linear-gradient(
       180deg,
-      color-mix(in oklab, var(--color-ink) 22%, transparent) 0%,
-      transparent 32%,
-      transparent 58%,
-      color-mix(in oklab, var(--color-ink) 46%, transparent) 100%
+      color-mix(in oklab, var(--color-ink) 16%, transparent) 0%,
+      transparent 34%,
+      transparent 60%,
+      color-mix(in oklab, var(--color-ink) 40%, transparent) 100%
     ),
     radial-gradient(
       120% 90% at 50% 40%,
-      transparent 40%,
-      color-mix(in oklab, var(--color-ink) 30%, transparent) 100%
+      transparent 44%,
+      color-mix(in oklab, var(--color-ink) 24%, transparent) 100%
     );
+}
+
+.tone-flat::after {
+  display: none;
 }
 
 /* ==========================================================================
    MOTION PRIMITIVES
    ========================================================================== */
 
-/* Line-by-line text reveal. JS adds .is-in. */
 .line-mask {
   display: block;
   overflow: hidden;
+  padding-bottom: 0.06em; /* descenders clear the mask edge */
 }
 
 .line-mask > span {
@@ -292,7 +340,7 @@ html.lenis body {
 
 .fade-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(26px);
   transition:
     opacity 0.9s var(--ease-out-expo),
     transform 0.9s var(--ease-out-expo);
@@ -304,21 +352,20 @@ html.lenis body {
   transform: none;
 }
 
-/* Image reveal: the frame wipes open, the photo counter-scales.
-   Reads as a curtain rather than a fade — more filmic, less "web". */
+/* Image reveal: the frame wipes open, the photo counter-scales. */
 .wipe {
-  clip-path: inset(0 0 100% 0);
+  clip-path: inset(0 0 100% 0 round var(--r-lg));
   transition: clip-path 1.25s var(--ease-in-out-quint);
 }
 
 .wipe > * {
-  transform: scale(1.18);
+  transform: scale(1.16);
   transition: transform 1.6s var(--ease-out-expo);
 }
 
 .is-in .wipe,
 .is-in.wipe {
-  clip-path: inset(0 0 0% 0);
+  clip-path: inset(0 0 0% 0 round var(--r-lg));
 }
 
 .is-in .wipe > *,
@@ -326,7 +373,6 @@ html.lenis body {
   transform: scale(1);
 }
 
-/* Stagger children via inline --i. */
 [style*="--i"] {
   transition-delay: calc(var(--i) * 70ms);
 }
@@ -335,27 +381,31 @@ html.lenis body {
    COMPONENTS
    ========================================================================== */
 
-/* --- Button: label swaps upward on hover (Linoxa-style dual label) ------- */
+/* --- Button --------------------------------------------------------------
+   The live identity's button: a pill with the label on the left and a filled
+   circular arrow badge on the right. The badge is the affordance — it is what
+   the eye lands on and what animates.
+   ------------------------------------------------------------------------- */
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.0625rem 1.75rem;
+  gap: 1.125rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.375rem;
   border-radius: 999px;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
-  letter-spacing: 0.17em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
   transition:
     color 0.4s var(--ease-out-expo),
+    background 0.4s var(--ease-out-expo),
     border-color 0.4s var(--ease-out-expo);
 }
 
-/* The fill sits ABOVE the element background but BELOW the label, so a
-   solid button can still reveal a contrasting colour on hover. */
 .btn::before {
   content: "";
   position: absolute;
@@ -376,12 +426,44 @@ html.lenis body {
   transform: translateY(0);
 }
 
+/* The arrow badge */
+.btn-badge {
+  display: grid;
+  place-items: center;
+  width: 2.125rem;
+  height: 2.125rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+  transition:
+    background 0.45s var(--ease-out-expo),
+    color 0.45s var(--ease-out-expo),
+    transform 0.55s var(--ease-out-expo);
+}
+
+.btn:hover .btn-badge,
+.btn:focus-visible .btn-badge {
+  transform: rotate(45deg);
+}
+
 .btn-solid {
-  background: var(--color-brass);
-  color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bone);
 }
 .btn-solid::before {
+  background: var(--color-amber);
+}
+.btn-solid .btn-badge {
   background: var(--color-bone);
+  color: var(--color-ink);
+}
+.btn-solid:hover,
+.btn-solid:focus-visible {
+  color: var(--color-ink);
+}
+.btn-solid:hover .btn-badge,
+.btn-solid:focus-visible .btn-badge {
+  background: var(--color-ink);
+  color: var(--color-bone);
 }
 
 .btn-ghost {
@@ -389,12 +471,21 @@ html.lenis body {
   color: var(--color-bone);
 }
 .btn-ghost::before {
-  background: var(--color-brass);
+  background: var(--color-bone);
+}
+.btn-ghost .btn-badge {
+  background: color-mix(in oklab, var(--color-bone) 14%, transparent);
+  color: var(--color-bone);
 }
 .btn-ghost:hover,
 .btn-ghost:focus-visible {
   color: var(--color-ink);
-  border-color: var(--color-brass);
+  border-color: var(--color-bone);
+}
+.btn-ghost:hover .btn-badge,
+.btn-ghost:focus-visible .btn-badge {
+  background: var(--color-ink);
+  color: var(--color-bone);
 }
 
 .btn-light {
@@ -404,10 +495,19 @@ html.lenis body {
 .btn-light::before {
   background: var(--color-ink);
 }
+.btn-light .btn-badge {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
 .btn-light:hover,
 .btn-light:focus-visible {
   color: var(--color-bone);
   border-color: var(--color-ink);
+}
+.btn-light:hover .btn-badge,
+.btn-light:focus-visible .btn-badge {
+  background: var(--color-bone);
+  color: var(--color-ink);
 }
 
 /* Dual-label roll */
@@ -433,13 +533,6 @@ html.lenis body {
 .btn:hover .btn-roll span:last-child,
 .btn:focus-visible .btn-roll span:last-child {
   transform: translateY(0);
-}
-
-.btn-arrow {
-  transition: transform 0.5s var(--ease-out-expo);
-}
-.btn:hover .btn-arrow {
-  transform: translateX(5px);
 }
 
 /* --- Underline link ------------------------------------------------------ */
@@ -501,13 +594,13 @@ html.lenis body {
   width: 6px;
   height: 6px;
   margin: -3px 0 0 -3px;
-  background: var(--color-brass);
+  background: var(--color-amber);
 }
 .cursor-ring {
-  width: 40px;
-  height: 40px;
-  margin: -20px 0 0 -20px;
-  border: 1px solid color-mix(in oklab, var(--color-brass) 60%, transparent);
+  width: 38px;
+  height: 38px;
+  margin: -19px 0 0 -19px;
+  border: 1px solid color-mix(in oklab, var(--color-amber) 62%, transparent);
   transition:
     width 0.35s var(--ease-out-expo),
     height 0.35s var(--ease-out-expo),
@@ -516,17 +609,17 @@ html.lenis body {
     border-color 0.35s var(--ease-out-expo);
 }
 .cursor-ring[data-state="link"] {
-  width: 72px;
-  height: 72px;
-  margin: -36px 0 0 -36px;
-  background: color-mix(in oklab, var(--color-brass) 14%, transparent);
-  border-color: var(--color-brass);
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  background: color-mix(in oklab, var(--color-amber) 14%, transparent);
+  border-color: var(--color-amber);
 }
 .cursor-ring[data-state="view"] {
   width: 104px;
   height: 104px;
   margin: -52px 0 0 -52px;
-  background: color-mix(in oklab, var(--color-brass) 88%, transparent);
+  background: var(--color-amber);
   border-color: transparent;
 }
 @media (hover: none), (pointer: coarse) {
@@ -536,22 +629,17 @@ html.lenis body {
   }
 }
 
-/* --- Number columns (stats) ---------------------------------------------- */
+/* --- Numbers ------------------------------------------------------------- */
 .num {
   font-family: var(--font-display);
-  font-size: clamp(2.75rem, 5.4vw, 5rem);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 4.8vw, 4.25rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
   font-variant-numeric: tabular-nums;
 }
 
-/* --- Form fields ---------------------------------------------------------
-   Underline fields with a floating label. Written in plain CSS rather than
-   utility variants because `:placeholder-shown` chains are exactly the kind
-   of selector that silently fails to compile — and a broken label is a
-   broken form.
-   ------------------------------------------------------------------------- */
-
+/* --- Form fields --------------------------------------------------------- */
 .field-wrap {
   position: relative;
 }
@@ -575,7 +663,7 @@ html.lenis body {
 }
 
 .field:focus {
-  border-bottom-color: var(--color-brass);
+  border-bottom-color: var(--color-amber);
 }
 
 .field-label {
@@ -598,16 +686,17 @@ html.lenis body {
 }
 
 .field:focus + .field-label {
-  color: var(--color-brass);
+  color: var(--color-amber);
 }
 
-/* Chip toggles for budget / timeline / service */
+/* Chip toggles */
 .chip {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   border-radius: 999px;
   border: 1px solid var(--color-sand);
+  background: var(--color-mist);
   color: var(--color-clay);
   padding: 0.625rem 1rem;
   transition:
@@ -649,7 +738,7 @@ html.lenis body {
   left: 0.75rem;
   z-index: 200;
   transform: translateY(-160%);
-  background: var(--color-brass);
+  background: var(--color-amber);
   color: var(--color-ink);
   padding: 0.75rem 1.25rem;
   border-radius: 999px;

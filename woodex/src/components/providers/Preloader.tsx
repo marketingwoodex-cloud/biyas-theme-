@@ -91,7 +91,7 @@ export default function Preloader() {
       {/* Hairline that draws across the seam as loading completes. */}
       <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
         <div
-          className="h-full bg-brass origin-left"
+          className="h-full bg-amber origin-left"
           style={{
             transform: `scaleX(${opening ? 1 : pct / 100})`,
             opacity: opening ? 0 : 1,
@@ -122,7 +122,7 @@ export default function Preloader() {
             </div>
           ))}
         </div>
-        <div className="t-label text-brass tabular-nums">
+        <div className="t-label text-amber tabular-nums">
           {String(pct).padStart(3, "0")}
         </div>
       </div>

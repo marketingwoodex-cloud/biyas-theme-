@@ -26,26 +26,26 @@ import { cta, contact } from "@/lib/brand";
 const SLIDES = [
   {
     img: "/img/hero-01.jpg",
-    alt: "Fluted walnut reception wall with brass reveals and honed travertine floor, raked by afternoon light",
+    alt: "Fluted walnut reception wall with amber reveals and honed travertine floor, raked by afternoon light",
     eyebrow: "Workplace",
-    lines: ["Rooms that", "argue your case"],
-    aside: "before you speak",
+    lines: ["We turn ideas", "into spaces"],
+    aside: "that get built",
     note: "Meridian Capital HQ — 11,400 sq ft, Lahore",
   },
   {
     img: "/img/hero-02.jpg",
     alt: "Luxury residential living space with oak slatted ceiling, limestone fireplace and warm cove lighting at dusk",
     eyebrow: "Residential",
-    lines: ["A home that reads", "as one idea"],
-    aside: "room to room",
+    lines: ["See it. Understand it.", "Build it."],
+    aside: "stills first",
     note: "Villa Noor — 8,200 sq ft, DHA Phase VI",
   },
   {
     img: "/img/hero-03.jpg",
-    alt: "Boutique hospitality lobby with sculptural end-grain walnut reception desk and ribbed brass screen",
+    alt: "Boutique hospitality lobby with sculptural end-grain walnut reception desk and ribbed amber screen",
     eyebrow: "Hospitality",
-    lines: ["Every detail", "earns its place"],
-    aside: "and its cost",
+    lines: ["Drawn, documented,", "then built"],
+    aside: "by one team",
     note: "The Long Room — 96 covers, MM Alam Road",
   },
 ];
@@ -155,7 +155,7 @@ export default function Hero() {
             {SLIDES.map((sl, n) => (
               <span
                 key={sl.eyebrow}
-                className="t-label absolute inset-x-0 flex items-center gap-2.5 text-brass"
+                className="t-label absolute inset-x-0 flex items-center gap-2.5 text-amber"
                 style={{
                   transform: `translateY(${(n - i) * 120}%)`,
                   opacity: n === i ? 1 : 0,
@@ -226,7 +226,7 @@ export default function Hero() {
                 </span>
                 <span className="relative block h-px w-10 bg-[var(--hairline-dark)] sm:w-16">
                   <span
-                    className="absolute inset-y-0 left-0 bg-brass"
+                    className="absolute inset-y-0 left-0 bg-amber"
                     style={{
                       width: n === i ? `${progress * 100}%` : n < i ? "100%" : "0%",
                       opacity: n === i ? 1 : 0.25,
@@ -241,6 +241,24 @@ export default function Hero() {
         </div>
       </motion.div>
 
+      {/* ---- Kinetic wordmark ----
+             The identity's signature sign-off: the brand name set enormous,
+             cropped by the viewport edge, at low opacity. It reads as a
+             watermark pressed into the photograph rather than as a headline,
+             which is why it can be this large without competing with the H1. */}
+      <motion.div
+        style={{ opacity: fade }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden"
+        aria-hidden
+      >
+        <p
+          className="t-wordmark translate-y-[26%] whitespace-nowrap text-center text-bone/[0.09]"
+          style={{ fontSize: "clamp(5rem, 21vw, 20rem)" }}
+        >
+          Woodex
+        </p>
+      </motion.div>
+
       {/* ---- Scroll cue ---- */}
       <motion.div
         style={{ opacity: fade }}
@@ -248,7 +266,7 @@ export default function Hero() {
       >
         <span className="t-label text-clay">Scroll</span>
         <span className="relative block h-10 w-px overflow-hidden bg-[var(--hairline-dark)]">
-          <span className="absolute inset-x-0 h-4 bg-brass" style={{ animation: "cue 2.2s cubic-bezier(0.76,0,0.24,1) infinite" }} />
+          <span className="absolute inset-x-0 h-4 bg-amber" style={{ animation: "cue 2.2s cubic-bezier(0.76,0,0.24,1) infinite" }} />
         </span>
       </motion.div>
 
