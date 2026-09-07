@@ -65,34 +65,41 @@ export default function FeaturedWork() {
                   distance={8}
                 />
 
-                <div className="mt-5 flex items-start justify-between gap-6 border-t border-sand pt-4">
-                  <div>
-                    <div className="flex items-center gap-3">
-                      <span className="t-meta text-amber">{p.index}</span>
-                      <span className="t-label text-clay">{p.sector}</span>
-                    </div>
-                    <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-amber">
-                      {p.title}
-                    </h3>
-                    <p className="t-body mt-2 max-w-[46ch] text-clay">{p.summary}</p>
+                {/* Caption.
+                    The previous version put year + area in a right-aligned
+                    `shrink-0` column, which could not compress — on a narrow
+                    grid cell it pushed straight through the container edge and
+                    got clipped. Everything now lives in one flow that wraps. */}
+                <div className="mt-6 border-t border-sand pt-5">
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="t-num text-sm text-amber">{p.index}</span>
+                    <span className="t-label text-clay">{p.sector}</span>
+                    <span className="ml-auto t-meta text-clay/70">{p.year}</span>
                   </div>
-                  <div className="hidden shrink-0 text-right sm:block">
-                    <p className="t-meta text-clay">{p.year}</p>
-                    <p className="t-meta mt-1 text-clay/70">{p.area}</p>
+
+                  <h3 className="t-h3 mt-3 transition-colors duration-500 group-hover:text-amber">
+                    {p.title}
+                  </h3>
+
+                  <p className="t-body mt-3 max-w-[52ch] text-clay">{p.summary}</p>
+
+                  {/* Proof row.
+                      One measured figure per pill, the number set in the text
+                      colour and the descriptor dropped back. Sentence case, no
+                      monospace — these are proof points, not console output. */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="pill">
+                      <span className="pill-figure">{p.area}</span>
+                    </span>
+                    {p.result.slice(0, 2).map((r) => (
+                      <span key={r.label} className="pill">
+                        <span className="pill-figure">{r.value}</span>
+                        <span className="pill-note">{r.label}</span>
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                {/* Result chips — the number is the hook, not the photograph. */}
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {p.result.slice(0, 2).map((r) => (
-                    <span
-                      key={r.label}
-                      className="t-meta rounded-full border border-sand px-3.5 py-1.5 text-clay"
-                    >
-                      <b className="font-medium text-ink">{r.value}</b> · {r.label}
-                    </span>
-                  ))}
-                </div>
               </Link>
             </Reveal>
           ))}

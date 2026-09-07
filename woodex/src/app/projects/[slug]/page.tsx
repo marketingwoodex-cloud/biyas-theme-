@@ -127,8 +127,8 @@ export default async function ProjectDetail({ params }: { params: Promise<{ slug
                 <p className="t-label text-amber">Material palette</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {p.materials.map((m) => (
-                    <span key={m} className="t-meta rounded-full border border-sand px-4 py-2 text-clay">
-                      {m}
+                    <span key={m} className="pill"><span className="pill-note">
+                      {m}</span>
                     </span>
                   ))}
                 </div>

@@ -15,14 +15,16 @@ import { brand, contact, siteUrl, social } from "@/lib/brand";
    the 8rem hero to 11px labels. Hierarchy is carried by weight, scale and
    tracking rather than by a second typeface, which is why the pages read as
    one voice instead of a magazine spread.
-   Mono is reserved for micro-type — indices, labels, specification data —
-   where it reads as *measurement*, which is literally the brand's claim.
+   Monospace has been removed entirely. Linoxa uses none, and a typewriter
+   face on descriptive copy is what made the previous pass read as a systems
+   dashboard rather than an architecture studio. Tabular figures come from
+   `font-variant-numeric`, which needs no second family.
 
    PERFORMANCE
-   Self-hosted, latin subset, woff2. Inter Tight is variable so the whole
-   100–900 range costs one 44 KB file. `display: swap` plus an explicit
-   size-adjust fallback keeps CLS at zero, and nothing sits on a third-party
-   critical path.
+   Self-hosted, latin subset, woff2. Inter Tight is variable, so the whole
+   100–900 range is ONE 44 KB file — the entire site now runs on a single
+   font request. `display: swap` plus an explicit size-adjust fallback keeps
+   CLS at zero, and nothing sits on a third-party critical path.
    -------------------------------------------------------------------------- */
 
 const sans = localFont({
@@ -34,13 +36,6 @@ const sans = localFont({
   adjustFontFallback: "Arial",
 });
 
-const mono = localFont({
-  src: [{ path: "../fonts/jetbrains-mono-latin-wght-normal.woff2", weight: "100 800", style: "normal" }],
-  variable: "--f-mono",
-  display: "swap",
-  preload: false, // mono is micro-type only — never blocks first paint
-  fallback: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
-});
 
 export const viewport: Viewport = {
   themeColor: "#0E1A2B",
@@ -150,7 +145,7 @@ const orgSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={sans.variable}>
       <body className="grain antialiased">
         <script
           type="application/ld+json"

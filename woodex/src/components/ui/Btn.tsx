@@ -131,7 +131,7 @@ export function Eyebrow({
     tone === "amber" ? "text-amber" : tone === "clay" ? "text-clay" : "text-bone/60";
   return (
     <span className={`t-label inline-flex items-center gap-2.5 ${color} ${className}`}>
-      <span className="inline-block h-px w-6 bg-current opacity-70" aria-hidden />
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-current" aria-hidden />
       {children}
     </span>
   );

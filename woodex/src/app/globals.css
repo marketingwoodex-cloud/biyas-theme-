@@ -27,7 +27,11 @@
      ----------------------------------------------------------------------- */
   --font-display: var(--f-sans), "Helvetica Neue", Arial, sans-serif;
   --font-sans: var(--f-sans), system-ui, sans-serif;
-  --font-mono: var(--f-mono), ui-monospace, monospace;
+  /* Mono is retired. Linoxa uses no monospace anywhere, and a typewriter
+     face on descriptive copy is exactly what made this read as "robotic".
+     The token survives only so any stray reference resolves to the grotesk
+     instead of falling back to Courier. */
+  --font-mono: var(--f-sans), system-ui, sans-serif;
 
   /* --- Radius: a brand signature. Nothing in this system is sharp. ------- */
   --radius-sm: 10px;
@@ -51,6 +55,13 @@
   --r-md: 16px;
   --r-lg: 24px;
   --r-xl: 32px;
+
+  /* Shadows. Tuned to the navy, not to black: a neutral shadow over a cream
+     card on a navy page turns grey and dirty. These are navy-tinted, so the
+     card looks lifted rather than smudged. */
+  --shadow-sm: 0 1px 2px rgba(14, 26, 43, 0.04), 0 2px 8px rgba(14, 26, 43, 0.04);
+  --shadow-md: 0 2px 4px rgba(14, 26, 43, 0.04), 0 12px 28px rgba(14, 26, 43, 0.07);
+  --shadow-lg: 0 4px 8px rgba(14, 26, 43, 0.05), 0 28px 64px rgba(14, 26, 43, 0.12);
 }
 
 /* --- Reset / base -------------------------------------------------------- */
@@ -192,20 +203,36 @@ html.lenis body {
   font-weight: 400;
 }
 
+/* Eyebrow / micro-label.
+   Sentence case, sans, no tracking blast. Linoxa's eyebrows read "Lasting
+   design" and "Trusted partners built together" — human sentences at a small
+   size. 11px UPPERCASE MONO WITH 0.16em TRACKING is a technical readout, and
+   it made every section header look like a systems dashboard. */
 .t-label {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  line-height: 1.5;
+  letter-spacing: 0;
 }
 
+/* Sub text — style guide: 0.875rem / 185% / 400. Captions, meta rows,
+   image credits, table data. */
 .t-meta {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  line-height: 1.6;
-  letter-spacing: 0.03em;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: 0;
+}
+
+/* The one place a technical voice is still correct: bare index numerals
+   and measured figures, where tabular alignment genuinely helps. */
+.t-num {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
 }
 
 /* Giant kinetic wordmark.
@@ -444,11 +471,13 @@ html.lenis body {
   gap: 1.125rem;
   padding: 0.5rem 0.5rem 0.5rem 1.375rem;
   border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  /* Style guide: button text 0.9375rem / 162% / weight 500, sentence case.
+     Uppercase mono at 11px was unreadable at a glance and shouted. */
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  line-height: 1.62;
+  letter-spacing: 0;
   white-space: nowrap;
   overflow: hidden;
   transition:
@@ -566,7 +595,7 @@ html.lenis body {
   position: relative;
   display: block;
   overflow: hidden;
-  height: 0.6875rem;
+  height: 1.52em;
 }
 .btn-roll span {
   display: block;
@@ -742,9 +771,10 @@ html.lenis body {
 
 /* Chip toggles */
 .chip {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.03em;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0;
   border-radius: 999px;
   border: 1px solid var(--color-sand);
   background: var(--color-mist);
@@ -765,6 +795,210 @@ html.lenis body {
   background: var(--color-ink);
   border-color: var(--color-ink);
   color: var(--color-bone);
+}
+
+/* --- Shadow utilities ---------------------------------------------------- */
+.shadow-s { box-shadow: var(--shadow-sm); }
+.shadow-m { box-shadow: var(--shadow-md); }
+.shadow-l { box-shadow: var(--shadow-lg); }
+
+/* Cards on cream get a shadow instead of a border — a 1px line around a white
+   card on a cream page reads as a wireframe; a soft lift reads as a surface. */
+.card,
+.card-oat {
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+.card-hover:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+/* --- Lists ---------------------------------------------------------------
+   Style-guide lists, restyled so they never render as browser defaults.
+   Unordered uses a small amber rule rather than a bullet — a dot is generic,
+   a rule echoes the eyebrow tick and ties the list to the type system.
+   ------------------------------------------------------------------------- */
+.list-ul {
+  list-style: none;
+  padding: 0;
+}
+
+.list-ul > li {
+  position: relative;
+  padding-left: 1.75rem;
+  line-height: 1.62;
+}
+
+.list-ul > li + li {
+  margin-top: 0.75rem;
+}
+
+.list-ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--color-amber);
+}
+
+.list-ol {
+  list-style: none;
+  padding: 0;
+  counter-reset: li;
+}
+
+.list-ol > li {
+  position: relative;
+  padding-left: 2.25rem;
+  line-height: 1.62;
+  counter-increment: li;
+}
+
+.list-ol > li + li {
+  margin-top: 0.75rem;
+}
+
+.list-ol > li::before {
+  content: counter(li, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  color: var(--color-amber);
+}
+
+/* --- Rich text -----------------------------------------------------------
+   One class that styles CMS/markdown output, so editors cannot produce an
+   unstyled page. Matches the style-guide scale exactly.
+   ------------------------------------------------------------------------- */
+.rt > * + * {
+  margin-top: 1.5rem;
+}
+
+.rt h2 { font-size: clamp(1.75rem, 3.1vw, 2.812rem); line-height: 1.22; font-weight: 500; letter-spacing: -0.018em; margin-top: 3rem; }
+.rt h3 { font-size: clamp(1.375rem, 2.1vw, 1.875rem); line-height: 1.33; font-weight: 500; letter-spacing: -0.012em; margin-top: 2.75rem; }
+.rt h4 { font-size: clamp(1.2rem, 1.7vw, 1.562rem); line-height: 1.28; font-weight: 500; margin-top: 2.5rem; }
+.rt h5 { font-size: 1.25rem; line-height: 1.5; font-weight: 500; margin-top: 2rem; }
+.rt h6 { font-size: 1.125rem; line-height: 1.55; font-weight: 400; margin-top: 2rem; }
+
+.rt p { font-size: 1rem; line-height: 1.62; }
+.rt a { color: var(--color-amber); text-decoration: underline; text-underline-offset: 3px; }
+.rt strong { font-weight: 500; color: inherit; }
+.rt img { border-radius: var(--r-lg); margin-top: 2.5rem; }
+
+.rt blockquote {
+  border-left: 2px solid var(--color-amber);
+  padding-left: 1.5rem;
+  font-size: clamp(1.2rem, 1.7vw, 1.562rem);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* --- Icon button / social ------------------------------------------------ */
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--hairline-dark);
+  color: color-mix(in oklab, var(--color-bone) 60%, transparent);
+  transition:
+    background 0.4s var(--ease-out-expo),
+    color 0.4s var(--ease-out-expo),
+    border-color 0.4s var(--ease-out-expo),
+    transform 0.4s var(--ease-out-expo);
+}
+
+.icon-btn:hover {
+  background: var(--color-bone);
+  border-color: var(--color-bone);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+}
+
+.icon-btn-light {
+  border-color: var(--hairline);
+  color: var(--color-clay);
+}
+
+.icon-btn-light:hover {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bone);
+}
+
+/* --- Data pill -----------------------------------------------------------
+   Used for measured results ("0.58s reverberation"). The figure carries the
+   weight; the descriptor stays quiet. Previously both sat in uppercase mono,
+   which turned a proof point into a log line.
+   ------------------------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border: 1px solid var(--hairline);
+  background: var(--color-mist);
+  box-shadow: var(--shadow-sm);
+}
+
+.pill-dark {
+  border-color: var(--hairline-dark);
+  background: color-mix(in oklab, var(--color-bone) 5%, transparent);
+  box-shadow: none;
+}
+
+.pill-figure {
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.pill-dark .pill-figure {
+  color: var(--color-bone);
+}
+
+.pill-note {
+  color: var(--color-clay);
+}
+
+.pill-dark .pill-note {
+  color: color-mix(in oklab, var(--color-bone) 50%, transparent);
+}
+
+/* --- Inputs: placeholder + states ---------------------------------------- */
+.field::placeholder {
+  color: transparent;
+}
+
+.field:focus::placeholder {
+  color: color-mix(in oklab, var(--color-clay) 60%, transparent);
+}
+
+.field[aria-invalid="true"] {
+  border-bottom-color: #b4472f;
+}
+
+.form-note {
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--color-clay);
+}
+
+.form-success {
+  border-radius: var(--r-md);
+  border: 1px solid color-mix(in oklab, var(--color-amber) 40%, transparent);
+  background: color-mix(in oklab, var(--color-amber) 8%, transparent);
+  padding: 1rem 1.25rem;
 }
 
 /* --- Preloader safety net ------------------------------------------------
