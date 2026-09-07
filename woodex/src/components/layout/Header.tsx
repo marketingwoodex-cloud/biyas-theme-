@@ -14,7 +14,7 @@ import { Btn } from "@/components/ui/Btn";
 const NAV = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services", mega: true },
-  { href: "/services/3d-visualisation-studio", label: "3D Studio" },
+  { href: "/services/3d-visualization", label: "3D Studio" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/process", label: "Process" },
   { href: "/contact", label: "Contact" },
@@ -167,7 +167,7 @@ export default function Header() {
               <div className="col-span-1 pr-8">
                 <p className="t-label text-bronze">What we do</p>
                 <p className="t-body mt-4 max-w-[22ch] text-clay">
-                  Seven disciplines, one contract. Design, manufacture and site — never subcontracted apart.
+                  Six services, one contract. Design, documentation and site delivery — coordinated, priced and reported as one.
                 </p>
                 <Link href="/services" className="ulink t-label mt-6 inline-block text-bone" data-cursor="link">
                   All services →

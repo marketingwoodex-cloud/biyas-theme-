@@ -21,7 +21,7 @@ export default function Manifesto() {
             <div className="relative">
               <Parallax
                 src="/img/svc-joinery.jpg"
-                alt="Woodex workshop interior: stacked walnut panels, hand tools and sawdust suspended in window light"
+                alt="Woodex studio: drawings and finish samples under review before a commercial fit-out"
                 className="wipe aspect-[4/5] w-full"
                 sizes="(max-width: 900px) 100vw, 40vw"
                 distance={9}
@@ -32,10 +32,10 @@ export default function Manifesto() {
                 className="fade-up absolute -bottom-10 -right-6 w-[58%] max-w-[17rem] border border-sand/60 bg-bone p-5 shadow-[0_24px_60px_-24px_rgba(11,10,8,.35)] sm:-right-10"
                 style={{ transitionDelay: "420ms" }}
               >
-                <p className="t-label text-bronze">Shop standard</p>
-                <p className="num mt-3 text-ink">2mm</p>
+                <p className="t-label text-bronze">Standard</p>
+                <p className="num mt-3 text-ink">0</p>
                 <p className="t-meta mt-2 text-clay">
-                  Manufacturing tolerance across every unit we build.
+                  Items executed without priced scope and written approval.
                 </p>
               </div>
             </div>
@@ -49,37 +49,39 @@ export default function Manifesto() {
               as="h2"
               className="t-h1 mt-7 text-ink"
               lines={[
-                <>We started because</>,
-                <>
-                  the drawing kept <span className="t-aside">losing</span>.
-                </>,
+                <span key="a">Almost right</span>,
+                <span key="b">
+                  is <span className="t-aside">wrong</span>.
+                </span>,
               ]}
             />
 
             <div className="mt-9 max-w-[54ch] space-y-5">
               <p className="t-lede text-ink/80">
-                Years ago our founder handed a joinery drawing to a subcontractor
-                and got back something almost right. A 6mm shadow gap had become 14mm. The
-                veneer no longer matched across the wall. The client noticed in four seconds.
+                Commercial fit-outs rarely fail on one big mistake. They fail on a run of
+                small compromises — each of them defensible, each of them almost right —
+                until the space feels off, the budget has drifted and handover is a
+                negotiation.
               </p>
               <p className="t-body text-clay">
-                It happened on the next project too, and the one after. The problem was never
-                a bad drawing or a bad joiner — it was the gap between them. Two contracts,
-                two margins, two versions of &ldquo;good enough&rdquo;, and a client left to
-                referee a conversation they never asked to be part of.
+                A long-lead item ordered a week late. A services clash found after the
+                ceiling grid is closed. A finish substituted because the original was
+                unavailable and nobody was asked. Individually none of it is anyone&rsquo;s
+                fault. Together it is how sixteen weeks becomes twenty-two.
               </p>
               <p className="t-body text-clay">
-                So we bought a workshop. Today Woodex draws the detail, cuts it, finishes it
-                and hangs it — one contract, one accountable team. The line on the drawing is
-                the line on your wall, because the same people are responsible for both.
+                So we removed the places those compromises hide. Everything is drawn in 3D
+                before it is priced, priced line by line before it is ordered, and nothing
+                is executed without a written approval against it. Not clever — just
+                documented.
               </p>
             </div>
 
             <div className="mt-10 grid gap-6 border-t border-sand pt-8 sm:grid-cols-3">
               {[
-                ["Design", "In-house studio"],
-                ["Manufacture", "Our own workshop"],
-                ["Delivery", "Our own site team"],
+                ["Draw", "3D before spend"],
+                ["Document", "Line-item BOQ"],
+                ["Deliver", "Coordinated & reported"],
               ].map(([k, v], n) => (
                 <div key={k} className="fade-up" style={{ transitionDelay: `${300 + n * 90}ms` }}>
                   <p className="t-label text-bronze">{k}</p>

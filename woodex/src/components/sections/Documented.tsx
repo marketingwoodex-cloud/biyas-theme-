@@ -49,7 +49,7 @@ export default function Documented() {
             </div>
 
             <div className="mt-8">
-              <Btn href="/services/3d-visualisation-studio" variant="light">
+              <Btn href="/services/3d-visualization" variant="light">
                 {cta.secondary}
               </Btn>
             </div>

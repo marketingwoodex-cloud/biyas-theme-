@@ -114,7 +114,7 @@ export const industries: Industry[] = [
       },
       {
         q: "Can you roll the design out to more stores?",
-        a: "Yes. We prototype and sign off one flagship, document it as a standards manual with a fixed fixture kit, then manufacture in batches. Unit costs fall materially from the second store onward.",
+        a: "Yes. We prototype and sign off one flagship, document it as a standards manual with a fixed fixture kit, then place fabrication in batches. Unit costs fall materially from the second store onward.",
       },
       {
         q: "Do you handle mall tenant approvals?",

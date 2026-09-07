@@ -28,8 +28,8 @@ export const process = [
   },
   {
     n: "05",
-    t: "Make & build",
-    d: "Joinery starts in our workshop while wet trades run on site. A dedicated site manager, MEP clash detection before ceilings close, weekly written reports.",
+    t: "Build & coordinate",
+    d: "Specialist trades are scheduled and coordinated against the programme. A dedicated site manager, MEP clash detection before ceilings close, and a written report with photographs every Friday.",
     detail: "Weeks 6–14",
   },
   {
@@ -133,7 +133,7 @@ export const homeFaqs = [
   },
   {
     q: "Do you only work on large projects?",
-    a: "No. Commissions range from a single bespoke library to an 11,000 sq ft headquarters. The common thread is made joinery — if a project is purely decorative with nothing manufactured, we are usually not the right studio.",
+    a: "No, but we do focus. Commissions run from a single floor to a full headquarters, and we work to a 1,000 sq ft minimum. The common thread is a commercial brief with a real programme — if a project is purely decorative styling, we are usually not the right studio and will say so early.",
   },
   {
     q: "Can I hire you for design or 3D only?",
@@ -145,7 +145,7 @@ export const homeFaqs = [
   },
   {
     q: "Which cities do you work in?",
-    a: "We are based in Lahore and deliver across Pakistan, with selected international commissions where the joinery package can be shipped from our workshop.",
+    a: "We are based in Lahore and deliver commercial projects across Pakistan — Karachi, Islamabad, Multan and Faisalabad. Feasibility for a given city is confirmed at proposal stage against scope, scheduling and site readiness.",
   },
 ] as const;
 

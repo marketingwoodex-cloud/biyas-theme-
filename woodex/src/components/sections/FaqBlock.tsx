@@ -18,32 +18,21 @@ export default function FaqBlock({
   title = "Before you ask",
   lines,
   tone = "dark",
+  bare = false,
 }: {
   items: readonly FAQ[];
   title?: string;
   lines?: React.ReactNode[];
   tone?: "dark" | "light";
+  /** Renders the accordion only — no section wrapper, no heading column.
+      For pages that supply their own layout around it. */
+  bare?: boolean;
 }) {
   const [open, setOpen] = useState<number | null>(0);
-  const light = tone === "light";
+  const light = tone === "light" || bare;
 
-  return (
-    <section className={light ? "bg-oat text-ink" : "bg-soot text-bone"}>
-      <div className="shell-wide act">
-        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12">
-          <Reveal className="lg:col-span-4">
-            <div className="lg:sticky lg:top-32">
-              <Eyebrow tone={light ? "clay" : "bronze"}>{title}</Eyebrow>
-              <SplitLines
-                as="h2"
-                className="t-h2 mt-6"
-                lines={lines ?? [<span key="a">Straight answers,</span>, <span key="b">no <span className="t-aside">brochure voice</span>.</span>]}
-              />
-            </div>
-          </Reveal>
-
-          <div className="lg:col-span-7 lg:col-start-6">
-            <dl>
+  const accordion = (
+    <dl>
               {items.map((f, i) => {
                 const isOpen = open === i;
                 return (
@@ -97,8 +86,34 @@ export default function FaqBlock({
                   </Reveal>
                 );
               })}
-            </dl>
-          </div>
+    </dl>
+  );
+
+  if (bare) return accordion;
+
+  return (
+    <section className={light ? "bg-oat text-ink" : "bg-soot text-bone"}>
+      <div className="shell-wide act">
+        <div className="grid gap-x-12 gap-y-10 lg:grid-cols-12">
+          <Reveal className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
+              <Eyebrow tone={light ? "clay" : "bronze"}>{title}</Eyebrow>
+              <SplitLines
+                as="h2"
+                className="t-h2 mt-6"
+                lines={
+                  lines ?? [
+                    <span key="a">Straight answers,</span>,
+                    <span key="b">
+                      no <span className="t-aside">brochure voice</span>.
+                    </span>,
+                  ]
+                }
+              />
+            </div>
+          </Reveal>
+
+          <div className="lg:col-span-7 lg:col-start-6">{accordion}</div>
         </div>
       </div>
     </section>

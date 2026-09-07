@@ -58,7 +58,7 @@ export const locations: Location[] = [
     ],
     image: "/img/hero-01.jpg",
     intro: [
-      "Lahore is where our workshop, our drawing office and our site teams are. That proximity is the practical difference: a survey can happen the day after a call, a material sample can be dropped at your reception, and a snag can be looked at in person rather than described over a phone.",
+      "Lahore is where our studio and our site coordination team are based. That proximity is the practical difference: a survey can happen the day after a call, a material sample can be dropped at your reception, and a snag can be looked at in person rather than described over a phone.",
       "The city's commercial stock ranges from purpose-built towers on Main Boulevard to converted Gulberg houses operating as offices and clinics. Those are very different fit-out problems. A tower gives you a regular grid, a services riser and a landlord specification to satisfy. A converted house gives you thick walls, non-standard levels, an electrical supply designed for a family, and almost no floor plan that matches reality.",
     ],
     local: [

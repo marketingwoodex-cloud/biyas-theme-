@@ -168,7 +168,7 @@ export const services: Service[] = [
       { t: "Dilapidation & strip-out", d: "Including making good to landlord requirements and waste documentation." },
       { t: "Partitions, ceilings, flooring", d: "Acoustic and fire ratings specified per zone, not applied uniformly." },
       { t: "Electrical, data & HVAC", d: "Coordinated, clash-detected and commissioned, with as-built drawings issued." },
-      { t: "Joinery manufacture & install", d: "Reception desks, storage walls, tea points and meeting furniture." },
+      { t: "Joinery procurement & install", d: "Reception desks, storage walls, tea points and meeting furniture — specified, fabricated to our drawings and installed under our supervision." },
       { t: "Fire strategy & compliance", d: "Escape widths, surface-spread-of-flame class and detection coordination." },
       { t: "Weekly written reporting", d: "Progress against the dated programme, with photographs and a variation register." },
     ],
@@ -227,12 +227,12 @@ export const services: Service[] = [
       "Where the eye lands at the door, where the hand reaches, where the queue forms. We design the customer route first and the fixtures second, because retrofitted display never quite fits and customers feel it without being able to name it.",
     body: [
       "The common mistake is treating the shop as a container for fixtures bought later. The room and the fixtures have to be one design: the plinth height that suits your product, the rail depth that suits your hanger, the lighting angle that suits your fabric.",
-      "We plan the decompression zone at the entrance, the power wall on the customer's natural right turn, the sightline that pulls them to the back, and the till position that lets one person cover the floor. Then we build the fixtures as a repeatable, shippable system.",
+      "We plan the decompression zone at the entrance, the power wall on the customer's natural right turn, the sightline that pulls them to the back, and the till position that lets one person cover the floor. Then we specify and procure the fixtures as a repeatable, documented kit so the next unit costs less than the first.",
       "Lighting is where most retail is lost. High-CRI accent lighting on adjustable tracks, with beam angles chosen per product type, so texture and colour survive the trip from studio to shelf.",
     ],
     deliverables: [
       { t: "Customer flow & zoning", d: "Decompression, power wall, adjacency and till placement modelled against your product mix." },
-      { t: "Modular fixture systems", d: "Rails, plinths, shelving and vitrines designed as a repeatable kit for multi-site rollout." },
+      { t: "Modular fixture systems", d: "Rails, plinths, shelving and vitrines designed and specified as a repeatable kit for multi-site rollout." },
       { t: "High-CRI retail lighting", d: "CRI 95+ accent lighting with beam angles and colour temperature matched to merchandise." },
       { t: "Shopfront & signage", d: "Facade, glazing, entrance detailing and illuminated signage to landlord criteria." },
       { t: "Rollout standards manual", d: "Documentation so unit two costs less and looks identical to unit one." },
@@ -247,11 +247,11 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Can you deliver a multi-site rollout?",
-        a: "Yes. We prototype and sign off one flagship, document it as a standards manual with a fixed fixture kit, then manufacture in batches. Unit economics improve materially from the second store onward, and we price the rollout that way.",
+        a: "Yes. We prototype and sign off one flagship, document it as a standards manual with a fixed fixture kit, then place fabrication in batches. Unit economics improve materially from the second store onward, and we price the rollout that way.",
       },
       {
         q: "How quickly can a store be fitted out?",
-        a: "A 1,200 sq ft unit with a pre-manufactured fixture kit installs in 10–14 days on site. The lead time sits in the workshop, which is why we start manufacturing during landlord approvals rather than after them.",
+        a: "A 1,200 sq ft unit with a pre-fabricated fixture kit installs in 10–14 days on site. The lead time sits with the fabricator, which is why we place those orders during landlord approvals rather than after them.",
       },
       {
         q: "Will you work with our existing brand guidelines?",

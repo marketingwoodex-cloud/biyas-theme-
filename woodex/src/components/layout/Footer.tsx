@@ -23,8 +23,8 @@ import { SplitLines } from "@/components/ui/SplitLines";
 const PRACTICE = [
   { href: "/about", label: "About" },
   { href: "/about#process", label: "Process" },
-  { href: "/services/craft-bespoke-joinery", label: "Woodex Craft" },
-  { href: "/services/3d-visualisation-studio", label: "3D Studio" },
+  { href: "/services/turnkey-fit-out", label: "Turnkey Fit-Out" },
+  { href: "/services/3d-visualization", label: "3D Studio" },
   { href: "/contact", label: "Careers" },
 ];
 

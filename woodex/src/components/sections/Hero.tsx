@@ -51,7 +51,7 @@ const SLIDES = [
     lines: ["Drawn, documented,", "then built"],
     aside: "by one team",
     blurb:
-      "One studio holds the drawing, the workshop and the site — so the detail you approved is the detail that gets installed.",
+      "One studio holds the drawing, the documentation and the site — so the detail you approved is the detail that gets installed.",
     note: "The Long Room — 96 covers, MM Alam Road",
   },
 ];
@@ -194,20 +194,22 @@ export default function Hero() {
             ))}
           </div>
 
+          {/* The sr-only duplicate was doubling the headline in the text layer
+              ("...that get builtWe turn ideasinto spaces"). The visible lines
+              now carry the accessible text directly, with a real space between
+              them, so there is exactly one copy of the headline. */}
           <h1 className="t-h1 max-w-[16ch] text-bone">
-            <span className="sr-only">
-              {s.lines.join(" ")} {s.aside}
-            </span>
-            {[0, 1].map((li) => (
-              <span key={li} className="block overflow-hidden pb-[0.06em]">
-                <span
-                  className="block"
-                  style={{ animation: `heroIn .95s cubic-bezier(0.16,1,0.3,1) ${li * 0.09}s both` }}
-                  key={`${i}-${li}`}
-                  aria-hidden
-                >
-                  {s.lines[li]}
+            {s.lines.map((ln, li) => (
+              <span key={`${i}-${li}`}>
+                <span className="block overflow-hidden pb-[0.06em]">
+                  <span
+                    className="block"
+                    style={{ animation: `heroIn .95s cubic-bezier(0.16,1,0.3,1) ${li * 0.09}s both` }}
+                  >
+                    {ln}
+                  </span>
                 </span>
+                {li < s.lines.length - 1 && " "}
               </span>
             ))}
           </h1>

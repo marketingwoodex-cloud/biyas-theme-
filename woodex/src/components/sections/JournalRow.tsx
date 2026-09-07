@@ -18,7 +18,7 @@ export default function JournalRow() {
             <SplitLines
               as="h2"
               className="t-h1 mt-6"
-              lines={[<>Notes from the</>, <>workshop <span className="t-aside !text-bronze">floor</span>.</>]}
+              lines={[<span key="a">Notes from</span>, <span key="b">the <span className="t-aside">site</span>.</span>]}
             />
           </div>
           <div className="fade-up flex lg:col-span-4 lg:col-start-9 lg:justify-end" style={{ transitionDelay: "200ms" }}>

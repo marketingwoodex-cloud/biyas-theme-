@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from "react";
+import { Fragment, type ElementType, type ReactNode } from "react";
 
 /**
  * Line-masked text. Each line sits in an overflow-hidden box and slides up
@@ -22,17 +22,17 @@ export function SplitLines({
   return (
     <Tag className={className}>
       {lines.map((line, i) => (
-        <span className="line-mask" key={i}>
-          <span style={{ transitionDelay: `${base + i * stagger}ms` }}>
-            {line}
-            {/* Each line sits in its own overflow-hidden block, which means the
-                accessibility tree and the clipboard see the lines butted
-                together — "We bought a" + "workshop" reads as "aworkshop".
-                A screen-reader-only space restores the word boundary without
-                affecting layout, because it lives inside the mask. */}
-            {i < lines.length - 1 && <span className="sr-only"> </span>}
+        <Fragment key={i}>
+          <span className="line-mask">
+            <span style={{ transitionDelay: `${base + i * stagger}ms` }}>{line}</span>
           </span>
-        </span>
+          {/* Each line is its own overflow-hidden block, so textContent and the
+              clipboard butt them together — "Six services you" + "can actually
+              buy" reads as "youcan". A raw text node between the blocks is
+              always present in the text layer and collapses visually, which an
+              sr-only span does not reliably do across extractors. */}
+          {i < lines.length - 1 && " "}
+        </Fragment>
       ))}
     </Tag>
   );
