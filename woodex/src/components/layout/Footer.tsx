@@ -30,7 +30,8 @@ const PRACTICE = [
 
 const EXPLORE = [
   { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/case-studies", label: "Case Studies" },
   { href: "/process", label: "Process" },
   { href: "/request-proposal", label: "Request a Proposal" },
   { href: "/contact", label: "Contact" },
@@ -177,8 +178,8 @@ export default function Footer() {
           <Link href="/services" className="ulink t-meta text-bone/40 hover:text-bone" data-cursor="link">
             Services
           </Link>
-          <Link href="/projects" className="ulink t-meta text-bone/40 hover:text-bone" data-cursor="link">
-            Projects
+          <Link href="/portfolio" className="ulink t-meta text-bone/40 hover:text-bone" data-cursor="link">
+            Portfolio
           </Link>
           <Link href="/contact" className="ulink t-meta text-bone/40 hover:text-bone" data-cursor="link">
             Contact

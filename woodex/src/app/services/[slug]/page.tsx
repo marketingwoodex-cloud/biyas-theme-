@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+
 import PageHero from "@/components/layout/PageHero";
 import Reveal from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
@@ -10,7 +10,8 @@ import { Btn, Eyebrow } from "@/components/ui/Btn";
 import FaqBlock from "@/components/sections/FaqBlock";
 import Jsonld, { breadcrumbSchema, faqSchema } from "@/components/seo/Jsonld";
 import { services, getService } from "@/lib/content/services";
-import { projects } from "@/lib/content/projects";
+import { portfolio } from "@/lib/content/portfolio";
+import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import { siteUrl, cta } from "@/lib/brand";
 
 export const dynamicParams = false;
@@ -51,8 +52,8 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   if (!s) notFound();
 
   const others = services.filter((x) => x.slug !== s.slug);
-  const related = projects.filter((p) => p.serviceSlug === s.slug).slice(0, 3);
-  const fallback = projects.slice(0, 3);
+  const related = portfolio.filter((x) => x.serviceSlug === s.slug).slice(0, 3);
+  const fallback = portfolio.slice(0, 3);
   const shown = related.length ? related : fallback;
 
   return (
@@ -214,7 +215,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <Eyebrow tone="clay">Proof</Eyebrow>
               <SplitLines as="h2" className="t-h2 mt-5" lines={[<>Built, not rendered.</>]} />
             </div>
-            <Btn href="/projects" variant="light">
+            <Btn href="/portfolio" variant="light">
               All projects
             </Btn>
           </Reveal>
@@ -222,22 +223,27 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
           <div className="grid gap-8 md:grid-cols-3">
             {shown.map((p, i) => (
               <Reveal key={p.slug} delay={i * 90}>
-                <Link href={`/projects/${p.slug}`} className="group block" data-cursor="view" data-cursor-label="View">
-                  <div className="tone wipe aspect-[4/5] w-full">
-                    <Image
-                      src={p.image}
-                      alt={`${p.title} — ${p.sector} project by Woodex Interior`}
-                      fill
-                      sizes="(max-width:768px) 100vw, 30vw"
-                      quality={76}
-                      className="object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                    />
-                  </div>
+                <Link
+                  href={p.hasCaseStudy ? `/case-studies/${p.slug}` : `/portfolio?type=${p.category.toLowerCase()}`}
+                  className="group block"
+                  data-cursor="view"
+                  data-cursor-label="View"
+                >
+                  <PlaceholderImage
+                    src={p.thumbnail.src}
+                    alt={p.thumbnail.alt}
+                    pending={p.thumbnail.pending}
+                    ratio="4:3"
+                    sizes="(max-width:768px) 100vw, 30vw"
+                    className="wipe"
+                  />
                   <div className="mt-4 flex items-center gap-3">
-                    <span className="t-label text-bronze">{p.sector}</span>
-                    <span className="t-meta text-clay/70">{p.year}</span>
+                    <span className="t-label text-bronze">{p.category}</span>
+                    <span className="t-meta text-clay">{p.city}</span>
                   </div>
-                  <h3 className="t-h3 mt-2 transition-colors duration-500 group-hover:text-bronze">{p.title}</h3>
+                  <h3 className="t-h4 mt-2 transition-colors duration-500 group-hover:text-bronze">
+                    {p.name}
+                  </h3>
                   <p className="t-body mt-2 text-clay">{p.summary}</p>
                 </Link>
               </Reveal>

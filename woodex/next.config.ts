@@ -25,8 +25,7 @@ const nextConfig: NextConfig = {
      never dead-ends. Delete both when the real routes land. */
   async redirects() {
     return [
-      { source: "/portfolio", destination: "/projects", permanent: false },
-      { source: "/case-studies", destination: "/projects", permanent: false },
+      { source: "/projects", destination: "/portfolio", permanent: true },
     ];
   },
 

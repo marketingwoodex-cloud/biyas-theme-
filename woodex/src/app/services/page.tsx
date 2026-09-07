@@ -137,7 +137,7 @@ export default function ServicesPage() {
               </div>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Btn href="/request-proposal" variant="light">{cta.primary}</Btn>
-                <Btn href="/projects" variant="light">{cta.work}</Btn>
+                <Btn href="/portfolio" variant="light">{cta.work}</Btn>
               </div>
             </Reveal>
           </div>

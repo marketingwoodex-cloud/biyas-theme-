@@ -207,7 +207,7 @@ export default function AboutPage() {
             />
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Btn href="/request-proposal" variant="light">{cta.primary}</Btn>
-              <Btn href="/projects" variant="light">{cta.work}</Btn>
+              <Btn href="/portfolio" variant="light">{cta.work}</Btn>
             </div>
           </Reveal>
         </div>

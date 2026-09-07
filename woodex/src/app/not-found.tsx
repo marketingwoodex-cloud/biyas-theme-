@@ -16,7 +16,7 @@ export default function NotFound() {
 
         <div className="mt-10 flex flex-wrap gap-3">
           <Btn href="/" variant="solid">Back to the studio</Btn>
-          <Btn href="/projects" variant="ghost">See the work</Btn>
+          <Btn href="/portfolio" variant="ghost">See the work</Btn>
         </div>
 
         <div className="mt-16 grid gap-x-8 border-t border-[var(--hairline-dark)] pt-8 sm:grid-cols-2 lg:grid-cols-3">

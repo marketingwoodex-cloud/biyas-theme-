@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/brand";
 import { services } from "@/lib/content/services";
-import { projects } from "@/lib/content/projects";
+import { caseStudies } from "@/lib/content/portfolio";
 import { locations } from "@/lib/content/locations";
 import { industries } from "@/lib/content/industries";
 
@@ -11,7 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${siteUrl}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${siteUrl}/projects`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${siteUrl}/portfolio`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${siteUrl}/case-studies`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${siteUrl}/process`, lastModified: now, changeFrequency: "yearly", priority: 0.8 },
     { url: `${siteUrl}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
     { url: `${siteUrl}/request-proposal`, changeFrequency: "yearly" as const, priority: 0.9 },
     { url: `${siteUrl}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
@@ -25,8 +27,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
-    ...projects.map((p) => ({
-      url: `${siteUrl}/projects/${p.slug}`,
+    // Case studies with a real record only. Placeholder projects stay out of
+    // the sitemap until status flips to "live".
+    ...caseStudies.map((p) => ({
+      url: `${siteUrl}/case-studies/${p.slug}`,
       lastModified: now,
       changeFrequency: "yearly" as const,
       priority: 0.7,

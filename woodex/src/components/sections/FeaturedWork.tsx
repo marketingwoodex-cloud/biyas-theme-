@@ -1,119 +1,139 @@
 import Link from "next/link";
-import { projects } from "@/lib/content/projects";
-import { Parallax } from "@/components/ui/Parallax";
+import { portfolio } from "@/lib/content/portfolio";
+import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import Reveal from "@/components/ui/Reveal";
 import { SplitLines } from "@/components/ui/SplitLines";
 import { Btn, Eyebrow } from "@/components/ui/Btn";
+import { Pending } from "@/components/ui/Stat";
+import { cta } from "@/lib/siteConfig";
 
 /**
- * ACT V — THE EVIDENCE
+ * FEATURED CASE STUDIES
  *
- * An offset editorial grid, not a tidy 3×2. Unequal column widths and
- * vertical offsets make the eye travel diagonally down the page, which
- * slows scanning just enough for the case-study numbers to register.
+ * Offset editorial grid rather than an equal-height card row: unequal spans
+ * force a diagonal read, which slows scanning just enough for each project to
+ * register instead of blurring into a wall of thumbnails.
+ *
+ * Result figures render through <Pending> until the client verifies them. An
+ * unverified number is not a proof point, and showing one as fact is exactly
+ * what the brief forbids.
  */
-
-const LAYOUT = [
-  "lg:col-span-7",
-  "lg:col-span-5 lg:mt-32",
-  "lg:col-span-5",
-  "lg:col-span-7 lg:mt-24",
-  "lg:col-span-6",
-  "lg:col-span-6 lg:mt-20",
-];
-
 export default function FeaturedWork() {
+  const featured = portfolio.filter((p) => p.featured);
+
   return (
-    <section className="relative bg-bone text-ink" id="work">
+    <section className="bg-bone text-ink">
       <div className="shell-wide act">
-        <Reveal className="mb-16 grid gap-8 lg:grid-cols-12 lg:items-end">
+        <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <Eyebrow tone="clay">Selected work</Eyebrow>
             <SplitLines
               as="h2"
               className="t-h1 mt-6"
               lines={[
-                <>Rooms we built,</>,
-                <>
-                  and what they <span className="t-aside !text-bronze">changed</span>.
-                </>,
+                <span key="a">Projects, and</span>,
+                <span key="b">
+                  how they <span className="t-aside">went</span>.
+                </span>,
               ]}
             />
           </div>
-          <div className="fade-up flex lg:col-span-4 lg:col-start-9 lg:justify-end" style={{ transitionDelay: "220ms" }}>
-            <Btn href="/projects" variant="light">
-              All projects
-            </Btn>
+          <div className="fade-up lg:col-span-4 lg:col-start-9" style={{ transitionDelay: "220ms" }}>
+            <p className="t-body text-clay">
+              Each case study covers the brief, the constraints, what we decided and what
+              happened on site — including the parts that were difficult.
+            </p>
+            <Link href="/case-studies" className="ulink t-label mt-6 inline-block text-ink" data-cursor="link">
+              All case studies
+            </Link>
           </div>
         </Reveal>
 
-        <div className="grid gap-x-8 gap-y-16 lg:grid-cols-12">
-          {projects.map((p, i) => (
-            <Reveal key={p.slug} className={LAYOUT[i] ?? "lg:col-span-6"}>
-              <Link
-                href={`/projects/${p.slug}`}
-                className="group block"
-                data-cursor="view"
-                data-cursor-label="View"
+        <div className="mt-16 space-y-20 lg:mt-24 lg:space-y-28">
+          {featured.map((p, i) => (
+            <Reveal key={p.id}>
+              <article
+                className={`grid items-center gap-x-12 gap-y-8 lg:grid-cols-12 ${
+                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
               >
-                <Parallax
-                  src={p.image}
-                  alt={`${p.title} — ${p.sector} interior fit-out by Woodex Interior in ${p.location}`}
-                  className={`wipe w-full ${i % 3 === 1 ? "aspect-[4/5]" : "aspect-[16/11]"}`}
-                  sizes="(max-width: 900px) 100vw, 55vw"
-                  imgClassName="transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]"
-                  distance={8}
-                />
+                <Link
+                  href={`/case-studies/${p.slug}`}
+                  className={`group block ${i % 3 === 1 ? "lg:col-span-6" : "lg:col-span-7"}`}
+                  data-cursor="view"
+                  data-cursor-label="Read"
+                >
+                  <PlaceholderImage
+                    src={p.thumbnail.src}
+                    alt={p.thumbnail.alt}
+                    pending={p.thumbnail.pending}
+                    ratio={i % 3 === 1 ? "4:3" : "16:9"}
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="wipe"
+                  />
+                </Link>
 
-                {/* Caption.
-                    The previous version put year + area in a right-aligned
-                    `shrink-0` column, which could not compress — on a narrow
-                    grid cell it pushed straight through the container edge and
-                    got clipped. Everything now lives in one flow that wraps. */}
-                <div className="mt-6 border-t border-sand pt-5">
+                <div className={i % 3 === 1 ? "lg:col-span-5" : "lg:col-span-4"}>
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <span className="t-num text-sm text-bronze">{p.index}</span>
-                    <span className="t-label text-clay">{p.sector}</span>
-                    <span className="ml-auto t-meta text-clay/70">{p.year}</span>
+                    <span className="t-label text-clay">{p.category}</span>
+                    <span className="ml-auto t-meta text-clay">{p.city}</span>
                   </div>
 
-                  <h3 className="t-h3 mt-3 transition-colors duration-500 group-hover:text-bronze">
-                    {p.title}
+                  <h3 className="t-h3 mt-3">
+                    <Link
+                      href={`/case-studies/${p.slug}`}
+                      className="transition-colors duration-500 hover:text-bronze"
+                      data-cursor="link"
+                    >
+                      {p.name}
+                    </Link>
                   </h3>
 
-                  <p className="t-body mt-3 max-w-[52ch] text-clay">{p.summary}</p>
+                  <p className="t-body mt-3 max-w-[46ch] text-clay">{p.summary}</p>
 
-                  {/* Proof row.
-                      One measured figure per pill, the number set in the text
-                      colour and the descriptor dropped back. Sentence case, no
-                      monospace — these are proof points, not console output. */}
                   <div className="mt-5 flex flex-wrap gap-2">
                     <span className="pill">
-                      <span className="pill-figure">{p.area}</span>
+                      <span className="pill-figure">{p.size}</span>
                     </span>
-                    {/* Unverified figures are greyed and labelled. A metric the
-                        client has not signed off is not a proof point yet. */}
-                    {p.result.slice(0, 2).map((r) => (
-                      <span
-                        key={r.label}
-                        className="pill"
-                        title={r.verified ? undefined : "Pending client verification"}
-                      >
-                        <span className={r.verified ? "pill-figure" : "pill-figure opacity-45"}>
-                          {r.value}
-                        </span>
-                        <span className={r.verified ? "pill-note" : "pill-note opacity-60"}>
-                          {r.label}
-                        </span>
-                      </span>
-                    ))}
+                    <span className="pill">
+                      <span className="pill-figure">{p.duration}</span>
+                    </span>
                   </div>
-                </div>
 
-              </Link>
+                  {/* Unverified results are labelled, never shown as fact. */}
+                  {p.results.some((r) => r.verified) && (
+                    <div className="mt-6 grid grid-cols-2 gap-6 border-t border-sand pt-5">
+                      {p.results
+                        .filter((r) => r.verified)
+                        .slice(0, 2)
+                        .map((r) => (
+                          <div key={r.label}>
+                            <p className="t-num text-2xl leading-none">{r.value}</p>
+                            <p className="t-meta mt-1.5 text-clay">{r.label}</p>
+                          </div>
+                        ))}
+                    </div>
+                  )}
+
+                  {!p.results.some((r) => r.verified) && p.status === "placeholder" && (
+                    <div className="mt-6 grid grid-cols-2 gap-6 border-t border-sand pt-5">
+                      {p.results.slice(0, 2).map((r) => (
+                        <Pending key={r.label} label={r.label} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-20 flex justify-center">
+          <Btn href="/portfolio" variant="light">
+            {cta.work}
+          </Btn>
+        </Reveal>
       </div>
     </section>
   );
