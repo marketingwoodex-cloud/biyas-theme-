@@ -1,0 +1,685 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   WOODEX INTERIOR — DESIGN SYSTEM
+   Tokens mirror src/lib/brand.ts. Change both together.
+   ========================================================================== */
+
+@theme {
+  /* --- Colour ------------------------------------------------------------ */
+  --color-ink: #0b0a08;
+  --color-soot: #141210;
+  --color-char: #1c1916;
+  --color-bone: #f0eae0;
+  --color-oat: #e2d9ca;
+  --color-sand: #cdbfa9;
+  --color-clay: #9c8a70;
+  --color-brass: #c08a3e;
+  --color-brass-light: #e5c489;
+  --color-moss: #18251f;
+
+  /* --- Type -------------------------------------------------------------- */
+  --font-display: var(--f-display), "Times New Roman", serif;
+  --font-sans: var(--f-sans), system-ui, sans-serif;
+  --font-mono: var(--f-mono), ui-monospace, monospace;
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+:root {
+  /* Fluid gutter: 24px phone → 88px desktop. One value, whole site. */
+  --gutter: clamp(1.25rem, 4.4vw, 5.5rem);
+  /* Vertical rhythm between acts. */
+  --act: clamp(6rem, 12vw, 12.5rem);
+  --hairline: color-mix(in oklab, var(--color-clay) 38%, transparent);
+  --hairline-dark: color-mix(in oklab, var(--color-bone) 16%, transparent);
+  --shell: 96rem;
+}
+
+/* --- Reset / base -------------------------------------------------------- */
+* {
+  min-width: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  font-feature-settings: "ss01", "cv05";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass-light);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   TYPE SCALE
+   Display is optically tightened as it grows — large serif needs negative
+   tracking to avoid looking loose; small text needs positive tracking.
+   ========================================================================== */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(3.25rem, 9.2vw, 10.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.035em;
+}
+
+.t-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 6.6vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+}
+
+.t-h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+}
+
+.t-h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+/* Serif italic = the studio's "aside" voice. Used sparingly, one word at a time. */
+.t-aside {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-brass-light);
+}
+
+.t-lede {
+  font-size: clamp(1.0625rem, 1.55vw, 1.375rem);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+}
+
+.t-body {
+  font-size: clamp(0.9375rem, 1.05vw, 1rem);
+  line-height: 1.68;
+}
+
+/* Mono micro-type: labels, indices, data. Never for reading. */
+.t-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+.t-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   LAYOUT
+   ========================================================================== */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.shell-wide {
+  width: 100%;
+  padding-inline: var(--gutter);
+}
+
+.act {
+  padding-block: var(--act);
+}
+
+/* Editorial 12-col grid, collapses to 1 under 900px. */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+@media (max-width: 900px) {
+  .grid-12 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   SURFACE TREATMENTS
+   ========================================================================== */
+
+/* Film grain — 4% opacity. Removes the "flat vector" feel from big colour
+   fields and unifies AI/photographic imagery with flat UI. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grainShift 0.7s steps(4) infinite;
+}
+
+@keyframes grainShift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2%, 1%); }
+  50% { transform: translate(1%, -2%); }
+  75% { transform: translate(-1%, -1%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Hairline that draws itself on scroll. */
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--hairline);
+  transform-origin: left;
+}
+
+.rule-dark {
+  background: var(--hairline-dark);
+}
+
+/* Image mask — every photo sits behind a warm multiply so the whole site
+   shares one colour temperature regardless of source. */
+.tone {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-soot);
+}
+
+.tone > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tone::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-ink) 22%, transparent) 0%,
+      transparent 32%,
+      transparent 58%,
+      color-mix(in oklab, var(--color-ink) 46%, transparent) 100%
+    ),
+    radial-gradient(
+      120% 90% at 50% 40%,
+      transparent 40%,
+      color-mix(in oklab, var(--color-ink) 30%, transparent) 100%
+    );
+}
+
+/* ==========================================================================
+   MOTION PRIMITIVES
+   ========================================================================== */
+
+/* Line-by-line text reveal. JS adds .is-in. */
+.line-mask {
+  display: block;
+  overflow: hidden;
+}
+
+.line-mask > span {
+  display: block;
+  transform: translateY(105%);
+  transition:
+    transform 0.95s var(--ease-out-expo),
+    opacity 0.95s var(--ease-out-expo);
+  opacity: 0;
+}
+
+.is-in .line-mask > span {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 0.9s var(--ease-out-expo);
+}
+
+.is-in.fade-up,
+.is-in .fade-up {
+  opacity: 1;
+  transform: none;
+}
+
+/* Image reveal: the frame wipes open, the photo counter-scales.
+   Reads as a curtain rather than a fade — more filmic, less "web". */
+.wipe {
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 1.25s var(--ease-in-out-quint);
+}
+
+.wipe > * {
+  transform: scale(1.18);
+  transition: transform 1.6s var(--ease-out-expo);
+}
+
+.is-in .wipe,
+.is-in.wipe {
+  clip-path: inset(0 0 0% 0);
+}
+
+.is-in .wipe > *,
+.is-in.wipe > * {
+  transform: scale(1);
+}
+
+/* Stagger children via inline --i. */
+[style*="--i"] {
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+/* ==========================================================================
+   COMPONENTS
+   ========================================================================== */
+
+/* --- Button: label swaps upward on hover (Linoxa-style dual label) ------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.0625rem 1.75rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    color 0.4s var(--ease-out-expo),
+    border-color 0.4s var(--ease-out-expo);
+}
+
+/* The fill sits ABOVE the element background but BELOW the label, so a
+   solid button can still reveal a contrasting colour on hover. */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  transform: translateY(101%);
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateY(0);
+}
+
+.btn-solid {
+  background: var(--color-brass);
+  color: var(--color-ink);
+}
+.btn-solid::before {
+  background: var(--color-bone);
+}
+
+.btn-ghost {
+  border: 1px solid var(--hairline-dark);
+  color: var(--color-bone);
+}
+.btn-ghost::before {
+  background: var(--color-brass);
+}
+.btn-ghost:hover,
+.btn-ghost:focus-visible {
+  color: var(--color-ink);
+  border-color: var(--color-brass);
+}
+
+.btn-light {
+  border: 1px solid var(--hairline);
+  color: var(--color-ink);
+}
+.btn-light::before {
+  background: var(--color-ink);
+}
+.btn-light:hover,
+.btn-light:focus-visible {
+  color: var(--color-bone);
+  border-color: var(--color-ink);
+}
+
+/* Dual-label roll */
+.btn-roll {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 0.6875rem;
+}
+.btn-roll span {
+  display: block;
+  transition: transform 0.55s var(--ease-out-expo);
+}
+.btn-roll span:last-child {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+}
+.btn:hover .btn-roll span:first-child,
+.btn:focus-visible .btn-roll span:first-child {
+  transform: translateY(-100%);
+}
+.btn:hover .btn-roll span:last-child,
+.btn:focus-visible .btn-roll span:last-child {
+  transform: translateY(0);
+}
+
+.btn-arrow {
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+/* --- Underline link ------------------------------------------------------ */
+.ulink {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+.ulink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out-expo);
+}
+.ulink:hover::after,
+.ulink:focus-visible::after,
+.ulink[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* --- Marquee ------------------------------------------------------------- */
+.marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee var(--speed, 38s) linear infinite;
+}
+.marquee-rev {
+  animation-direction: reverse;
+}
+.marquee-host:hover .marquee {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Custom cursor ------------------------------------------------------- */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 70;
+  pointer-events: none;
+  border-radius: 999px;
+  will-change: transform;
+}
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--color-brass);
+}
+.cursor-ring {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border: 1px solid color-mix(in oklab, var(--color-brass) 60%, transparent);
+  transition:
+    width 0.35s var(--ease-out-expo),
+    height 0.35s var(--ease-out-expo),
+    margin 0.35s var(--ease-out-expo),
+    background 0.35s var(--ease-out-expo),
+    border-color 0.35s var(--ease-out-expo);
+}
+.cursor-ring[data-state="link"] {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  background: color-mix(in oklab, var(--color-brass) 14%, transparent);
+  border-color: var(--color-brass);
+}
+.cursor-ring[data-state="view"] {
+  width: 104px;
+  height: 104px;
+  margin: -52px 0 0 -52px;
+  background: color-mix(in oklab, var(--color-brass) 88%, transparent);
+  border-color: transparent;
+}
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}
+
+/* --- Number columns (stats) ---------------------------------------------- */
+.num {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 5.4vw, 5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Form fields ---------------------------------------------------------
+   Underline fields with a floating label. Written in plain CSS rather than
+   utility variants because `:placeholder-shown` chains are exactly the kind
+   of selector that silently fails to compile — and a broken label is a
+   broken form.
+   ------------------------------------------------------------------------- */
+
+.field-wrap {
+  position: relative;
+}
+
+.field {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--color-sand);
+  background: transparent;
+  padding: 0.875rem 0;
+  color: var(--color-ink);
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.3s var(--ease-out-expo);
+  border-radius: 0;
+}
+
+.field::placeholder {
+  color: transparent;
+}
+
+.field:focus {
+  border-bottom-color: var(--color-brass);
+}
+
+.field-label {
+  position: absolute;
+  left: 0;
+  top: 0.875rem;
+  transform-origin: left top;
+  color: var(--color-clay);
+  font-size: 1rem;
+  line-height: 1.5;
+  pointer-events: none;
+  transition:
+    transform 0.32s var(--ease-out-expo),
+    color 0.32s var(--ease-out-expo);
+}
+
+.field:focus + .field-label,
+.field:not(:placeholder-shown) + .field-label {
+  transform: translateY(-1.5rem) scale(0.75);
+}
+
+.field:focus + .field-label {
+  color: var(--color-brass);
+}
+
+/* Chip toggles for budget / timeline / service */
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  border: 1px solid var(--color-sand);
+  color: var(--color-clay);
+  padding: 0.625rem 1rem;
+  transition:
+    background 0.3s var(--ease-out-expo),
+    border-color 0.3s var(--ease-out-expo),
+    color 0.3s var(--ease-out-expo);
+}
+
+.chip:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-bone);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  transform: translateY(-160%);
+  background: var(--color-brass);
+  color: var(--color-ink);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+.skip:focus {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .line-mask > span,
+  .fade-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .wipe {
+    clip-path: none !important;
+  }
+  .wipe > * {
+    transform: none !important;
+  }
+  .grain::after {
+    animation: none !important;
+  }
+}
