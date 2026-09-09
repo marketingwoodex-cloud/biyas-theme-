@@ -1,0 +1,11 @@
+{#
+  SECTION: marquee — scrolling text band
+  data: { items:["Residential","Hospitality",...], separator:"•", speed: 28, size:"large"|"medium" }
+#}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'beige') }} rt-space-none rt-marquee-band rt-marquee-{{ s.size or 'large' }}" id="{{ _id }}">
+  <div class="rt-marquee-v2" data-marquee-y data-speed="{{ s.speed or 28 }}">
+    <div class="rt-marquee-v2-inner">
+      {% for it in s.items %}<span class="rt-marquee-item">{{ it }}</span><span class="rt-marquee-sep" aria-hidden="true">{{ s.separator or '•' }}</span>{% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+{#
+  SECTION: hero-split — copy left, tall image right, light background (home v3 / about alt)
+  data: { eyebrow, title, text, image, imageSecondary?, buttons:[...], note }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="rt-hero-split rt-theme-{{ section.theme or 'light' }}" id="{{ _id }}">
+  <div class="rt-container rt-hero-split-grid">
+    <div class="rt-hero-split-copy">
+      {% if s.eyebrow %}<div class="rt-tag" data-reveal><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
+      <h1 class="rt-hero-split-title" data-split>{{ s.title | mdInline | safe }}</h1>
+      {% if s.text %}<p class="rt-hero-split-text" data-reveal style="--d:.2s">{{ s.text }}</p>{% endif %}
+      {% if s.buttons %}<div class="rt-button-row" data-reveal style="--d:.3s">{% for b in s.buttons %}{{ ui.button(b) }}{% endfor %}</div>{% endif %}
+      {% if s.note %}<p class="rt-hero-split-note" data-reveal style="--d:.4s">{{ s.note | mdInline | safe }}</p>{% endif %}
+    </div>
+    <div class="rt-hero-split-media" data-reveal style="--d:.15s">
+      {{ ui.image(s.image, s.alt, "rt-hero-split-img", "4/5", "eager") }}
+      {% if s.imageSecondary %}{{ ui.image(s.imageSecondary, "", "rt-hero-split-img-2", "1/1") }}{% endif %}
+    </div>
+  </div>
+</section>

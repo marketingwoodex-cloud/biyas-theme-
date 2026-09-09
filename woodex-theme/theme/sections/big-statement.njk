@@ -1,0 +1,17 @@
+{#
+  SECTION: big-statement — oversized centred statement with optional masked video/image behind text
+  data: { text, media?: image|video url, mediaType:"image"|"video", small }
+#}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'default' }} rt-big-statement" id="{{ _id }}">
+  <div class="rt-container">
+    {% if s.small %}<p class="rt-tag rt-text-align-center" data-reveal><span class="rt-tag-dot"></span>{{ s.small }}</p>{% endif %}
+    {% if s.media %}
+      <div class="rt-video-v2-main-wrapper rt-mask-image" data-reveal>
+        {% if s.mediaType == 'video' %}<video autoplay loop muted playsinline preload="metadata" {% if s.poster %}poster="{{ s.poster | media }}"{% endif %}><source src="{{ s.media }}" type="video/mp4"></video>{% else %}<img src="{{ s.media | media }}" alt="" loading="lazy">{% endif %}
+        <h2 class="rt-big-text-v3 rt-mask-text">{{ s.text | mdInline | safe }}</h2>
+      </div>
+    {% else %}
+      <h2 class="rt-big-text-v3 rt-text-align-center" data-split>{{ s.text | mdInline | safe }}</h2>
+    {% endif %}
+  </div>
+</section>

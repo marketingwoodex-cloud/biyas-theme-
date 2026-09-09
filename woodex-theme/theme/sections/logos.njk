@@ -1,0 +1,19 @@
+{#
+  SECTION: logos — brand/partner band with optional marquee
+  data: { title, logos:[{ name, image? }], marquee:true }
+  Without images, names render as typographic wordmarks.
+#}
+<section class="{{ 'rt-section rt-brands rt-theme-' ~ (section.theme or 'dark') }} rt-space-{{ section.spacing or 'tight' }}" id="{{ _id }}">
+  <div class="rt-container">
+    {% if s.title %}<p class="rt-brands-title" data-reveal>{{ s.title }}</p>{% endif %}
+    <div class="rt-brands-track{% if s.marquee %} rt-marquee{% endif %}" {% if s.marquee %}data-marquee-y{% endif %}>
+      <ul class="rt-brands-list">
+        {% for l in s.logos %}
+          <li class="rt-brand-item" data-reveal style="--d:{{ loop.index0 * 0.05 }}s">
+            {% if l.image %}<img src="{{ l.image | media }}" alt="{{ l.name }}" loading="lazy">{% else %}<span class="rt-brand-word">{{ l.name }}</span>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

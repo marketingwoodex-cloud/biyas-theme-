@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    { "fileMatch": ["content/pages/*.json", "content/presets/*.json"], "url": "./docs/schemas/page.schema.json" },
+    { "fileMatch": ["content/site.json"], "url": "./docs/schemas/site.schema.json" }
+  ],
+  "files.associations": { "*.njk": "html" },
+  "emmet.includeLanguages": { "njk": "html" }
+}

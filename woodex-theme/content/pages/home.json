@@ -1,0 +1,166 @@
+{
+  "$schema": "../../docs/schemas/page.schema.json",
+  "_comment": "HOME — ordered list of sections. Toggle with enabled:false, reorder by moving, swap the hero type. Alternatives: presets/home-2.json, presets/home-3.json (npm run import:preset home-2).",
+  "layout": "page.njk",
+  "permalink": "/",
+  "nav": "home",
+  "headerStyle": "light",
+  "title": "",
+  "seo": {
+    "title": "",
+    "description": "Woodex Interior designs calm, considered residential, commercial and hospitality spaces in Lahore — from concept and 3D visualisation to bespoke joinery and turnkey delivery."
+  },
+  "sections": [
+    {
+      "type": "hero-slider",
+      "id": "hero",
+      "enabled": true,
+      "data": {
+        "autoplay": 5200,
+        "scrollTarget": "content",
+        "slides": [
+          { "eyebrow": "Interior design studio — Lahore", "title": "Spaces shaped by light, material and the way you live", "text": "Residential, hospitality and workplace interiors delivered from concept to bespoke joinery.", "image": "hero-1.jpg" },
+          { "eyebrow": "Bespoke joinery", "title": "Kitchens, wardrobes and furniture built in our own workshop", "text": "Designed and made under one roof so every detail is resolved before it reaches your site.", "image": "hero-2.jpg" },
+          { "eyebrow": "Turnkey delivery", "title": "One accountable team from first sketch to final styling", "text": "Design, documentation, procurement and site — with weekly reporting you can actually read.", "image": "hero-3.jpg" }
+        ],
+        "buttons": [
+          { "label": "View our work", "url": "/portfolio/", "style": "white" },
+          { "label": "Book a consultation", "url": "/contact/", "style": "text" }
+        ]
+      }
+    },
+    {
+      "type": "logos",
+      "id": "content",
+      "theme": "dark",
+      "spacing": "tight",
+      "data": {
+        "title": "Trusted by developers, brands and private clients",
+        "marquee": true,
+        "logos": [{ "name": "Habib Estates" }, { "name": "Ember Coffee" }, { "name": "Meridian Fintech" }, { "name": "Atelier" }, { "name": "Northline Hotels" }, { "name": "Studio Verde" }]
+      }
+    },
+    {
+      "type": "big-statement",
+      "theme": "light",
+      "data": {
+        "small": "The studio",
+        "text": "We design rooms you never want to leave and joinery that outlives trends.",
+        "media": "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
+        "mediaType": "video",
+        "poster": "https://images.pexels.com/videos/3773486/decoration-design-estate-furniture-3773486.jpeg?auto=compress&w=1600"
+      }
+    },
+    {
+      "type": "services-cards",
+      "id": "services",
+      "theme": "light",
+      "data": {
+        "eyebrow": "What we do",
+        "title": "Three ways to work with us",
+        "text": "From a single room to a complete building, each service is delivered by the same design team and workshop.",
+        "source": "services",
+        "limit": 3,
+        "layout": "stacked",
+        "button": { "label": "All services", "url": "/services/", "style": "outline" }
+      }
+    },
+    {
+      "type": "intro-split",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "Why Woodex",
+        "title": "Design and craft under one roof",
+        "text": "Most studios draw and hand over. We draw, build and install — which means the details that make a space feel finished are decided by the people who will make them.",
+        "image": "feature-1.jpg",
+        "imagePosition": "right",
+        "features": [
+          { "title": "In-house workshop", "text": "kitchens, wardrobes and furniture made to the millimetre" },
+          { "title": "Fixed-scope pricing", "text": "itemised allowances, no surprises" },
+          { "title": "One site lead", "text": "weekly reports and a shared photo log" }
+        ],
+        "button": { "label": "About the studio", "url": "/about/", "style": "text" }
+      }
+    },
+    {
+      "type": "overview",
+      "id": "documentation",
+      "theme": "light",
+      "data": {
+        "eyebrow": "How we work",
+        "title": "Design documentation you can build from",
+        "text": "Every project ships with a complete set: plans, elevations, joinery details, lighting layouts and a specified schedule of finishes.",
+        "items": [
+          { "title": "Concept & mood", "text": "Layouts, references and a first material palette.", "image": "room-1.jpg" },
+          { "title": "Design development", "text": "Elevations, joinery, lighting and finishes resolved in detail.", "image": "room-2.jpg" },
+          { "title": "Visualisation", "text": "Photoreal renders so you approve exactly what gets built.", "image": "room-3.jpg" },
+          { "title": "Site & handover", "text": "Supervision, snagging and a styled handover day.", "image": "feature-1.jpg" }
+        ],
+        "button": { "label": "Our process", "url": "/services/#process", "style": "text" }
+      }
+    },
+    {
+      "type": "portfolio-grid",
+      "id": "work",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Selected work",
+        "title": "Recent projects",
+        "filters": false,
+        "featuredOnly": true,
+        "limit": 3,
+        "columns": 3,
+        "button": { "label": "View all projects", "url": "/portfolio/", "style": "outline" }
+      }
+    },
+    {
+      "type": "video",
+      "id": "showcase",
+      "theme": "dark",
+      "data": {
+        "src": "https://videos.pexels.com/video-files/3773487/3773487-hd_1920_1080_30fps.mp4",
+        "fallback": "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
+        "marquee": ["Residential", "Hospitality", "Workplace", "Retail", "Joinery"],
+        "title": "Every project begins with a conversation",
+        "button": { "label": "Start yours", "url": "/contact/", "style": "white" }
+      }
+    },
+    {
+      "type": "testimonials",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "Client words",
+        "title": "What it's like to work with us",
+        "items": [
+          { "quote": "They listened more than they talked, and the house shows it. Calm, practical, beautifully made.", "name": "Sara & Omar H.", "role": "Canal-side residence", "rating": 5 },
+          { "quote": "Our café opened on time and the space photographs better than the renders. Customers stay longer.", "name": "Hamza Q.", "role": "Founder, Ember Café", "rating": 5 },
+          { "quote": "The joinery is the best I've seen in Pakistan. Flush, silent, exact.", "name": "Ali R.", "role": "Architect, partner studio", "rating": 5 }
+        ]
+      }
+    },
+    {
+      "type": "blog-grid",
+      "id": "journal",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Journal",
+        "title": "Notes on design, materials and the studio",
+        "limit": 3,
+        "button": { "label": "Read the journal", "url": "/blog/", "style": "text" }
+      }
+    },
+    {
+      "type": "cta",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Start a project",
+        "title": "Tell us about your space",
+        "text": "A free 30-minute consultation — in the studio, on site or online.",
+        "buttons": [
+          { "label": "Book a consultation", "url": "/contact/", "style": "white" },
+          { "label": "hello@woodexinterior.com", "url": "mailto:hello@woodexinterior.com", "style": "text" }
+        ]
+      }
+    }
+  ]
+}

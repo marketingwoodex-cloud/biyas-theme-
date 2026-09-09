@@ -1,0 +1,20 @@
+{#
+  SECTION: process — numbered steps timeline
+  data: { eyebrow, title, text, steps:[{ title, text, duration? }], layout:"grid"|"list" }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-process rt-process-{{ s.layout or 'grid' }}" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <ol class="rt-process-list">
+      {% for st in s.steps %}
+        <li class="rt-process-step" data-card-reveal style="--d:{{ loop.index0 * 0.1 }}s">
+          <span class="rt-process-num">{{ loop.index | pad }}</span>
+          <h4>{{ st.title }}</h4>
+          <p>{{ st.text }}</p>
+          {% if st.duration %}<span class="rt-process-duration"><svg aria-hidden="true"><use href="#i-clock"/></svg>{{ st.duration }}</span>{% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>

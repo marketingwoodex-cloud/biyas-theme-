@@ -1,0 +1,24 @@
+{#
+  SECTION: team — people grid from content/team (or inline items)
+  data: { eyebrow, title, text, source:"team" | items:[{name,role,image,bio,social:[]}], columns:3 }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _items = [] %}
+{% if s.source == "team" %}{% for p in collections.team %}{% set _items = (_items.push({ name: p.data.title, role: p.data.role, image: p.data.image, bio: p.data.excerpt, social: p.data.social }), _items) %}{% endfor %}{% else %}{% set _items = s.items or [] %}{% endif %}
+<section class="{{ ui.wrapperClass(section) }} rt-team" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-team-grid rt-cols-{{ s.columns or 3 }}">
+      {% for m in _items %}
+        <article class="rt-team-card" data-card-reveal style="--d:{{ loop.index0 * 0.08 }}s">
+          <div class="rt-team-media">{{ ui.image(m.image, m.name, "", "4/5") }}
+            {% if m.social %}<ul class="rt-social-links-wrapper rt-team-social">{% for so in m.social %}<li><a href="{{ so.url }}" target="_blank" rel="noopener" aria-label="{{ so.name }}"><svg aria-hidden="true"><use href="#i-{{ so.icon }}"/></svg></a></li>{% endfor %}</ul>{% endif %}
+          </div>
+          <h4>{{ m.name }}</h4>
+          <p class="rt-team-role">{{ m.role }}</p>
+          {% if m.bio %}<p class="rt-team-bio">{{ m.bio }}</p>{% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

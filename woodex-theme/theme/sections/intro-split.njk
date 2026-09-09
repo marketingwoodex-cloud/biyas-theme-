@@ -1,0 +1,26 @@
+{#
+  SECTION: intro-split — big statement + supporting text/image (about story, home intro)
+  data: { eyebrow, title, text (markdown), image, imagePosition:"right"|"left", button, features:[{title,text}], signature? }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-intro-split rt-img-{{ s.imagePosition or 'right' }}" id="{{ _id }}">
+  <div class="rt-container rt-intro-split-grid">
+    <div class="rt-intro-split-copy">
+      {{ ui.sectionHead(s, "left", section.theme == "dark") }}
+      {% if s.features %}
+      <ul class="rt-feature-list">
+        {% for f in s.features %}
+          <li data-reveal style="--d:{{ 0.2 + loop.index0 * 0.08 }}s"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>{{ f.title }}</strong>{% if f.text %} — {{ f.text }}{% endif %}</span></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% if s.signature %}<p class="rt-signature" data-reveal>{{ s.signature }}</p>{% endif %}
+    </div>
+    {% if s.image %}
+    <div class="rt-intro-split-media" data-reveal style="--d:.15s">
+      {{ ui.image(s.image, s.alt, "rt-intro-split-img", s.ratio or "4/5") }}
+      {% if s.caption %}<p class="rt-caption">{{ s.caption }}</p>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>

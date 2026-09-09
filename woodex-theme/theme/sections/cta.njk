@@ -1,0 +1,18 @@
+{#
+  SECTION: cta — call-to-action band
+  data: { eyebrow, title, text, buttons:[...], image?, layout:"band"|"card" }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'default' }} rt-cta-band" id="{{ _id }}">
+  <div class="rt-container">
+    <div class="rt-cta-v1{% if s.image %} has-image{% endif %}" data-reveal>
+      {% if s.image %}<img class="rt-cta-bg" src="{{ s.image | media }}" alt="" loading="lazy">{% endif %}
+      <div class="rt-cta-copy">
+        {% if s.eyebrow %}<div class="rt-tag rt-text-color-white"><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
+        <h2 class="rt-text-color-white" data-split>{{ s.title | mdInline | safe }}</h2>
+        {% if s.text %}<p class="rt-text-color-light">{{ s.text }}</p>{% endif %}
+      </div>
+      <div class="rt-cta-actions rt-button-row">{% for b in s.buttons %}{{ ui.button(b) }}{% endfor %}</div>
+    </div>
+  </div>
+</section>

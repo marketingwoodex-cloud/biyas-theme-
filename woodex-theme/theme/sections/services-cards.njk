@@ -1,0 +1,30 @@
+{#
+  SECTION: services-cards — stacked/sticky service cards (home) or plain grid
+  data: { eyebrow, title, text, source:"services" (auto from content/services) | items:[{title,text,image,url,icon}], limit:3, layout:"stacked"|"grid", button }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _items = [] %}
+{% if s.source == "services" %}
+  {% for p in collections.services | limit(s.limit or 3) %}{% set _items = (_items.push({ title: p.data.title, text: p.data.excerpt, image: p.data.image, url: p.url, icon: p.data.icon, tags: p.data.labels }), _items) %}{% endfor %}
+{% else %}{% set _items = s.items or [] %}{% endif %}
+<section class="{{ ui.wrapperClass(section) }} rt-services rt-services-{{ s.layout or 'stacked' }}" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-card-list-v1" {% if (s.layout or 'stacked') == 'stacked' %}data-stack{% endif %}>
+      {% for it in _items %}
+        <article class="rt-card-v1-item rt-card-{{ loop.index }}" data-card-reveal style="--i:{{ loop.index0 }}">
+          <div class="rt-card-v1-copy">
+            <span class="rt-card-v1-num">{{ loop.index | pad }}</span>
+            {% if it.icon %}<span class="rt-card-v1-icon"><svg aria-hidden="true"><use href="#i-{{ it.icon }}"/></svg></span>{% endif %}
+            <h3><a href="{{ it.url or '#' }}">{{ it.title }}</a></h3>
+            <p>{{ it.text }}</p>
+            {% if it.tags %}<ul class="rt-tag-list">{% for t in it.tags %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+            {{ ui.button({ label: it.cta or "Explore service", url: it.url or '#', style: "text" }) }}
+          </div>
+          <div class="rt-card-v1-media">{{ ui.image(it.image, it.title, "", "4/3") }}</div>
+        </article>
+      {% endfor %}
+    </div>
+    {% if s.button %}<div class="rt-section-foot" data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+  </div>
+</section>

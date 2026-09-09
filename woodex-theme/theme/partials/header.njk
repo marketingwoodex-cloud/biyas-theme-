@@ -1,0 +1,115 @@
+{% set h = site.header %}
+{% if h.announcement.enabled %}
+<div class="rt-announcement">
+  <div class="rt-container rt-announcement-inner">
+    <p class="rt-announcement-text">{{ h.announcement.text }} <a href="{{ h.announcement.link }}">{{ h.announcement.linkLabel }}</a></p>
+  </div>
+</div>
+{% endif %}
+
+<header class="rt-nav-wrapper rt-nav-{{ h.variant }}{% if h.sticky %} is-sticky{% endif %}{% if h.transparentOnHero and (headerStyle == 'light' or headerStyle == 'transparent') %} rt-nav-light{% endif %}" data-header>
+  <div class="rt-container rt-nav-inner">
+
+    {# ---------- Logo ---------- #}
+    <a href="/" class="rt-logo" aria-label="{{ site.brand.name }} — home">
+      {% if site.brand.logo.type == 'image' and site.brand.logo.image %}
+        <img class="rt-logo-img rt-logo-img-dark" src="{{ site.brand.logo.image | media }}" alt="{{ site.brand.name }}" width="{{ site.brand.logo.width }}">
+        {% if site.brand.logo.imageLight %}<img class="rt-logo-img rt-logo-img-light" src="{{ site.brand.logo.imageLight | media }}" alt="" width="{{ site.brand.logo.width }}">{% endif %}
+      {% else %}
+        <svg class="rt-logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor"/><path d="M10 9v14M16 9v14M22 9v14" style="stroke:var(--logo-ink,#0f1e36)" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <span class="rt-logo-text">{{ site.brand.logo.text }}<span class="rt-logo-accent"> {{ site.brand.logo.textAccent }}</span></span>
+      {% endif %}
+    </a>
+
+    {# ---------- Desktop menu ---------- #}
+    <nav class="rt-nav-menu" aria-label="Primary">
+      <ul class="rt-menu-list">
+        {% for item in h.menu %}
+          {% set _current = item.nav == navKey %}
+          <li class="rt-menu-item{% if item.children %} has-dropdown{% endif %}{% if item.mega %} has-mega{% endif %}">
+            {% if item.children %}
+              <a href="{{ item.url }}" class="rt-nav-toggle{% if _current %} is-current{% endif %}" data-nav="{{ item.nav }}" aria-haspopup="true" aria-expanded="false">
+                <span class="rt-menu-text">{{ item.label }}</span>
+                <svg class="rt-menu-chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+              </a>
+              <div class="rt-dropdown{% if item.mega %} rt-mega{% endif %}" role="menu">
+                <div class="rt-dropdown-inner">
+                  <ul class="rt-dropdown-list">
+                    {% for c in item.children %}
+                      <li>
+                        <a href="{{ c.url }}" class="rt-dropdown-link" role="menuitem">
+                          {% if c.icon %}<span class="rt-dropdown-icon"><svg aria-hidden="true"><use href="#i-{{ c.icon }}"/></svg></span>{% endif %}
+                          <span class="rt-dropdown-copy">
+                            <span class="rt-dropdown-title">{{ c.label }}</span>
+                            {% if c.description %}<span class="rt-dropdown-desc">{{ c.description }}</span>{% endif %}
+                          </span>
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% if item.mega and item.promo and item.promo.enabled %}
+                    <a href="{{ item.promo.url }}" class="rt-mega-promo">
+                      <img src="{{ item.promo.image | media }}" alt="" loading="lazy">
+                      <span class="rt-mega-promo-copy">
+                        <span class="rt-tag rt-text-color-white">{{ item.promo.eyebrow }}</span>
+                        <span class="rt-mega-promo-title">{{ item.promo.title }}</span>
+                        <span class="rt-service-button rt-text-color-white">{{ item.promo.cta }} <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+                      </span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+            {% else %}
+              <a href="{{ item.url }}" class="rt-nav-toggle{% if _current %} is-current{% endif %}" data-nav="{{ item.nav }}"{% if _current %} aria-current="page"{% endif %}>
+                <span class="rt-menu-text">{{ item.label }}</span>
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    {# ---------- Right side ---------- #}
+    <div class="rt-nav-right">
+      <ul class="rt-social-links-wrapper rt-nav-social" aria-label="Social">
+        {% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}"><svg aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg></a></li>{% endfor %}
+      </ul>
+      {% if h.cta.enabled %}
+        <a href="{{ h.cta.url }}" class="rt-button-v1 rt-nav-cta">
+          <span class="rt-text-style-button">{{ h.cta.label }}</span>
+          <span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          <span class="rt-button-overlay"></span>
+        </a>
+      {% endif %}
+      <button class="rt-menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" data-menu-toggle>
+        <span class="rt-menu-line"></span><span class="rt-menu-line"></span><span class="rt-menu-line"></span>
+      </button>
+    </div>
+  </div>
+
+  {# ---------- Mobile menu ---------- #}
+  <div class="rt-mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="rt-mobile-inner">
+      <ul class="rt-mobile-list">
+        {% for item in h.menu %}
+          <li class="rt-mobile-item{% if item.children %} has-children{% endif %}">
+            <a href="{{ item.url }}" class="rt-mobile-link{% if item.nav == navKey %} is-current{% endif %}"><span>{{ item.label }}</span></a>
+            {% if item.children %}
+              <button class="rt-mobile-expand" type="button" aria-label="Expand {{ item.label }}" aria-expanded="false"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
+              <ul class="rt-mobile-sub">
+                {% for c in item.children %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="rt-mobile-foot">
+        {% if h.cta.enabled %}<a href="{{ h.cta.url }}" class="rt-button-v1 rt-menu-responsive-cta"><span class="rt-text-style-button">{{ h.cta.label }}</span><span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="rt-button-overlay"></span></a>{% endif %}
+        <p class="rt-mobile-contact"><a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a><br><a href="{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a></p>
+        <ul class="rt-social-links-wrapper">
+          {% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}"><svg aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg></a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

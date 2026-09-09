@@ -1,0 +1,26 @@
+{
+  "name": "woodex-theme",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Woodex Interior \u2014 section-based static theme for interior design studios (Eleventy + Nunjucks)",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve --port=8080",
+    "build": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && eleventy",
+    "check": "node scripts/check.js",
+    "new:page": "node scripts/new-page.js",
+    "new:section": "node scripts/new-section.js",
+    "new:project": "node scripts/new-entry.js project",
+    "new:post": "node scripts/new-entry.js post",
+    "new:service": "node scripts/new-entry.js service",
+    "import:preset": "node scripts/import-preset.js",
+    "list:sections": "node scripts/list-sections.js",
+    "smoke": "node scripts/smoke.cjs",
+    "ci": "npm run build && npm run check && npm run smoke"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "jsdom": "^30.0.1",
+    "markdown-it": "^14.1.0"
+  }
+}

@@ -1,0 +1,24 @@
+{#
+  SECTION: feature-rows — alternating image/text rows (service details, process highlights)
+  data: { eyebrow, title, text, items:[{ id?, number?, title, text(markdown), image, bullets:[], button }] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-feature-rows" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-feature-rows-list">
+      {% for it in s.items %}
+        <article class="rt-feature-row" id="{{ it.id or (it.title | slug) }}">
+          <div class="rt-feature-row-media" data-reveal>{{ ui.image(it.image, it.alt or it.title, "rt-feature-row-img", "4/3") }}</div>
+          <div class="rt-feature-row-copy">
+            {% if it.number or s.numbered %}<span class="rt-feature-row-num">{{ it.number or (loop.index | pad) }}</span>{% endif %}
+            <h3 data-split>{{ it.title }}</h3>
+            <div class="rt-feature-row-text" data-reveal style="--d:.1s">{{ it.text | md | safe }}</div>
+            {% if it.bullets %}<ul class="rt-feature-list rt-feature-list-compact" data-reveal style="--d:.2s">{% for b in it.bullets %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span>{{ b }}</span></li>{% endfor %}</ul>{% endif %}
+            {% if it.button %}<div data-reveal style="--d:.25s">{{ ui.button(it.button) }}</div>{% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

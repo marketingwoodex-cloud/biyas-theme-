@@ -1,2 +1,7 @@
 # research scratch (reference screenshots), not part of the theme
 image-search/
+
+# theme build output / deps
+woodex-theme/node_modules/
+woodex-theme/dist/
+woodex-theme/content/pages/_*.backup.json

@@ -1,0 +1,18 @@
+{#
+  SECTION: gallery — masonry/grid of images with lightbox
+  data: { eyebrow, title, images:[{ src, alt, caption, span:"wide"|"tall" }], columns:3 }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-gallery" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-gallery-grid rt-cols-{{ s.columns or 3 }}" data-lightbox>
+      {% for im in s.images %}
+        <a href="{{ im.src | media }}" class="rt-gallery-item{% if im.span %} is-{{ im.span }}{% endif %}" data-card-reveal style="--d:{{ (loop.index0 % 3) * 0.08 }}s" data-caption="{{ im.caption or '' }}">
+          <img src="{{ im.src | media }}" alt="{{ im.alt or '' }}" loading="lazy">
+          {% if im.caption %}<span class="rt-gallery-caption">{{ im.caption }}</span>{% endif %}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

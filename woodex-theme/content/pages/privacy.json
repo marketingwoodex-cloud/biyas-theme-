@@ -1,0 +1,5 @@
+{ "layout": "page.njk", "permalink": "/privacy/", "nav": "privacy", "headerStyle": "dark", "title": "Privacy policy", "noindex": false,
+  "sections": [
+    { "type": "page-hero", "data": { "eyebrow": "Legal", "title": "Privacy policy", "size": "short" } },
+    { "type": "rich-text", "data": { "body": "_Last updated: September 2026_\n\n## What we collect\nWhen you contact us we store the details you provide (name, email, phone, project notes) so we can reply and manage your enquiry.\n\n## How we use it\nTo respond to enquiries, prepare proposals and — if you opt in — send our monthly studio notes.\n\n## Sharing\nWe never sell your data. It is shared only with the tools we use to run the studio (email, forms) under their own privacy terms.\n\n## Your rights\nEmail hello@woodexinterior.com to access, correct or delete your data at any time." } }
+  ] }

@@ -1,0 +1,313 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Woodex site settings",
+  "type": "object",
+  "required": [
+    "brand",
+    "theme",
+    "contact",
+    "header",
+    "footer",
+    "seo",
+    "forms"
+  ],
+  "definitions": {
+    "link": {
+      "type": "object",
+      "required": [
+        "label",
+        "url"
+      ],
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "nav": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "mega": {
+          "type": "boolean"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "promo": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_comment": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "shortName": {
+          "type": "string"
+        },
+        "tagline": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "text",
+                "image"
+              ]
+            },
+            "text": {
+              "type": "string"
+            },
+            "textAccent": {
+              "type": "string"
+            },
+            "image": {
+              "type": "string"
+            },
+            "imageLight": {
+              "type": "string"
+            },
+            "width": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "theme": {
+      "type": "object",
+      "properties": {
+        "colors": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{3,8}$"
+          }
+        },
+        "fonts": {
+          "type": "object",
+          "properties": {
+            "heading": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            },
+            "googleFonts": {
+              "type": "string"
+            }
+          }
+        },
+        "radius": {
+          "type": "string"
+        },
+        "cursor": {
+          "type": "boolean"
+        },
+        "introCurtain": {
+          "type": "boolean"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "phoneHref": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "addressLines": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hours": {
+          "type": "string"
+        },
+        "mapEmbed": {
+          "type": "string"
+        },
+        "mapLink": {
+          "type": "string"
+        }
+      }
+    },
+    "social": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "icon": {
+            "enum": [
+              "instagram",
+              "facebook",
+              "linkedin",
+              "x",
+              "pinterest"
+            ]
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "header": {
+      "type": "object",
+      "properties": {
+        "variant": {
+          "enum": [
+            "standard",
+            "centered"
+          ]
+        },
+        "sticky": {
+          "type": "boolean"
+        },
+        "transparentOnHero": {
+          "type": "boolean"
+        },
+        "announcement": {
+          "type": "object"
+        },
+        "menu": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/link"
+          }
+        },
+        "cta": {
+          "type": "object"
+        }
+      }
+    },
+    "footer": {
+      "type": "object",
+      "properties": {
+        "variant": {
+          "enum": [
+            "columns",
+            "minimal"
+          ]
+        },
+        "intro": {
+          "type": "string"
+        },
+        "columns": {
+          "type": "array"
+        },
+        "newsletter": {
+          "type": "object"
+        },
+        "bigText": {
+          "type": "string"
+        },
+        "legal": {
+          "type": "array"
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "credit": {
+          "type": "string"
+        }
+      }
+    },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "siteUrl": {
+          "type": "string"
+        },
+        "titleTemplate": {
+          "type": "string"
+        },
+        "defaultTitle": {
+          "type": "string"
+        },
+        "defaultDescription": {
+          "type": "string"
+        },
+        "ogImage": {
+          "type": "string"
+        },
+        "locale": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "business": {
+          "type": "object"
+        }
+      }
+    },
+    "forms": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "enum": [
+            "demo",
+            "web3forms",
+            "formspree",
+            "php",
+            "custom"
+          ]
+        },
+        "endpoint": {
+          "type": "string"
+        },
+        "accessKey": {
+          "type": "string"
+        },
+        "successMessage": {
+          "type": "string"
+        },
+        "newsletterSuccess": {
+          "type": "string"
+        }
+      }
+    },
+    "media": {
+      "type": "object"
+    }
+  }
+}

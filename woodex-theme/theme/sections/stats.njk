@@ -1,0 +1,18 @@
+{#
+  SECTION: stats — animated counters
+  data: { eyebrow, title, text, items:[{ value:120, suffix:"+", prefix:"", label }], columns: 4 }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-stats" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-stats-grid rt-cols-{{ s.columns or 4 }}">
+      {% for it in s.items %}
+        <div class="rt-stat" data-reveal style="--d:{{ loop.index0 * 0.1 }}s">
+          <div class="rt-stat-value"><span>{{ it.prefix }}</span><span data-counter="{{ it.value }}">0</span><span>{{ it.suffix }}</span></div>
+          <p class="rt-stat-label">{{ it.label }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

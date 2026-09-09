@@ -1,0 +1,10 @@
+{#
+  SECTION: rich-text — plain markdown content column (legal pages, long copy)
+  data: { title, body (markdown), width:"narrow"|"default" }
+#}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'default' }} rt-rich-text" id="{{ _id }}">
+  <div class="rt-container rt-prose rt-prose-{{ s.width or 'narrow' }}" data-reveal>
+    {% if s.title %}<h2>{{ s.title }}</h2>{% endif %}
+    {{ s.body | md | safe }}
+  </div>
+</section>

@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Woodex page",
+  "type": "object",
+  "required": [
+    "permalink",
+    "sections"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_comment": {
+      "type": "string"
+    },
+    "layout": {
+      "type": "string",
+      "default": "page.njk"
+    },
+    "permalink": {
+      "type": "string",
+      "description": "URL path, e.g. /about/ (always trailing slash) or /404.html"
+    },
+    "nav": {
+      "type": "string",
+      "description": "Matches header.menu[].nav to highlight the active item"
+    },
+    "headerStyle": {
+      "type": "string",
+      "enum": [
+        "light",
+        "dark"
+      ],
+      "description": "light = transparent white nav over a dark hero; dark = solid white nav"
+    },
+    "title": {
+      "type": "string"
+    },
+    "noindex": {
+      "type": "boolean"
+    },
+    "bodyClass": {
+      "type": "string"
+    },
+    "eleventyExcludeFromCollections": {
+      "type": "boolean"
+    },
+    "seo": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/section"
+      }
+    }
+  },
+  "definitions": {
+    "section": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "awards",
+            "big-statement",
+            "blog-grid",
+            "case-study",
+            "contact-form",
+            "cta",
+            "custom-html",
+            "faq",
+            "feature-rows",
+            "gallery",
+            "hero-image",
+            "hero-slider",
+            "hero-split",
+            "image-strip",
+            "intro-split",
+            "logos",
+            "map",
+            "marquee",
+            "newsletter",
+            "overview",
+            "page-hero",
+            "portfolio-grid",
+            "pricing",
+            "process",
+            "rich-text",
+            "services-cards",
+            "services-list",
+            "spacer",
+            "stats",
+            "team",
+            "testimonials",
+            "values",
+            "video"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "description": "Anchor id (for #links)"
+        },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "theme": {
+          "type": "string",
+          "enum": [
+            "light",
+            "gray",
+            "beige",
+            "dark"
+          ]
+        },
+        "spacing": {
+          "type": "string",
+          "enum": [
+            "default",
+            "tight",
+            "none",
+            "top",
+            "bottom"
+          ]
+        },
+        "class": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "description": "Section-specific fields \u2014 see docs/SECTIONS.md"
+        }
+      }
+    }
+  }
+}

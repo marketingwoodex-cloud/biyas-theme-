@@ -1,0 +1,23 @@
+{#
+  SECTION: testimonials — quote cards (grid or slider)
+  data: { eyebrow, title, text, layout:"grid"|"slider", items:[{ quote, name, role, avatar?, rating? }] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-testimonials" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "center", section.theme == "dark") }}
+    <div class="rt-testimonial-grid{% if s.layout == 'slider' %} rt-slider{% endif %}" {% if s.layout == 'slider' %}data-slider{% endif %}>
+      {% for t in s.items %}
+        <figure class="rt-testimonial" data-card-reveal style="--d:{{ loop.index0 * 0.1 }}s">
+          <svg class="rt-testimonial-quote" aria-hidden="true"><use href="#i-quote"/></svg>
+          {% if t.rating %}{{ ui.stars(t.rating) }}{% endif %}
+          <blockquote><p>{{ t.quote }}</p></blockquote>
+          <figcaption class="rt-testimonial-author">
+            {% if t.avatar %}<img class="rt-avatar" src="{{ t.avatar | media }}" alt="" loading="lazy">{% else %}<span class="rt-avatar rt-avatar-initials">{{ t.name | first }}</span>{% endif %}
+            <span><strong>{{ t.name }}</strong>{% if t.role %}<br><small>{{ t.role }}</small>{% endif %}</span>
+          </figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>

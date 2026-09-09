@@ -1,0 +1,12 @@
+---
+description: Woodex section-based Eleventy theme — structure, commands and rules
+globs: ["woodex-theme/**"]
+alwaysApply: true
+---
+Follow `woodex-theme/AGENTS.md` exactly. Summary:
+- Content (copy, images, section order, on/off, menus, brand) lives in `content/`; markup/CSS/JS in `theme/`. Never edit `dist/`.
+- Pages = ordered `sections[]` in `content/pages/*.json`; each section = `{ type, id?, theme?, spacing?, enabled?, data }`.
+- Section types = filenames in `theme/sections/`. Data shapes documented in `docs/SECTIONS.md` and each file's top comment.
+- Use scaffold commands: `npm run new:page|new:section|new:project|new:post|new:service`, `npm run import:preset`.
+- Finish every task with `npm run build && npm run check` (and `npm run smoke` for JS changes) — all must pass.
+- Keep design tokens; use `ui.button`, `ui.sectionHead`, `media` filter, and existing `data-*` motion hooks.

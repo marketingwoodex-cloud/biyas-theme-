@@ -1,0 +1,36 @@
+{
+  "description": "Basic inner page \u2014 page hero + rich text + CTA",
+  "headerStyle": "dark",
+  "sections": [
+    {
+      "type": "page-hero",
+      "id": "hero",
+      "data": {
+        "eyebrow": "Page",
+        "title": "Page title",
+        "text": "Short introduction.",
+        "size": "short"
+      }
+    },
+    {
+      "type": "rich-text",
+      "id": "content",
+      "data": {
+        "body": "## Heading\n\nWrite the page content in Markdown."
+      }
+    },
+    {
+      "type": "cta",
+      "data": {
+        "title": "Ready to talk?",
+        "buttons": [
+          {
+            "label": "Contact us",
+            "url": "/contact/",
+            "style": "white"
+          }
+        ]
+      }
+    }
+  ]
+}

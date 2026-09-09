@@ -1,0 +1,5 @@
+{ "layout": "page.njk", "permalink": "/404.html", "nav": "404", "headerStyle": "dark", "title": "Page not found", "noindex": true, "eleventyExcludeFromCollections": true,
+  "sections": [
+    { "type": "page-hero", "data": { "eyebrow": "404", "title": "This room doesn't exist", "text": "The page may have moved. Try one of the links below.", "size": "short" } },
+    { "type": "cta", "data": { "title": "Back to somewhere useful", "buttons": [ { "label": "Home", "url": "/", "style": "white" }, { "label": "Portfolio", "url": "/portfolio/", "style": "text" }, { "label": "Contact", "url": "/contact/", "style": "text" } ] } }
+  ] }

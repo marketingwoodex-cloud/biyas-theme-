@@ -1,0 +1,64 @@
+{% set _url = site.seo.siteUrl ~ page.url %}
+{% set _og = ogImage | media %}
+{% if not (_og.startsWith("http")) %}{% set _og = site.seo.siteUrl ~ _og %}{% endif %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+<link rel="canonical" href="{{ _url }}">
+{% if noindex %}<meta name="robots" content="noindex,follow">{% endif %}
+
+<meta property="og:type" content="{{ 'article' if ogType == 'article' else 'website' }}">
+<meta property="og:site_name" content="{{ site.brand.name }}">
+<meta property="og:title" content="{{ pageTitle }}">
+<meta property="og:description" content="{{ pageDescription }}">
+<meta property="og:url" content="{{ _url }}">
+<meta property="og:image" content="{{ _og }}">
+<meta property="og:locale" content="{{ site.seo.locale }}">
+<meta name="twitter:card" content="summary_large_image">
+{% if site.seo.twitter %}<meta name="twitter:site" content="{{ site.seo.twitter }}">{% endif %}
+
+<meta name="theme-color" content="{{ site.theme.colors.navy }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family={{ site.theme.fonts.googleFonts }}&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/theme.css">
+
+{# Brand tokens from site.json override the CSS defaults #}
+<style id="brand-tokens">
+  :root{
+    --c-navy:{{ site.theme.colors.navy }};
+    --c-jet:{{ site.theme.colors.jet }};
+    --c-charcoal:{{ site.theme.colors.charcoal }};
+    --c-ghost:{{ site.theme.colors.ghost }};
+    --c-light-beige:{{ site.theme.colors.beige }};
+    --c-light-gray:{{ site.theme.colors.lightGray }};
+    --c-silver:{{ site.theme.colors.silver }};
+    --c-accent:{{ site.theme.colors.accent }};
+    --font-heading:"{{ site.theme.fonts.heading }}", "Inter", system-ui, sans-serif;
+    --font-body:"{{ site.theme.fonts.body }}", system-ui, sans-serif;
+    --radius-large:{{ site.theme.radius }};
+  }
+</style>
+<script>document.documentElement.classList.replace('no-js','js');window.WX={forms:{provider:"{{ site.forms.provider }}",endpoint:"{{ site.forms.endpoint }}",accessKey:"{{ site.forms.accessKey }}",successMessage:{{ site.forms.successMessage | dump | safe }},newsletterSuccess:{{ site.forms.newsletterSuccess | dump | safe }},fallbackEmail:"{{ site.contact.email }}"}};</script>
+
+{# Structured data: organisation / local business #}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ site.seo.business.type }}",
+  "name": "{{ site.brand.name }}",
+  "url": "{{ site.seo.siteUrl }}",
+  "image": "{{ _og }}",
+  "email": "{{ site.contact.email }}",
+  "telephone": "{{ site.contact.phone }}",
+  "priceRange": "{{ site.seo.business.priceRange }}",
+  "address": { "@type": "PostalAddress", "streetAddress": "{{ site.contact.addressLines[0] }}", "addressLocality": "{{ site.contact.addressLines[1] }}" },
+  "geo": { "@type": "GeoCoordinates", "latitude": {{ site.seo.business.geo.lat }}, "longitude": {{ site.seo.business.geo.lng }} },
+  "sameAs": [{% for s in site.social %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]
+}
+</script>
+{% if headExtra %}{{ headExtra | safe }}{% endif %}

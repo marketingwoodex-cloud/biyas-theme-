@@ -1,0 +1,148 @@
+{
+  "description": "Landing page \u2014 image hero, benefits, process, testimonials, pricing, FAQ, contact form",
+  "headerStyle": "light",
+  "sections": [
+    {
+      "type": "hero-image",
+      "id": "hero",
+      "data": {
+        "eyebrow": "Offer",
+        "title": "Landing page title",
+        "text": "One clear sentence about the offer.",
+        "image": "hero-3.jpg",
+        "align": "center",
+        "height": "large",
+        "buttons": [
+          {
+            "label": "Book now",
+            "url": "#enquire",
+            "style": "white"
+          }
+        ]
+      }
+    },
+    {
+      "type": "values",
+      "id": "content",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Why us",
+        "title": "Three reasons",
+        "columns": 3,
+        "items": [
+          {
+            "icon": "interior",
+            "title": "Benefit one",
+            "text": "Explain it."
+          },
+          {
+            "icon": "joinery",
+            "title": "Benefit two",
+            "text": "Explain it."
+          },
+          {
+            "icon": "plan",
+            "title": "Benefit three",
+            "text": "Explain it."
+          }
+        ]
+      }
+    },
+    {
+      "type": "process",
+      "theme": "dark",
+      "data": {
+        "eyebrow": "Process",
+        "title": "How it works",
+        "steps": [
+          {
+            "title": "Step one",
+            "text": ""
+          },
+          {
+            "title": "Step two",
+            "text": ""
+          },
+          {
+            "title": "Step three",
+            "text": ""
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "Proof",
+        "title": "Client words",
+        "items": [
+          {
+            "quote": "Quote.",
+            "name": "Name",
+            "role": "Project",
+            "rating": 5
+          }
+        ]
+      }
+    },
+    {
+      "type": "pricing",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Pricing",
+        "title": "Simple packages",
+        "plans": [
+          {
+            "name": "Starter",
+            "price": "PKR \u2014",
+            "text": "",
+            "features": [
+              "Feature"
+            ]
+          },
+          {
+            "name": "Standard",
+            "price": "PKR \u2014",
+            "text": "",
+            "features": [
+              "Feature"
+            ],
+            "highlighted": true
+          },
+          {
+            "name": "Premium",
+            "price": "Custom",
+            "text": "",
+            "features": [
+              "Feature"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "faq",
+      "theme": "light",
+      "data": {
+        "eyebrow": "FAQ",
+        "title": "Questions",
+        "items": [
+          {
+            "q": "Question?",
+            "a": "Answer."
+          }
+        ]
+      }
+    },
+    {
+      "type": "contact-form",
+      "id": "enquire",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "Enquire",
+        "title": "Book your consultation"
+      }
+    }
+  ]
+}

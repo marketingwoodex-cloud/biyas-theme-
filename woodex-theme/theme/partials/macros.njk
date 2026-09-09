@@ -1,0 +1,51 @@
+{#
+  SHARED MACROS — import with:  {% import "partials/macros.njk" as ui %}
+  ui.button(btn, extraClass)     btn = { label, url, style: "solid"|"outline"|"text"|"white", newTab? }
+  ui.sectionHead(s, align)       renders eyebrow/tag, title, text from any section data
+  ui.image(src, alt, cls, ratio) media-aware <img> with lazy loading
+  ui.wrapperClass(section)       background/spacing classes for the section wrapper
+#}
+
+{% macro button(btn, extra="") %}
+  {% if btn and btn.label %}
+    {% set style = btn.style or "solid" %}
+    {% if style == "text" %}
+      <a href="{{ btn.url or '#' }}" class="rt-service-button {{ extra }}"{% if btn.newTab %} target="_blank" rel="noopener"{% endif %}>
+        <span>{{ btn.label }}</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </a>
+    {% elif style == "outline" %}
+      <a href="{{ btn.url or '#' }}" class="rt-button-v1 rt-button-v2 {{ extra }}"{% if btn.newTab %} target="_blank" rel="noopener"{% endif %}>
+        <span class="rt-text-style-button-v2">{{ btn.label }}</span>
+        <span class="rt-button-v1-arrow-wrap-2"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <span class="rt-button-overlay-2"></span>
+      </a>
+    {% else %}
+      <a href="{{ btn.url or '#' }}" class="rt-button-v1{% if style == 'white' %} rt-button-white{% endif %} {{ extra }}"{% if btn.newTab %} target="_blank" rel="noopener"{% endif %}>
+        <span class="rt-text-style-button">{{ btn.label }}</span>
+        <span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        <span class="rt-button-overlay"></span>
+      </a>
+    {% endif %}
+  {% endif %}
+{% endmacro %}
+
+{% macro sectionHead(s, align="left", light=false) %}
+  {% if s.eyebrow or s.title or s.text %}
+  <div class="rt-section-head rt-section-head-{{ align }}{% if light %} rt-section-head-light{% endif %}">
+    {% if s.eyebrow %}<div class="rt-tag rt-overflow-hidden" data-reveal><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
+    {% if s.title %}<{{ s.titleTag or "h2" }} class="rt-section-title{% if light %} rt-text-color-white{% endif %}" data-split>{{ s.title | mdInline | safe }}</{{ s.titleTag or "h2" }}>{% endif %}
+    {% if s.text %}<div class="rt-section-text{% if light %} rt-text-color-light{% endif %}" data-reveal style="--d:.15s">{{ s.text | md | safe }}</div>{% endif %}
+    {% if s.button and s.button.label %}<div class="rt-section-head-cta" data-reveal style="--d:.25s">{{ button(s.button) }}</div>{% endif %}
+  </div>
+  {% endif %}
+{% endmacro %}
+
+{% macro image(src, alt="", cls="", ratio="", loading="lazy") %}
+  {% if src %}
+  <img class="{{ cls }}" src="{{ src | media }}" alt="{{ alt }}" loading="{{ loading }}" decoding="async"{% if ratio %} style="aspect-ratio:{{ ratio }}"{% endif %}>
+  {% endif %}
+{% endmacro %}
+
+{% macro wrapperClass(section) %}rt-section rt-theme-{{ section.theme or "light" }} rt-space-{{ section.spacing or "default" }} {{ section.class or "" }}{% endmacro %}
+
+{% macro stars(n=5) %}<span class="rt-stars" aria-label="{{ n }} out of 5">{% for i in range(0, n) %}<svg aria-hidden="true"><use href="#i-star"/></svg>{% endfor %}</span>{% endmacro %}

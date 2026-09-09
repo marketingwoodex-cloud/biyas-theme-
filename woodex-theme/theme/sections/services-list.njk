@@ -1,0 +1,25 @@
+{#
+  SECTION: services-list — numbered hover list of all services with detail links (services index)
+  data: { eyebrow, title, text, source:"services" | items:[...] }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _items = [] %}
+{% if s.source == "services" %}{% for p in collections.services %}{% set _items = (_items.push({ title: p.data.title, text: p.data.excerpt, image: p.data.image, url: p.url, tags: p.data.labels }), _items) %}{% endfor %}{% else %}{% set _items = s.items or [] %}{% endif %}
+<section class="{{ ui.wrapperClass(section) }} rt-services-list" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <ul class="rt-service-rows">
+      {% for it in _items %}
+        <li class="rt-service-row" data-line data-reveal style="--d:{{ loop.index0 * 0.06 }}s">
+          <a href="{{ it.url }}" class="rt-service-row-link">
+            <span class="rt-service-row-num">{{ loop.index | pad }}</span>
+            <span class="rt-service-row-title"><h3>{{ it.title }}</h3>{% if it.tags %}<span class="rt-service-row-tags">{{ it.tags | join(' · ') }}</span>{% endif %}</span>
+            <span class="rt-service-row-text">{{ it.text }}</span>
+            <span class="rt-service-row-arrow"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            {% if it.image %}<img class="rt-service-row-img" src="{{ it.image | media }}" alt="" loading="lazy">{% endif %}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

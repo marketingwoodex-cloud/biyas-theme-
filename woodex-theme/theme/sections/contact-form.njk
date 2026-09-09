@@ -1,0 +1,49 @@
+{#
+  SECTION: contact-form — studio details + enquiry form (uses site.contact + site.forms)
+  data: { eyebrow, title, text, showDetails:true, fields:{ projectTypes:[], budgets:[] }, consentText }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set c = site.contact %}
+<section class="{{ ui.wrapperClass(section) }} rt-contact" id="{{ _id }}">
+  <div class="rt-container rt-contact-grid">
+    <div class="rt-contact-details">
+      {{ ui.sectionHead(s, "left", section.theme == "dark") }}
+      {% if s.showDetails !== false %}
+      <ul class="rt-contact-list" data-reveal style="--d:.2s">
+        <li><svg aria-hidden="true"><use href="#i-pin"/></svg><span>{% for l in c.addressLines %}{{ l }}<br>{% endfor %}</span></li>
+        <li><svg aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:{{ c.email }}">{{ c.email }}</a></li>
+        <li><svg aria-hidden="true"><use href="#i-phone"/></svg><a href="{{ c.phoneHref }}">{{ c.phone }}</a></li>
+        <li><svg aria-hidden="true"><use href="#i-clock"/></svg><span>{{ c.hours }}</span></li>
+      </ul>
+      <ul class="rt-social-links-wrapper" data-reveal style="--d:.3s">{% for so in site.social %}<li><a href="{{ so.url }}" target="_blank" rel="noopener" aria-label="{{ so.name }}"><svg aria-hidden="true"><use href="#i-{{ so.icon }}"/></svg></a></li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    <form class="rt-contact-v1-form rt-form" data-form data-form-kind="contact" novalidate data-reveal style="--d:.15s">
+      <div class="rt-form-row">
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-name">Full name *</label><input class="rt-input" id="{{ _id }}-name" name="name" type="text" required autocomplete="name"></div>
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-email">Email *</label><input class="rt-input" id="{{ _id }}-email" name="email" type="email" required autocomplete="email"></div>
+      </div>
+      <div class="rt-form-row">
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-phone">Phone</label><input class="rt-input" id="{{ _id }}-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-type">Project type *</label>
+          <select class="rt-input rt-select" id="{{ _id }}-type" name="project_type" required>
+            <option value="" disabled selected>Select…</option>
+            {% for t in (s.fields.projectTypes if s.fields else ["Residential", "Commercial", "Hospitality", "Joinery only", "Consultation"]) %}<option>{{ t }}</option>{% endfor %}
+          </select></div>
+      </div>
+      <div class="rt-form-row">
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-budget">Budget range</label>
+          <select class="rt-input rt-select" id="{{ _id }}-budget" name="budget">
+            <option value="" disabled selected>Select…</option>
+            {% for b in (s.fields.budgets if s.fields else ["Under PKR 2M", "PKR 2M – 5M", "PKR 5M – 15M", "PKR 15M+"]) %}<option>{{ b }}</option>{% endfor %}
+          </select></div>
+        <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-city">Project location</label><input class="rt-input" id="{{ _id }}-city" name="location" type="text"></div>
+      </div>
+      <div class="rt-contact-v1-form-wrap"><label for="{{ _id }}-msg">Tell us about the project *</label><textarea class="rt-input rt-textarea" id="{{ _id }}-msg" name="message" rows="5" required></textarea></div>
+      <label class="rt-checkbox"><input type="checkbox" name="consent" required><span>{{ s.consentText or "I agree to be contacted about my enquiry." }}</span></label>
+      <input type="text" name="_honey" class="rt-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="rt-button-v1" type="submit"><span class="rt-text-style-button">{{ s.buttonLabel or 'Send enquiry' }}</span><span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="rt-button-overlay"></span></button>
+      <p class="rt-form-message" aria-live="polite"></p>
+    </form>
+  </div>
+</section>

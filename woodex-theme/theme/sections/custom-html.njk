@@ -1,0 +1,7 @@
+{#
+  SECTION: custom-html — escape hatch for embeds or one-off markup
+  data: { html }
+#}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'default' }} rt-custom" id="{{ _id }}">
+  <div class="rt-container">{{ s.html | safe }}</div>
+</section>

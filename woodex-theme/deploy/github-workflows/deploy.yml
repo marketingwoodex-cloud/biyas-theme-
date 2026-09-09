@@ -1,0 +1,68 @@
+# Woodex theme — build, check and deploy to Hostinger over FTP/SFTP.
+#
+# Setup (once):
+#   GitHub → repo → Settings → Secrets and variables → Actions → New repository secret
+#     FTP_SERVER    e.g. ftp.yourdomain.com  (hPanel → Files → FTP Accounts)
+#     FTP_USERNAME  e.g. u123456789.yourdomain.com
+#     FTP_PASSWORD  the FTP account password
+#   Optional variables (Settings → Variables):
+#     FTP_DIR       remote folder, default /public_html/
+#
+# Triggers: push to main (production) — or run manually from the Actions tab.
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: [main]
+    paths: ["woodex-theme/**", ".github/workflows/deploy.yml"]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: woodex-theme
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: woodex-theme/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check links, assets and sections
+        run: npm run check
+
+      - name: Upload build artifact (for inspection)
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: woodex-theme/dist
+          retention-days: 7
+
+      - name: Deploy to Hostinger (FTP)
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: woodex-theme/dist/
+          server-dir: ${{ vars.FTP_DIR || '/public_html/' }}
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**

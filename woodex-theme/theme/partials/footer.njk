@@ -1,0 +1,55 @@
+{% set f = site.footer %}
+<footer class="rt-footer rt-footer-{{ f.variant }}" data-footer>
+  <div class="rt-container">
+    <div class="rt-footer-top">
+      <div class="rt-footer-brand">
+        <a href="/" class="rt-logo rt-logo-footer" aria-label="{{ site.brand.name }} — home">
+          <svg class="rt-logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="8" fill="currentColor"/><path d="M10 9v14M16 9v14M22 9v14" style="stroke:var(--logo-ink,#0f1e36)" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <span class="rt-logo-text">{{ site.brand.logo.text }}<span class="rt-logo-accent"> {{ site.brand.logo.textAccent }}</span></span>
+        </a>
+        <p class="rt-footer-intro">{{ f.intro }}</p>
+        <ul class="rt-social-links-wrapper" aria-label="Social">
+          {% for s in site.social %}<li><a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.name }}"><svg aria-hidden="true"><use href="#i-{{ s.icon }}"/></svg></a></li>{% endfor %}
+        </ul>
+      </div>
+
+      {% if f.variant == 'columns' %}
+        {% for col in f.columns %}
+          <div class="rt-footer-col">
+            <h6 class="rt-footer-heading">{{ col.title }}</h6>
+            <ul class="rt-footer-links">
+              {% for l in col.links %}<li><a href="{{ l.url }}" class="rt-footer-link">{{ l.label }}</a></li>{% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+        <div class="rt-footer-col rt-footer-col-contact">
+          <h6 class="rt-footer-heading">Studio</h6>
+          <address class="rt-footer-address">
+            {% for line in site.contact.addressLines %}{{ line }}<br>{% endfor %}
+            <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a><br>
+            <a href="{{ site.contact.phoneHref }}">{{ site.contact.phone }}</a>
+          </address>
+          {% if f.newsletter.enabled %}
+            <form class="rt-footer-newsletter rt-newsletter-form" data-form novalidate>
+              <label class="rt-footer-heading" for="footer-email">{{ f.newsletter.title }}</label>
+              <div class="rt-footer-newsletter-row">
+                <input class="rt-input" id="footer-email" type="email" name="email" placeholder="Email address" required autocomplete="email">
+                <button class="rt-button-v1 rt-button-icon" type="submit" aria-label="Subscribe"><span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="rt-button-overlay"></span></button>
+              </div>
+              <p class="rt-form-message" aria-live="polite"></p>
+            </form>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if f.bigText %}<div class="rt-footer-big" aria-hidden="true"><span class="rt-big-text-v1">{{ f.bigText }}</span></div>{% endif %}
+
+    <div class="rt-footer-bottom">
+      <p class="rt-footer-copy">{{ f.copyright }}{% if f.credit %} · {{ f.credit | safe }}{% endif %}</p>
+      <ul class="rt-footer-legal">
+        {% for l in f.legal %}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</footer>

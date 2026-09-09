@@ -1,0 +1,14 @@
+{#
+  SECTION: image-strip — horizontal row of images (3–5) with optional captions
+  data: { images:[{ src, alt, caption? }], parallax:true }
+#}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'tight' }} rt-image-strip" id="{{ _id }}">
+  <div class="rt-container-fluid rt-image-strip-row rt-count-{{ s.images | length }}">
+    {% for im in s.images %}
+      <figure class="rt-image-strip-item" data-reveal style="--d:{{ loop.index0 * 0.08 }}s" {% if s.parallax %}data-parallax="{{ (loop.index0 % 2) * 0.1 + 0.05 }}"{% endif %}>
+        <img src="{{ im.src | media }}" alt="{{ im.alt or '' }}" loading="lazy">
+        {% if im.caption %}<figcaption>{{ im.caption }}</figcaption>{% endif %}
+      </figure>
+    {% endfor %}
+  </div>
+</section>

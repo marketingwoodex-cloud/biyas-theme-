@@ -1,0 +1,38 @@
+---
+layout: base.njk
+headerStyle: dark
+---
+{# LAYOUT: blog article — narrow reading column, meta, share, related posts #}
+{% import "partials/macros.njk" as ui %}
+<article class="rt-article">
+  <header class="rt-article-head">
+    <div class="rt-container rt-article-head-inner">
+      <nav class="rt-breadcrumbs rt-breadcrumbs-dark" aria-label="Breadcrumb" data-reveal><ol><li><a href="/">Home</a></li><li><a href="/blog/">Journal</a></li><li><span aria-current="page">{{ category }}</span></li></ol></nav>
+      <h1 data-split>{{ title }}</h1>
+      <p class="rt-blog-meta" data-reveal>{{ category }} · {{ date | date }} · {{ content | readingTime }}{% if author %} · By {{ author }}{% endif %}</p>
+    </div>
+    {% if image %}<div class="rt-container rt-article-cover" data-reveal>{{ ui.image(image, title, "", "16/8", "eager") }}</div>{% endif %}
+  </header>
+  <div class="rt-container rt-article-grid">
+    <div class="rt-prose rt-prose-narrow" data-reveal>
+      {% if excerpt %}<p class="rt-lead">{{ excerpt }}</p>{% endif %}
+      {{ content | safe }}
+    </div>
+    <aside class="rt-article-aside" data-reveal style="--d:.1s">
+      <h5>Share</h5>
+      <ul class="rt-share">
+        <li><a href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.seo.siteUrl }}{{ page.url }}" target="_blank" rel="noopener" aria-label="Share on LinkedIn"><svg aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ site.seo.siteUrl }}{{ page.url }}" target="_blank" rel="noopener" aria-label="Share on Facebook"><svg aria-hidden="true"><use href="#i-facebook"/></svg></a></li>
+        <li><a href="https://x.com/intent/tweet?url={{ site.seo.siteUrl }}{{ page.url }}&text={{ title | urlencode }}" target="_blank" rel="noopener" aria-label="Share on X"><svg aria-hidden="true"><use href="#i-x"/></svg></a></li>
+      </ul>
+      <div class="rt-aside-card">
+        <h5>Planning a project?</h5>
+        <p>Our design team is happy to talk through ideas, budgets and timelines.</p>
+        {{ ui.button({ label: "Book a consultation", url: "/contact/", style: "outline" }) }}
+      </div>
+    </aside>
+  </div>
+</article>
+
+{% set section = { type: "blog-grid", theme: "beige", data: { eyebrow: "Keep reading", title: "More from the journal", limit: 3, exclude: page.url, button: { label: "All articles", url: "/blog/", style: "outline" } } } %}
+{% set s = section.data %}{% set _id = "related" %}{% include "sections/blog-grid.njk" %}

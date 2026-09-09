@@ -1,0 +1,19 @@
+{#
+  SECTION: values — icon/number grid of principles or benefits
+  data: { eyebrow, title, text, columns:3|4, items:[{ icon?, title, text }] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-values" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+    <div class="rt-values-grid rt-cols-{{ s.columns or 3 }}">
+      {% for v in s.items %}
+        <div class="rt-value" data-card-reveal style="--d:{{ loop.index0 * 0.08 }}s">
+          <span class="rt-value-icon">{% if v.icon %}<svg aria-hidden="true"><use href="#i-{{ v.icon }}"/></svg>{% else %}{{ loop.index | pad }}{% endif %}</span>
+          <h4>{{ v.title }}</h4>
+          <p>{{ v.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

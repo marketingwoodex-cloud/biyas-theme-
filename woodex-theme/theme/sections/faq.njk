@@ -1,0 +1,18 @@
+{#
+  SECTION: faq — accordion
+  data: { eyebrow, title, text, items:[{ q, a (markdown) }], layout:"split"|"stack", button }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-faq rt-faq-{{ s.layout or 'split' }}" id="{{ _id }}">
+  <div class="rt-container rt-faq-grid">
+    <div class="rt-faq-intro">{{ ui.sectionHead(s, "left", section.theme == "dark") }}</div>
+    <div class="rt-faq-list" data-accordion>
+      {% for it in s.items %}
+        <details class="rt-faq-item" data-reveal style="--d:{{ loop.index0 * 0.05 }}s"{% if loop.first and s.openFirst %} open{% endif %}>
+          <summary><span>{{ it.q }}</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <div class="rt-faq-answer">{{ it.a | md | safe }}</div>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>

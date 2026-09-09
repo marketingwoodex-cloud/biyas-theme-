@@ -1,0 +1,20 @@
+{#
+  SECTION: video — showcase video with marquee headline (home showcase)
+  data: { src, fallback, poster, title, marquee:[...], button }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'dark') }} rt-space-none rt-showcase" id="{{ _id }}">
+  <div class="rt-showcase-video">
+    <video autoplay loop muted playsinline preload="metadata" {% if s.poster %}poster="{{ s.poster | media }}"{% endif %} {% if s.fallback %}data-fallback="{{ s.fallback }}"{% endif %}><source src="{{ s.src }}" type="video/mp4"></video>
+    <div class="rt-overlay-v4"></div>
+  </div>
+  <div class="rt-showcase-content">
+    {% if s.marquee %}<div class="rt-marquee-v2 rt-showcase-marquee" data-marquee-y data-speed="{{ s.speed or 30 }}"><div class="rt-marquee-v2-inner">{% for it in s.marquee %}<span class="rt-big-text-v4 rt-text-color-white">{{ it }}</span><span class="rt-marquee-sep rt-text-color-white">•</span>{% endfor %}</div></div>{% endif %}
+    {% if s.title or s.button %}
+    <div class="rt-container rt-showcase-foot">
+      {% if s.title %}<h2 class="rt-text-color-white" data-split>{{ s.title | mdInline | safe }}</h2>{% endif %}
+      {% if s.button %}<div data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../docs/schemas/page.schema.json",
+  "layout": "page.njk",
+  "permalink": "/contact/",
+  "nav": "contact",
+  "headerStyle": "light",
+  "title": "Contact",
+  "seo": { "description": "Book a consultation with Woodex Interior — studio at 12 Gulberg Boulevard, Lahore. Residential, commercial and joinery enquiries." },
+  "sections": [
+    { "type": "page-hero", "id": "hero", "data": { "eyebrow": "Contact", "title": "Let's talk about your space", "text": "Tell us a little about the project and we'll come back within one working day.", "image": "room-2.jpg", "size": "short" } },
+    { "type": "contact-form", "id": "content", "theme": "light", "data": { "eyebrow": "Enquiries", "title": "Start a conversation", "text": "Fill in the form, email us, or drop into the studio — we're open Monday to Saturday.", "consentText": "I agree to be contacted about my enquiry." } },
+    { "type": "map", "data": { "title": "Visit the studio" } },
+    { "type": "faq", "theme": "beige", "data": { "eyebrow": "Before you write", "title": "Quick answers", "layout": "split", "items": [ { "q": "Is the first consultation free?", "a": "A 30-minute introductory call or studio visit is free. On-site consultations are charged and credited against a design fee if you proceed." }, { "q": "What should I prepare?", "a": "Photos or plans of the space, a rough budget range, your ideal timeline and a few images you love." }, { "q": "Do you take small projects?", "a": "Yes — single rooms, kitchens and joinery-only commissions are welcome." } ] } }
+  ]
+}

@@ -1,0 +1,38 @@
+{#
+  SECTION: hero-slider — full-screen 3-slide hero with curtain intro (home v1)
+  data: { slides:[{ eyebrow, title, text, image }], buttons:[{label,url,style}], autoplay: 5200, showScrollHint }
+  Requires headerStyle: "light" on the page for a transparent nav.
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="rt-hero-v4 rt-section-hero" id="{{ _id }}" data-hero data-autoplay="{{ s.autoplay or 5200 }}">
+  <div class="rt-hero-v4-images">
+    {% for sl in s.slides %}
+      <div class="rt-hero-v4-image{% if loop.first %} is-active{% endif %}" data-slide="{{ loop.index0 }}" style="background-image:url('{{ sl.image | media }}')" role="img" aria-label="{{ sl.alt or sl.title }}"></div>
+    {% endfor %}
+    <div class="rt-overlay-v4"></div>
+  </div>
+  {% if site.theme.introCurtain %}
+  <div class="rt-curtains" aria-hidden="true">{% for i in range(0, 10) %}<span class="rt-curtain"></span>{% endfor %}</div>
+  {% endif %}
+  <div class="rt-container rt-hero-v4-content">
+    <div class="rt-hero-v4-copy">
+      {% for sl in s.slides %}
+        <div class="rt-hero-slide{% if loop.first %} is-active{% endif %}" data-slide="{{ loop.index0 }}">
+          {% if sl.eyebrow %}<div class="rt-tag rt-text-color-white rt-overflow-hidden rt-slide-mask"><span class="rt-slide">{{ sl.eyebrow }}</span></div>{% endif %}
+          <h1 class="rt-gap-off rt-text-color-white rt-hero-title" data-split-hero>{{ sl.title | mdInline | safe }}</h1>
+          {% if sl.text %}<p class="rt-hero-text rt-text-color-white rt-slide-mask"><span class="rt-slide">{{ sl.text }}</span></p>{% endif %}
+        </div>
+      {% endfor %}
+      {% if s.buttons %}
+      <div class="rt-hero-buttons rt-slide-mask"><span class="rt-slide rt-button-row">
+        {% for b in s.buttons %}{{ ui.button(b) }}{% endfor %}
+      </span></div>
+      {% endif %}
+    </div>
+    <div class="rt-hero-v4-nav" aria-label="Slides">
+      {% for sl in s.slides %}<button type="button" class="rt-hero-dot{% if loop.first %} is-active{% endif %}" data-goto="{{ loop.index0 }}" aria-label="Slide {{ loop.index }}"><span class="rt-hero-dot-bar"></span></button>{% endfor %}
+      <span class="rt-hero-counter"><span data-hero-current>01</span> / {{ s.slides | length | pad }}</span>
+    </div>
+  </div>
+  {% if s.showScrollHint !== false %}<a href="#{{ s.scrollTarget or 'content' }}" class="rt-scroll-hint" aria-label="Scroll down"><span></span></a>{% endif %}
+</section>

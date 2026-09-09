@@ -1,0 +1,27 @@
+{#
+  SECTION: case-study — one featured project in an editorial layout
+  data: { eyebrow, project:"canal-side-residence" (slug) | { title, text, image, url, facts:[{label,value}] }, button }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _p = null %}
+{% if s.project and (s.project is string) %}
+  {% for p in collections.projects %}{% if p.fileSlug == s.project %}{% set _p = { title: p.data.title, text: p.data.excerpt, image: p.data.imageWide or p.data.image, url: p.url, facts: [{label:"Location", value:p.data.location},{label:"Year", value:p.data.year},{label:"Scope", value:p.data.scope},{label:"Size", value:p.data.size}] } %}{% endif %}{% endfor %}
+{% else %}{% set _p = s.project %}{% endif %}
+{% if _p %}
+<section class="{{ ui.wrapperClass(section) }} rt-case-study" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, "left", section.theme == "dark") }}
+    <div class="rt-case-study-grid">
+      <a href="{{ _p.url }}" class="rt-case-study-media" data-reveal>{{ ui.image(_p.image, _p.title, "", "16/10") }}</a>
+      <div class="rt-case-study-copy">
+        <h3 data-split>{{ _p.title }}</h3>
+        <p data-reveal style="--d:.1s">{{ _p.text }}</p>
+        <dl class="rt-facts" data-reveal style="--d:.2s">
+          {% for f in _p.facts %}{% if f.value %}<div><dt>{{ f.label }}</dt><dd>{{ f.value }}</dd></div>{% endif %}{% endfor %}
+        </dl>
+        <div data-reveal style="--d:.3s">{{ ui.button(s.button or { label: "View case study", url: _p.url, style: "outline" }) }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}

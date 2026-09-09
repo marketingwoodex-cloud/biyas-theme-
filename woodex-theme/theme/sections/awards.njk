@@ -1,0 +1,19 @@
+{#
+  SECTION: awards — compact list of recognitions / press mentions
+  data: { eyebrow, title, items:[{ year, title, by, url? }] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-awards" id="{{ _id }}">
+  <div class="rt-container rt-awards-grid">
+    <div>{{ ui.sectionHead(s, "left", section.theme == "dark") }}</div>
+    <ul class="rt-awards-list">
+      {% for a in s.items %}
+        <li class="rt-award" data-line data-reveal style="--d:{{ loop.index0 * 0.06 }}s">
+          <span class="rt-award-year">{{ a.year }}</span>
+          <span class="rt-award-title">{% if a.url %}<a href="{{ a.url }}" target="_blank" rel="noopener">{{ a.title }}</a>{% else %}{{ a.title }}{% endif %}</span>
+          <span class="rt-award-by">{{ a.by }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

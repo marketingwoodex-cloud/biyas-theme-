@@ -1,0 +1,187 @@
+{
+  "description": "Home 2 \u2014 full-screen image hero with stats, featured projects first, editorial intro",
+  "headerStyle": "light",
+  "sections": [
+    {
+      "type": "hero-image",
+      "id": "hero",
+      "data": {
+        "eyebrow": "Interior design studio \u2014 Lahore",
+        "title": "Calm, considered interiors for homes and hospitality",
+        "text": "From concept to bespoke joinery, delivered by one accountable team.",
+        "image": "hero-2.jpg",
+        "align": "left",
+        "height": "full",
+        "buttons": [
+          {
+            "label": "View projects",
+            "url": "/portfolio/",
+            "style": "white"
+          },
+          {
+            "label": "Our services",
+            "url": "/services/",
+            "style": "text"
+          }
+        ],
+        "stats": [
+          {
+            "value": "120+",
+            "label": "Projects"
+          },
+          {
+            "value": "12",
+            "label": "Years"
+          },
+          {
+            "value": "1",
+            "label": "Workshop"
+          }
+        ]
+      }
+    },
+    {
+      "type": "portfolio-grid",
+      "id": "content",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Selected work",
+        "title": "Recent projects",
+        "featuredOnly": true,
+        "limit": 3,
+        "columns": 3,
+        "button": {
+          "label": "All projects",
+          "url": "/portfolio/",
+          "style": "outline"
+        }
+      }
+    },
+    {
+      "type": "intro-split",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "The studio",
+        "title": "Design and craft under one roof",
+        "text": "We draw, build and install \u2014 so the details that make a space feel finished are decided by the people who make them.",
+        "image": "feature-1.jpg",
+        "features": [
+          {
+            "title": "In-house workshop"
+          },
+          {
+            "title": "Fixed-scope pricing"
+          },
+          {
+            "title": "One site lead"
+          }
+        ],
+        "button": {
+          "label": "About us",
+          "url": "/about/",
+          "style": "text"
+        }
+      }
+    },
+    {
+      "type": "services-cards",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Services",
+        "title": "How we can help",
+        "source": "services",
+        "limit": 3,
+        "layout": "grid",
+        "button": {
+          "label": "All services",
+          "url": "/services/",
+          "style": "outline"
+        }
+      }
+    },
+    {
+      "type": "stats",
+      "theme": "dark",
+      "data": {
+        "eyebrow": "In numbers",
+        "title": "A studio that delivers",
+        "items": [
+          {
+            "value": 120,
+            "suffix": "+",
+            "label": "Projects completed"
+          },
+          {
+            "value": 12,
+            "label": "Years of practice"
+          },
+          {
+            "value": 18,
+            "label": "Designers & makers"
+          },
+          {
+            "value": 96,
+            "suffix": "%",
+            "label": "Clients who refer us"
+          }
+        ]
+      }
+    },
+    {
+      "type": "testimonials",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Client words",
+        "title": "What clients say",
+        "items": [
+          {
+            "quote": "They listened more than they talked, and the house shows it.",
+            "name": "Sara & Omar H.",
+            "role": "Canal-side residence",
+            "rating": 5
+          },
+          {
+            "quote": "Opened on time and the space photographs better than the renders.",
+            "name": "Hamza Q.",
+            "role": "Founder, Ember Caf\u00e9",
+            "rating": 5
+          },
+          {
+            "quote": "The best joinery I've seen in Pakistan.",
+            "name": "Ali R.",
+            "role": "Architect",
+            "rating": 5
+          }
+        ]
+      }
+    },
+    {
+      "type": "blog-grid",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "Journal",
+        "title": "Latest notes",
+        "limit": 3,
+        "button": {
+          "label": "Read more",
+          "url": "/blog/",
+          "style": "text"
+        }
+      }
+    },
+    {
+      "type": "cta",
+      "data": {
+        "eyebrow": "Start a project",
+        "title": "Tell us about your space",
+        "buttons": [
+          {
+            "label": "Book a consultation",
+            "url": "/contact/",
+            "style": "white"
+          }
+        ]
+      }
+    }
+  ]
+}

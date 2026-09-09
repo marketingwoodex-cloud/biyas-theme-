@@ -1,0 +1,23 @@
+{#
+  SECTION: pricing — plan cards
+  data: { eyebrow, title, text, note, plans:[{ name, price, period, text, features:[], button, highlighted }] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-pricing" id="{{ _id }}">
+  <div class="rt-container">
+    {{ ui.sectionHead(s, s.align or "center", section.theme == "dark") }}
+    <div class="rt-pricing-grid rt-cols-{{ s.plans | length }}">
+      {% for p in s.plans %}
+        <div class="rt-price-card{% if p.highlighted %} is-highlighted{% endif %}" data-card-reveal style="--d:{{ loop.index0 * 0.1 }}s">
+          {% if p.badge %}<span class="rt-price-badge">{{ p.badge }}</span>{% endif %}
+          <h4>{{ p.name }}</h4>
+          <p class="rt-price-value">{{ p.price }}{% if p.period %}<small> {{ p.period }}</small>{% endif %}</p>
+          <p class="rt-price-text">{{ p.text }}</p>
+          <ul class="rt-feature-list rt-feature-list-compact">{% for f in p.features %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span>{{ f }}</span></li>{% endfor %}</ul>
+          {{ ui.button(p.button or { label: "Start a project", url: "/contact/", style: ("solid" if p.highlighted else "outline") }, "rt-price-cta") }}
+        </div>
+      {% endfor %}
+    </div>
+    {% if s.note %}<p class="rt-pricing-note rt-text-align-center" data-reveal>{{ s.note | mdInline | safe }}</p>{% endif %}
+  </div>
+</section>

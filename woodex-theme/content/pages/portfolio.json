@@ -1,0 +1,16 @@
+{
+  "$schema": "../../docs/schemas/page.schema.json",
+  "layout": "page.njk",
+  "permalink": "/portfolio/",
+  "nav": "portfolio",
+  "headerStyle": "light",
+  "title": "Portfolio",
+  "seo": { "description": "Selected residential, hospitality, workplace and retail interiors by Woodex Interior." },
+  "sections": [
+    { "type": "page-hero", "id": "hero", "data": { "eyebrow": "Portfolio", "title": "Selected work", "text": "Homes, cafés, workplaces and stores — each one built from the drawings you'll find in the case studies.", "image": "portfolio-3.jpg", "size": "short", "breadcrumbs": [{ "label": "Home", "url": "/" }, { "label": "Portfolio" }] } },
+    { "type": "portfolio-grid", "id": "content", "theme": "light", "data": { "filters": true, "columns": 3 } },
+    { "type": "case-study", "theme": "beige", "data": { "eyebrow": "Featured case study", "project": "canal-side-residence" } },
+    { "type": "marquee", "theme": "light", "data": { "items": ["Residential", "Hospitality", "Workplace", "Retail", "Joinery", "Lighting"], "size": "large" } },
+    { "type": "cta", "data": { "eyebrow": "Your project", "title": "Let's add yours to the list", "buttons": [ { "label": "Start a project", "url": "/contact/", "style": "white" } ] } }
+  ]
+}

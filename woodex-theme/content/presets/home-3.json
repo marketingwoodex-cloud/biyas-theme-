@@ -1,0 +1,137 @@
+{
+  "description": "Home 3 \u2014 minimal editorial: split hero on light background, marquee, services list, big statement",
+  "headerStyle": "dark",
+  "sections": [
+    {
+      "type": "hero-split",
+      "id": "hero",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Woodex Interior",
+        "title": "Rooms you never want to leave",
+        "text": "An interior design studio and joinery workshop in Lahore, making calm spaces for people who notice details.",
+        "image": "portfolio-2.jpg",
+        "imageSecondary": "room-1.jpg",
+        "buttons": [
+          {
+            "label": "See the work",
+            "url": "/portfolio/",
+            "style": "solid"
+          },
+          {
+            "label": "Book a consultation",
+            "url": "/contact/",
+            "style": "text"
+          }
+        ],
+        "note": "Studio open Mon \u2013 Sat \u00b7 12 Gulberg Boulevard, Lahore"
+      }
+    },
+    {
+      "type": "marquee",
+      "theme": "beige",
+      "data": {
+        "items": [
+          "Residential",
+          "Hospitality",
+          "Workplace",
+          "Retail",
+          "Joinery",
+          "Lighting"
+        ],
+        "size": "medium"
+      }
+    },
+    {
+      "type": "services-list",
+      "id": "content",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Services",
+        "title": "What we do",
+        "source": "services"
+      }
+    },
+    {
+      "type": "big-statement",
+      "theme": "light",
+      "data": {
+        "small": "Our promise",
+        "text": "Decide on paper. Build it properly. Say the number."
+      }
+    },
+    {
+      "type": "portfolio-grid",
+      "theme": "light",
+      "data": {
+        "eyebrow": "Work",
+        "title": "Selected projects",
+        "featuredOnly": true,
+        "limit": 3,
+        "columns": 3,
+        "button": {
+          "label": "View all",
+          "url": "/portfolio/",
+          "style": "outline"
+        }
+      }
+    },
+    {
+      "type": "image-strip",
+      "theme": "light",
+      "spacing": "tight",
+      "data": {
+        "parallax": true,
+        "images": [
+          {
+            "src": "workshop-1.jpg",
+            "alt": "Workshop"
+          },
+          {
+            "src": "room-3.jpg",
+            "alt": "Bedroom"
+          },
+          {
+            "src": "portfolio-5.jpg",
+            "alt": "Boutique"
+          }
+        ]
+      }
+    },
+    {
+      "type": "faq",
+      "theme": "beige",
+      "data": {
+        "eyebrow": "FAQ",
+        "title": "Good to know",
+        "items": [
+          {
+            "q": "How early should we involve you?",
+            "a": "Before walls move \u2014 interiors, lighting and joinery are cheapest when planned with the architecture."
+          },
+          {
+            "q": "Do you work with our contractor?",
+            "a": "Yes, or we deliver turnkey with our own team."
+          },
+          {
+            "q": "Do you take small projects?",
+            "a": "Single rooms and joinery-only commissions are welcome."
+          }
+        ]
+      }
+    },
+    {
+      "type": "cta",
+      "data": {
+        "title": "Let's talk about your space",
+        "buttons": [
+          {
+            "label": "Get in touch",
+            "url": "/contact/",
+            "style": "white"
+          }
+        ]
+      }
+    }
+  ]
+}

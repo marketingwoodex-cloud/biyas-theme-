@@ -1,0 +1,169 @@
+{
+  "$schema": "../docs/schemas/site.schema.json",
+  "_comment": "GLOBAL SETTINGS — brand, header, footer, SEO. Every page reads from here. Change once, applies everywhere.",
+
+  "brand": {
+    "name": "Woodex Interior",
+    "shortName": "Woodex",
+    "tagline": "Interiors made with intention",
+    "logo": {
+      "type": "text",
+      "text": "Woodex",
+      "textAccent": "Interior",
+      "image": "",
+      "imageLight": "",
+      "width": 150
+    }
+  },
+
+  "theme": {
+    "_comment": "Design tokens. Colours are HEX; fonts must exist in theme/assets/css/fonts.css or Google Fonts.",
+    "colors": {
+      "navy": "#0f1e36",
+      "jet": "#111111",
+      "charcoal": "#525252",
+      "ghost": "#f8f8f8",
+      "beige": "#fcf2e8",
+      "lightGray": "#e3e1e1",
+      "silver": "#c0c0c0",
+      "accent": "#0f1e36"
+    },
+    "fonts": {
+      "heading": "Nohemi",
+      "body": "Inter",
+      "googleFonts": "Inter:wght@300;400;500;600;700"
+    },
+    "radius": "1.25rem",
+    "cursor": true,
+    "introCurtain": true
+  },
+
+  "contact": {
+    "email": "hello@woodexinterior.com",
+    "phone": "+92 42 3500 0000",
+    "phoneHref": "tel:+924235000000",
+    "address": "12 Gulberg Boulevard, Lahore 54660, Pakistan",
+    "addressLines": ["12 Gulberg Boulevard", "Lahore 54660, Pakistan"],
+    "hours": "Mon – Sat, 10:00 – 19:00",
+    "mapEmbed": "https://www.openstreetmap.org/export/embed.html?bbox=74.3300%2C31.5050%2C74.3600%2C31.5250&layer=mapnik&marker=31.515%2C74.345",
+    "mapLink": "https://www.openstreetmap.org/?mlat=31.515&mlon=74.345#map=15/31.515/74.345"
+  },
+
+  "social": [
+    { "name": "Instagram", "icon": "instagram", "url": "https://instagram.com/" },
+    { "name": "Facebook", "icon": "facebook", "url": "https://facebook.com/" },
+    { "name": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/" },
+    { "name": "Pinterest", "icon": "pinterest", "url": "https://pinterest.com/" }
+  ],
+
+  "header": {
+    "_comment": "variant: 'standard' | 'centered'. Mega menu items support children + an optional promo card.",
+    "variant": "standard",
+    "sticky": true,
+    "transparentOnHero": true,
+    "announcement": {
+      "enabled": false,
+      "text": "Now booking projects for spring 2027 —",
+      "linkLabel": "Book a consultation",
+      "link": "/contact/"
+    },
+    "menu": [
+      { "label": "Home", "url": "/", "nav": "home" },
+      { "label": "About", "url": "/about/", "nav": "about" },
+      {
+        "label": "Services",
+        "url": "/services/",
+        "nav": "services",
+        "mega": true,
+        "children": [
+          { "label": "Residential interiors", "url": "/services/residential-interiors/", "description": "Homes, apartments and villas", "icon": "interior" },
+          { "label": "Commercial & hospitality", "url": "/services/commercial-hospitality/", "description": "Offices, cafés, hotels, retail", "icon": "plan" },
+          { "label": "Bespoke joinery", "url": "/services/bespoke-joinery/", "description": "Kitchens, wardrobes, furniture", "icon": "joinery" },
+          { "label": "Renovation & fit-out", "url": "/services/renovation-fit-out/", "description": "Structure-to-finish delivery", "icon": "cube" },
+          { "label": "Lighting design", "url": "/services/lighting-design/", "description": "Layers, scenes, control", "icon": "lighting" },
+          { "label": "3D visualisation", "url": "/services/3d-visualisation/", "description": "Photoreal renders & walkthroughs", "icon": "consult" }
+        ],
+        "promo": {
+          "enabled": true,
+          "eyebrow": "Featured project",
+          "title": "Canal-side residence, Lahore",
+          "image": "portfolio-1.jpg",
+          "url": "/portfolio/canal-side-residence/",
+          "cta": "View case study"
+        }
+      },
+      { "label": "Portfolio", "url": "/portfolio/", "nav": "portfolio" },
+      { "label": "Blog", "url": "/blog/", "nav": "blog" },
+      { "label": "Contact", "url": "/contact/", "nav": "contact" }
+    ],
+    "cta": { "enabled": true, "label": "Get in touch", "url": "/contact/" }
+  },
+
+  "footer": {
+    "variant": "columns",
+    "intro": "A Lahore-based interior design studio crafting calm, considered spaces for homes, workplaces and hospitality.",
+    "columns": [
+      {
+        "title": "Studio",
+        "links": [
+          { "label": "About us", "url": "/about/" },
+          { "label": "Portfolio", "url": "/portfolio/" },
+          { "label": "Journal", "url": "/blog/" },
+          { "label": "Contact", "url": "/contact/" }
+        ]
+      },
+      {
+        "title": "Services",
+        "links": [
+          { "label": "Residential interiors", "url": "/services/residential-interiors/" },
+          { "label": "Commercial & hospitality", "url": "/services/commercial-hospitality/" },
+          { "label": "Bespoke joinery", "url": "/services/bespoke-joinery/" },
+          { "label": "3D visualisation", "url": "/services/3d-visualisation/" }
+        ]
+      }
+    ],
+    "newsletter": { "enabled": true, "title": "Studio notes", "text": "One thoughtful email a month. No noise." },
+    "bigText": "Woodex",
+    "legal": [
+      { "label": "Privacy", "url": "/privacy/" },
+      { "label": "Terms", "url": "/terms/" }
+    ],
+    "copyright": "© {year} Woodex Interior. All rights reserved.",
+    "credit": ""
+  },
+
+  "seo": {
+    "siteUrl": "https://www.woodexinterior.com",
+    "titleTemplate": "%s — Woodex Interior",
+    "defaultTitle": "Woodex Interior — Interior Design Studio, Lahore",
+    "defaultDescription": "Woodex Interior designs calm, considered residential, commercial and hospitality spaces — from concept to bespoke joinery and turnkey delivery.",
+    "ogImage": "hero-1.jpg",
+    "locale": "en_GB",
+    "twitter": "",
+    "business": {
+      "type": "InteriorDesignBusiness",
+      "priceRange": "$$$",
+      "geo": { "lat": 31.515, "lng": 74.345 }
+    }
+  },
+
+  "forms": {
+    "_comment": "provider: 'demo' (simulated) | 'web3forms' | 'formspree' | 'php' (theme/assets/root/mail.php) | 'custom' (endpoint URL).",
+    "provider": "demo",
+    "endpoint": "",
+    "accessKey": "",
+    "successMessage": "Thank you — we have received your enquiry and will reply within one working day.",
+    "newsletterSuccess": "Thank you — you are on the list."
+  },
+
+  "media": {
+    "heroVideo": {
+      "src": "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
+      "poster": "https://images.pexels.com/videos/3773486/decoration-design-estate-furniture-3773486.jpeg?auto=compress&w=1600"
+    },
+    "showcaseVideo": {
+      "src": "https://videos.pexels.com/video-files/3773487/3773487-hd_1920_1080_30fps.mp4",
+      "fallback": "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4"
+    }
+  }
+}

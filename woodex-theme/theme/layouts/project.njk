@@ -1,0 +1,52 @@
+---
+layout: base.njk
+headerStyle: light
+---
+{# LAYOUT: project case study — full-bleed hero, facts, body, gallery, next project #}
+{% import "partials/macros.njk" as ui %}
+<section class="rt-hero-v3 rt-page-hero rt-project-hero" id="hero">
+  <div class="rt-hero-v3-image-v1" style="background-image:url('{{ (imageWide or image) | media }}')"></div>
+  <div class="rt-overlay-v4"></div>
+  <div class="rt-container rt-hero-v3-main-wrapper">
+    <nav class="rt-breadcrumbs" aria-label="Breadcrumb" data-reveal><ol><li><a href="/">Home</a></li><li><a href="/portfolio/">Portfolio</a></li><li><span aria-current="page">{{ title }}</span></li></ol></nav>
+    <div class="rt-tag rt-text-color-white" data-reveal><span class="rt-tag-dot"></span>{{ category }}{% if location %} · {{ location }}{% endif %}</div>
+    <h1 class="rt-text-color-white" data-split>{{ title }}</h1>
+  </div>
+</section>
+
+<section class="rt-section rt-theme-light rt-space-default rt-project-body" id="content">
+  <div class="rt-container rt-project-grid">
+    <aside class="rt-project-facts" data-reveal>
+      <dl class="rt-facts rt-facts-stack">
+        {% if client %}<div><dt>Client</dt><dd>{{ client }}</dd></div>{% endif %}
+        {% if location %}<div><dt>Location</dt><dd>{{ location }}</dd></div>{% endif %}
+        {% if year %}<div><dt>Year</dt><dd>{{ year }}</dd></div>{% endif %}
+        {% if size %}<div><dt>Size</dt><dd>{{ size }}</dd></div>{% endif %}
+        {% if scope %}<div><dt>Scope</dt><dd>{{ scope }}</dd></div>{% endif %}
+        {% if services %}<div><dt>Services</dt><dd>{% for sv in services %}{% set _svc = collections.services | where("title", sv) %}{% if _svc.length %}<a href="{{ _svc[0].url }}">{{ sv }}</a>{% else %}{{ sv }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</dd></div>{% endif %}
+      </dl>
+    </aside>
+    <div class="rt-prose" data-reveal style="--d:.1s">
+      {% if excerpt %}<p class="rt-lead">{{ excerpt }}</p>{% endif %}
+      {{ content | safe }}
+    </div>
+  </div>
+</section>
+
+{% if gallery %}
+  {% set section = { type: "gallery", spacing: "tight", data: { images: gallery, columns: 3 } } %}
+  {% set s = section.data %}{% set _id = "gallery" %}{% include "sections/gallery.njk" %}
+{% endif %}
+
+{# next / previous project #}
+{% set _all = collections.projects %}
+{% set _next = null %}
+{% for p in _all %}{% if p.url == page.url %}{% set _i = loop.index0 %}{% set _next = _all[(_i + 1) % _all.length] %}{% endif %}{% endfor %}
+{% if _next %}
+<a href="{{ _next.url }}" class="rt-next-project" data-reveal>
+  <div class="rt-container rt-next-project-inner">
+    <div><span class="rt-tag"><span class="rt-tag-dot"></span>Next project</span><h2 data-split>{{ _next.data.title }}</h2><span class="rt-service-button"><span>View project</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+    {{ ui.image(_next.data.image, _next.data.title, "rt-next-project-img", "4/5") }}
+  </div>
+</a>
+{% endif %}

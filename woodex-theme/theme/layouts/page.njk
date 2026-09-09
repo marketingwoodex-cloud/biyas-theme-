@@ -1,0 +1,15 @@
+---
+layout: base.njk
+---
+{#
+  PAGE LAYOUT — renders an ordered list of sections.
+  A page's `sections` array (from content/pages/*.json or front matter) looks like:
+    { "type": "hero-image", "enabled": true, "data": { ... } }
+  Disabled sections are skipped. Unknown types render a visible warning in dev.
+#}
+{% set _sections = sections or [] %}
+{% for section in _sections %}
+  {% if section.enabled !== false %}
+    {% include "partials/section.njk" %}
+  {% endif %}
+{% endfor %}

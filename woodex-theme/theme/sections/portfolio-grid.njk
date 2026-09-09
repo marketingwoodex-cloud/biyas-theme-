@@ -1,0 +1,38 @@
+{#
+  SECTION: portfolio-grid — filterable project grid from content/projects
+  data: { eyebrow, title, text, filters:true, limit, columns:3, featuredOnly:false, categories:["residential",...], button }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _all = collections.projects %}
+{% if s.featuredOnly %}{% set _all = _all | where("featured", true) %}{% endif %}
+{% if s.exclude %}{% set _all = _all | exclude(s.exclude) %}{% endif %}
+{% set _items = _all | limit(s.limit or 99) %}
+{% set _cats = s.categories or (_items | pluck("category") | unique) %}
+<section class="{{ ui.wrapperClass(section) }} rt-portfolio" id="{{ _id }}">
+  <div class="rt-container">
+    <div class="rt-portfolio-head">
+      {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+      {% if s.filters %}
+      <div class="rt-filters" role="tablist" aria-label="Filter projects" data-reveal>
+        <button type="button" class="rt-filter is-active" data-filter="all" role="tab" aria-selected="true">All <span data-count>{{ _items | length }}</span></button>
+        {% for c in _cats %}<button type="button" class="rt-filter" data-filter="{{ c | slug }}" role="tab" aria-selected="false">{{ c }}</button>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="rt-portfolio-grid rt-cols-{{ s.columns or 3 }}" data-portfolio-grid>
+      {% for p in _items %}
+        <article class="rt-portfolio-card" data-category="{{ p.data.category | slug }}" data-card-reveal style="--d:{{ (loop.index0 % 3) * 0.08 }}s">
+          <a href="{{ p.url }}" class="rt-portfolio-card-link">
+            <div class="rt-portfolio-card-media">{{ ui.image(p.data.image, p.data.title, "", "4/5") }}<span class="rt-portfolio-card-arrow"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+            <div class="rt-portfolio-card-copy">
+              <span class="rt-portfolio-card-meta">{{ p.data.category }}{% if p.data.location %} · {{ p.data.location }}{% endif %}{% if p.data.year %} · {{ p.data.year }}{% endif %}</span>
+              <h3>{{ p.data.title }}</h3>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="rt-portfolio-empty" hidden>No projects in this category yet.</p>
+    {% if s.button %}<div class="rt-section-foot" data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+  </div>
+</section>

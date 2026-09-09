@@ -1,0 +1,17 @@
+{#
+  SECTION: newsletter — email capture
+  data: { eyebrow, title, text, placeholder, buttonLabel, note }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="{{ ui.wrapperClass(section) }} rt-newsletter" id="{{ _id }}">
+  <div class="rt-container rt-newsletter-content">
+    {{ ui.sectionHead(s, "left", section.theme == "dark") }}
+    <form class="rt-newsletter-form" data-form novalidate data-reveal>
+      <label class="sr-only" for="{{ _id }}-email">Email address</label>
+      <input class="rt-input" id="{{ _id }}-email" type="email" name="email" placeholder="{{ s.placeholder or 'Your email address' }}" required autocomplete="email">
+      <button class="rt-button-v1" type="submit"><span class="rt-text-style-button">{{ s.buttonLabel or 'Subscribe' }}</span><span class="rt-button-v1-arrow-wrap"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span><span class="rt-button-overlay"></span></button>
+      <p class="rt-form-message" aria-live="polite"></p>
+      {% if s.note %}<p class="rt-form-note">{{ s.note }}</p>{% endif %}
+    </form>
+  </div>
+</section>

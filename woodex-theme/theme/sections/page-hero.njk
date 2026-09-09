@@ -1,0 +1,17 @@
+{#
+  SECTION: page-hero — standard inner-page hero (about / services / portfolio / blog / contact)
+  data: { eyebrow, title, text, image, size:"default"|"short", breadcrumbs:[{label,url}] }
+#}
+<section class="rt-hero-v3 rt-page-hero{% if s.size == 'short' %} rt-page-hero-short{% endif %}" id="{{ _id }}">
+  {% if s.image %}<div class="rt-hero-v3-image-v1" style="background-image:url('{{ s.image | media }}')"></div>{% endif %}
+  <div class="rt-overlay-v4"></div>
+  <div class="rt-line-wrapper rt-line-wrapper-v2" aria-hidden="true"><span class="rt-line-v2"></span><span class="rt-line-v2"></span><span class="rt-line-v2"></span></div>
+  <div class="rt-container rt-hero-v3-main-wrapper">
+    {% if s.breadcrumbs %}
+      <nav class="rt-breadcrumbs" aria-label="Breadcrumb" data-reveal><ol>{% for b in s.breadcrumbs %}<li>{% if b.url %}<a href="{{ b.url }}">{{ b.label }}</a>{% else %}<span aria-current="page">{{ b.label }}</span>{% endif %}</li>{% endfor %}</ol></nav>
+    {% endif %}
+    {% if s.eyebrow %}<div class="rt-tag rt-text-color-white" data-reveal><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
+    <h1 class="rt-text-color-white" data-split>{{ s.title | mdInline | safe }}</h1>
+    {% if s.text %}<p class="rt-page-hero-text rt-text-color-light" data-reveal style="--d:.2s">{{ s.text }}</p>{% endif %}
+  </div>
+</section>

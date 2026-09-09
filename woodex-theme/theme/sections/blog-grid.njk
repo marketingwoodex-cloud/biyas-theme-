@@ -1,0 +1,50 @@
+{#
+  SECTION: blog-grid — posts from content/posts
+  data: { eyebrow, title, text, limit:3, columns:3, filters:false, featuredFirst:false, button, exclude:url }
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _posts = collections.posts %}
+{% if s.exclude %}{% set _posts = _posts | exclude(s.exclude) %}{% endif %}
+{% set _posts = _posts | limit(s.limit or 3) %}
+{% set _cats = _posts | pluck("category") | unique %}
+<section class="{{ ui.wrapperClass(section) }} rt-blog" id="{{ _id }}">
+  <div class="rt-container">
+    <div class="rt-portfolio-head">
+      {{ ui.sectionHead(s, s.align or "left", section.theme == "dark") }}
+      {% if s.filters %}
+      <div class="rt-filters" data-reveal>
+        <button type="button" class="rt-filter is-active" data-filter="all">All</button>
+        {% for c in _cats %}<button type="button" class="rt-filter" data-filter="{{ c | slug }}">{{ c }}</button>{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    {% if s.featuredFirst and _posts.length %}
+      {% set f = _posts[0] %}
+      <a href="{{ f.url }}" class="rt-blog-featured" data-reveal>
+        <div class="rt-blog-featured-media">{{ ui.image(f.data.image, f.data.title, "", "16/9") }}</div>
+        <div class="rt-blog-featured-copy">
+          <span class="rt-blog-meta">{{ f.data.category }} · {{ f.date | date }} · {{ f.templateContent | readingTime }}</span>
+          <h3>{{ f.data.title }}</h3><p>{{ f.data.excerpt }}</p>
+          <span class="rt-service-button">Read article <svg aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </div>
+      </a>
+      {% set _posts = _posts.slice(1) %}
+    {% endif %}
+    <div class="rt-blog-grid rt-cols-{{ s.columns or 3 }}" data-portfolio-grid>
+      {% for p in _posts %}
+        <article class="rt-blog-card" data-category="{{ p.data.category | slug }}" data-card-reveal style="--d:{{ (loop.index0 % 3) * 0.08 }}s">
+          <a href="{{ p.url }}" class="rt-blog-card-link">
+            <div class="rt-blog-card-media">{{ ui.image(p.data.image, p.data.title, "", "4/3") }}</div>
+            <div class="rt-blog-card-copy">
+              <span class="rt-blog-meta">{{ p.data.category }} · {{ p.date | date("short") }}</span>
+              <h4>{{ p.data.title }}</h4>
+              <p>{{ p.data.excerpt }}</p>
+            </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="rt-portfolio-empty" hidden>No articles in this category yet.</p>
+    {% if s.button %}<div class="rt-section-foot" data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+  </div>
+</section>

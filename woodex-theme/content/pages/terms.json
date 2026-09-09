@@ -1,0 +1,5 @@
+{ "layout": "page.njk", "permalink": "/terms/", "nav": "terms", "headerStyle": "dark", "title": "Terms of use",
+  "sections": [
+    { "type": "page-hero", "data": { "eyebrow": "Legal", "title": "Terms of use", "size": "short" } },
+    { "type": "rich-text", "data": { "body": "## Website content\nAll designs, drawings, photographs and text on this site are the property of Woodex Interior unless credited otherwise and may not be reproduced without permission.\n\n## Proposals and quotations\nInformation on this website is indicative. Scope, fees and timelines are confirmed only in a written proposal.\n\n## Liability\nWe make every effort to keep this site accurate but accept no liability for decisions made solely on its content." } }
+  ] }

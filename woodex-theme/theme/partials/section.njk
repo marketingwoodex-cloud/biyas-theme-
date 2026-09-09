@@ -1,0 +1,21 @@
+{#
+  SECTION RENDERER
+  Expects `section` = { type, id?, enabled?, theme?, spacing?, data }
+  Looks up theme/sections/<type>.njk and passes `s` (the section data) and `section` (the wrapper).
+  Wrapper controls (all optional):
+    id       → anchor id (default: type + index)
+    theme    → "light" | "dark" | "beige" | "gray"  (background/text scheme)
+    spacing  → "default" | "tight" | "none" | "top" | "bottom"
+    class    → extra classes
+#}
+{% set s = section.data or {} %}
+{% set _id = section.id or (section.type ~ "-" ~ loop.index) %}
+{% set _type = section.type %}
+{% set _known = sectionLibrary %}
+{% if _type in _known %}
+  {% include "sections/" ~ _type ~ ".njk" %}
+{% else %}
+  <section class="rt-section-unknown" id="{{ _id }}">
+    <div class="rt-container"><p><strong>Unknown section type:</strong> <code>{{ _type }}</code>. Available: {{ _known | join(", ") }}</p></div>
+  </section>
+{% endif %}

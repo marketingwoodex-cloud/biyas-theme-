@@ -1,0 +1,66 @@
+---
+layout: base.njk
+headerStyle: light
+---
+{#
+  LAYOUT: service detail — hero, intro + deliverables, process, related projects, FAQ, CTA.
+  Front matter fields: title, excerpt, image, icon, labels[], deliverables[], process[], faq[], body (markdown)
+#}
+{% import "partials/macros.njk" as ui %}
+{% set _hero = { type: "page-hero", data: { eyebrow: "Service", title: title, text: excerpt, image: image, size: "short", breadcrumbs: [{label:"Home",url:"/"},{label:"Services",url:"/services/"},{label:title}] } } %}
+{% set section = _hero %}{% set s = _hero.data %}{% set _id = "hero" %}{% include "sections/page-hero.njk" %}
+
+<section class="rt-section rt-theme-light rt-space-default rt-service-detail" id="content">
+  <div class="rt-container rt-service-detail-grid">
+    <div class="rt-prose" data-reveal>{{ content | safe }}</div>
+    <aside class="rt-service-aside" data-reveal style="--d:.15s">
+      {% if labels %}<ul class="rt-tag-list">{% for l in labels %}<li>{{ l }}</li>{% endfor %}</ul>{% endif %}
+      {% if deliverables %}
+        <h5>What's included</h5>
+        <ul class="rt-feature-list rt-feature-list-compact">{% for d in deliverables %}<li><svg aria-hidden="true"><use href="#i-check"/></svg><span>{{ d }}</span></li>{% endfor %}</ul>
+      {% endif %}
+      <div class="rt-aside-card">
+        <h5>Start a conversation</h5>
+        <p>Tell us about your space and we'll suggest the right scope and next step.</p>
+        {{ ui.button({ label: "Book a consultation", url: "/contact/" }) }}
+      </div>
+      <nav class="rt-aside-nav" aria-label="Other services">
+        <h5>Other services</h5>
+        <ul>{% for p in collections.services %}{% if p.url != page.url %}<li><a href="{{ p.url }}">{{ p.data.title }}</a></li>{% endif %}{% endfor %}</ul>
+      </nav>
+    </aside>
+  </div>
+</section>
+
+{% if process %}
+  {% set section = { type: "process", theme: "dark", data: { eyebrow: "How it works", title: "Our process for " ~ (title | lower), steps: process } } %}
+  {% set s = section.data %}{% set _id = "process" %}{% include "sections/process.njk" %}
+{% endif %}
+
+{% set _related = [] %}
+{% for p in collections.projects %}{% if title in (p.data.services or []) %}{% set _related = (_related.push(p), _related) %}{% endif %}{% endfor %}
+{% if _related.length %}
+<section class="rt-section rt-theme-light rt-space-default rt-portfolio" id="related">
+  <div class="rt-container">
+    {{ ui.sectionHead({ eyebrow: "Related work", title: "Projects using this service" }) }}
+    <div class="rt-portfolio-grid rt-cols-3">
+      {% for p in _related | limit(3) %}
+        <article class="rt-portfolio-card" data-card-reveal style="--d:{{ loop.index0 * 0.08 }}s">
+          <a href="{{ p.url }}" class="rt-portfolio-card-link">
+            <div class="rt-portfolio-card-media">{{ ui.image(p.data.image, p.data.title, "", "4/5") }}<span class="rt-portfolio-card-arrow"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+            <div class="rt-portfolio-card-copy"><span class="rt-portfolio-card-meta">{{ p.data.category }} · {{ p.data.location }}</span><h3>{{ p.data.title }}</h3></div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% if faq %}
+  {% set section = { type: "faq", theme: "beige", data: { eyebrow: "Questions", title: "Frequently asked", items: faq } } %}
+  {% set s = section.data %}{% set _id = "faq" %}{% include "sections/faq.njk" %}
+{% endif %}
+
+{% set section = { type: "cta", data: { title: "Ready to talk about your project?", text: "Book a free 30-minute consultation with our design team.", buttons: [{ label: "Get in touch", url: "/contact/", style: "white" }] } } %}
+{% set s = section.data %}{% set _id = "cta" %}{% include "sections/cta.njk" %}

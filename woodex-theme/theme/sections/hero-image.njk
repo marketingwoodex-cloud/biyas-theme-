@@ -1,0 +1,22 @@
+{#
+  SECTION: hero-image — full-width image hero with overlay copy (home v2 / landing)
+  data: { eyebrow, title, text, image, video?, align:"left"|"center", height:"full"|"large"|"medium", buttons:[...], stats:[{value,label}] }
+#}
+{% import "partials/macros.njk" as ui %}
+<section class="rt-hero-v3 rt-hero-image rt-hero-h-{{ s.height or 'large' }} rt-hero-align-{{ s.align or 'left' }}" id="{{ _id }}">
+  <div class="rt-hero-v3-image-v1" style="background-image:url('{{ s.image | media }}')" role="img" aria-label="{{ s.alt or '' }}"></div>
+  {% if s.video %}<video class="rt-hero-video" autoplay loop muted playsinline preload="metadata" poster="{{ s.image | media }}"><source src="{{ s.video }}" type="video/mp4"></video>{% endif %}
+  <div class="rt-overlay-v4"></div>
+  <div class="rt-line-wrapper rt-line-wrapper-v2" aria-hidden="true"><span class="rt-line-v2"></span><span class="rt-line-v2"></span><span class="rt-line-v2"></span></div>
+  <div class="rt-container rt-hero-v3-main-wrapper">
+    {% if s.eyebrow %}<div class="rt-tag rt-text-color-white rt-slide-mask" data-reveal><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
+    <h1 class="rt-text-color-white rt-hero-image-title" data-split>{{ s.title | mdInline | safe }}</h1>
+    {% if s.text %}<p class="rt-hero-image-text rt-text-color-light" data-reveal style="--d:.2s">{{ s.text }}</p>{% endif %}
+    {% if s.buttons %}<div class="rt-button-row" data-reveal style="--d:.3s">{% for b in s.buttons %}{{ ui.button(b) }}{% endfor %}</div>{% endif %}
+  </div>
+  {% if s.stats %}
+  <div class="rt-container rt-hero-stats" data-reveal style="--d:.4s">
+    {% for st in s.stats %}<div class="rt-hero-stat"><span class="rt-hero-stat-value rt-text-color-white">{{ st.value }}</span><span class="rt-hero-stat-label rt-text-color-light">{{ st.label }}</span></div>{% endfor %}
+  </div>
+  {% endif %}
+</section>

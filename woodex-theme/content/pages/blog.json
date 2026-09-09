@@ -1,0 +1,14 @@
+{
+  "$schema": "../../docs/schemas/page.schema.json",
+  "layout": "page.njk",
+  "permalink": "/blog/",
+  "nav": "blog",
+  "headerStyle": "light",
+  "title": "Journal",
+  "seo": { "description": "Notes on interior design, materials, lighting and life in the Woodex workshop." },
+  "sections": [
+    { "type": "page-hero", "id": "hero", "data": { "eyebrow": "Journal", "title": "Notes from the studio", "text": "Practical writing on design, materials, budgets and the workshop.", "image": "workshop-1.jpg", "size": "short" } },
+    { "type": "blog-grid", "id": "content", "theme": "light", "data": { "filters": true, "featuredFirst": true, "limit": 24, "columns": 3 } },
+    { "type": "newsletter", "theme": "beige", "data": { "eyebrow": "Studio notes", "title": "One thoughtful email a month", "text": "New projects, workshop notes and the occasional material obsession. No noise, unsubscribe any time.", "buttonLabel": "Subscribe", "note": "We never share your address." } }
+  ]
+}

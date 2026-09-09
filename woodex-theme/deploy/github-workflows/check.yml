@@ -1,0 +1,24 @@
+# Runs on every pull request / non-main push: build + check, no deploy.
+name: Check
+
+on:
+  pull_request:
+    paths: ["woodex-theme/**"]
+  push:
+    branches-ignore: [main]
+    paths: ["woodex-theme/**"]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: woodex-theme
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm, cache-dependency-path: woodex-theme/package-lock.json }
+      - run: npm ci
+      - run: npm run build
+      - run: npm run check
+      - run: npm run smoke

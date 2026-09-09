@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js{% if site.theme.cursor %} wants-cursor{% endif %}" data-theme="{{ site.brand.shortName | slug }}">
+<head>
+  {% include "partials/head.njk" %}
+</head>
+<body class="page-{{ navKey or 'default' }} {{ bodyClass }}{% if headerStyle %} header-{{ headerStyle }}{% endif %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/icons.njk" %}
+  {% if site.theme.cursor %}<div class="rt-cursor" aria-hidden="true"></div>{% endif %}
+
+  {% include "partials/header.njk" %}
+
+  <main id="main" class="rt-main">
+    {{ content | safe }}
+  </main>
+
+  {% include "partials/footer.njk" %}
+
+  <script src="/assets/js/app.js" defer></script>
+</body>
+</html>

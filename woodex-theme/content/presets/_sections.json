@@ -1,0 +1,474 @@
+{
+  "logos": {
+    "type": "logos",
+    "theme": "dark",
+    "spacing": "tight",
+    "data": {
+      "title": "Trusted by",
+      "marquee": true,
+      "logos": [
+        {
+          "name": "Client one"
+        },
+        {
+          "name": "Client two"
+        },
+        {
+          "name": "Client three"
+        },
+        {
+          "name": "Client four"
+        }
+      ]
+    }
+  },
+  "stats": {
+    "type": "stats",
+    "data": {
+      "items": [
+        {
+          "value": 120,
+          "suffix": "+",
+          "label": "Projects"
+        },
+        {
+          "value": 12,
+          "label": "Years"
+        },
+        {
+          "value": 18,
+          "label": "Team"
+        },
+        {
+          "value": 96,
+          "suffix": "%",
+          "label": "Referrals"
+        }
+      ]
+    }
+  },
+  "testimonials": {
+    "type": "testimonials",
+    "theme": "beige",
+    "data": {
+      "eyebrow": "Client words",
+      "title": "What clients say",
+      "items": [
+        {
+          "quote": "Quote.",
+          "name": "Name",
+          "role": "Role",
+          "rating": 5
+        }
+      ]
+    }
+  },
+  "awards": {
+    "type": "awards",
+    "data": {
+      "eyebrow": "Recognition",
+      "title": "Awards & press",
+      "items": [
+        {
+          "year": "2025",
+          "title": "Award title",
+          "by": "Organisation"
+        }
+      ]
+    }
+  },
+  "intro-split": {
+    "type": "intro-split",
+    "data": {
+      "eyebrow": "About",
+      "title": "Headline",
+      "text": "Paragraph.",
+      "image": "feature-1.jpg",
+      "button": {
+        "label": "Learn more",
+        "url": "/about/",
+        "style": "text"
+      }
+    }
+  },
+  "feature-rows": {
+    "type": "feature-rows",
+    "data": {
+      "eyebrow": "Details",
+      "title": "What's included",
+      "items": [
+        {
+          "title": "Feature one",
+          "text": "Text.",
+          "image": "room-1.jpg",
+          "bullets": [
+            "Point"
+          ]
+        },
+        {
+          "title": "Feature two",
+          "text": "Text.",
+          "image": "room-2.jpg"
+        }
+      ]
+    }
+  },
+  "values": {
+    "type": "values",
+    "data": {
+      "eyebrow": "Values",
+      "title": "What we hold to",
+      "columns": 3,
+      "items": [
+        {
+          "icon": "interior",
+          "title": "Value",
+          "text": "Text."
+        },
+        {
+          "icon": "joinery",
+          "title": "Value",
+          "text": "Text."
+        },
+        {
+          "icon": "plan",
+          "title": "Value",
+          "text": "Text."
+        }
+      ]
+    }
+  },
+  "process": {
+    "type": "process",
+    "theme": "dark",
+    "data": {
+      "eyebrow": "Process",
+      "title": "How we work",
+      "steps": [
+        {
+          "title": "Discovery",
+          "text": ""
+        },
+        {
+          "title": "Concept",
+          "text": ""
+        },
+        {
+          "title": "Development",
+          "text": ""
+        },
+        {
+          "title": "Delivery",
+          "text": ""
+        }
+      ]
+    }
+  },
+  "big-statement": {
+    "type": "big-statement",
+    "data": {
+      "small": "Statement",
+      "text": "A short, bold sentence."
+    }
+  },
+  "marquee": {
+    "type": "marquee",
+    "theme": "beige",
+    "data": {
+      "items": [
+        "Word",
+        "Word",
+        "Word"
+      ],
+      "size": "large"
+    }
+  },
+  "image-strip": {
+    "type": "image-strip",
+    "spacing": "tight",
+    "data": {
+      "parallax": true,
+      "images": [
+        {
+          "src": "room-1.jpg",
+          "alt": ""
+        },
+        {
+          "src": "room-2.jpg",
+          "alt": ""
+        },
+        {
+          "src": "room-3.jpg",
+          "alt": ""
+        }
+      ]
+    }
+  },
+  "video": {
+    "type": "video",
+    "theme": "dark",
+    "data": {
+      "src": "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
+      "marquee": [
+        "Word",
+        "Word"
+      ],
+      "title": "Headline",
+      "button": {
+        "label": "Contact",
+        "url": "/contact/",
+        "style": "white"
+      }
+    }
+  },
+  "overview": {
+    "type": "overview",
+    "data": {
+      "eyebrow": "Overview",
+      "title": "Headline",
+      "items": [
+        {
+          "title": "One",
+          "text": "",
+          "image": "room-1.jpg"
+        },
+        {
+          "title": "Two",
+          "text": "",
+          "image": "room-2.jpg"
+        },
+        {
+          "title": "Three",
+          "text": "",
+          "image": "room-3.jpg"
+        }
+      ]
+    }
+  },
+  "services-cards": {
+    "type": "services-cards",
+    "data": {
+      "eyebrow": "Services",
+      "title": "What we do",
+      "source": "services",
+      "limit": 3,
+      "layout": "stacked"
+    }
+  },
+  "services-list": {
+    "type": "services-list",
+    "data": {
+      "eyebrow": "Services",
+      "title": "All services",
+      "source": "services"
+    }
+  },
+  "portfolio-grid": {
+    "type": "portfolio-grid",
+    "data": {
+      "eyebrow": "Work",
+      "title": "Projects",
+      "filters": true,
+      "columns": 3
+    }
+  },
+  "case-study": {
+    "type": "case-study",
+    "theme": "beige",
+    "data": {
+      "eyebrow": "Case study",
+      "project": "canal-side-residence"
+    }
+  },
+  "blog-grid": {
+    "type": "blog-grid",
+    "data": {
+      "eyebrow": "Journal",
+      "title": "Latest",
+      "limit": 3
+    }
+  },
+  "team": {
+    "type": "team",
+    "data": {
+      "eyebrow": "Team",
+      "title": "People",
+      "source": "team"
+    }
+  },
+  "gallery": {
+    "type": "gallery",
+    "data": {
+      "eyebrow": "Gallery",
+      "title": "Images",
+      "images": [
+        {
+          "src": "room-1.jpg",
+          "alt": ""
+        },
+        {
+          "src": "room-2.jpg",
+          "alt": "",
+          "span": "wide"
+        },
+        {
+          "src": "room-3.jpg",
+          "alt": ""
+        }
+      ]
+    }
+  },
+  "pricing": {
+    "type": "pricing",
+    "data": {
+      "eyebrow": "Pricing",
+      "title": "Packages",
+      "plans": [
+        {
+          "name": "Plan",
+          "price": "PKR \u2014",
+          "text": "",
+          "features": [
+            "Feature"
+          ]
+        }
+      ]
+    }
+  },
+  "faq": {
+    "type": "faq",
+    "theme": "beige",
+    "data": {
+      "eyebrow": "FAQ",
+      "title": "Questions",
+      "items": [
+        {
+          "q": "Question?",
+          "a": "Answer."
+        }
+      ]
+    }
+  },
+  "cta": {
+    "type": "cta",
+    "data": {
+      "title": "Ready to talk?",
+      "buttons": [
+        {
+          "label": "Contact us",
+          "url": "/contact/",
+          "style": "white"
+        }
+      ]
+    }
+  },
+  "newsletter": {
+    "type": "newsletter",
+    "theme": "beige",
+    "data": {
+      "eyebrow": "Newsletter",
+      "title": "Stay in touch",
+      "text": "One email a month."
+    }
+  },
+  "contact-form": {
+    "type": "contact-form",
+    "data": {
+      "eyebrow": "Contact",
+      "title": "Start a conversation"
+    }
+  },
+  "map": {
+    "type": "map",
+    "data": {
+      "title": "Visit the studio"
+    }
+  },
+  "rich-text": {
+    "type": "rich-text",
+    "data": {
+      "body": "## Heading\n\nMarkdown content."
+    }
+  },
+  "custom-html": {
+    "type": "custom-html",
+    "data": {
+      "html": "<p>Custom markup or embed.</p>"
+    }
+  },
+  "spacer": {
+    "type": "spacer",
+    "data": {
+      "size": "medium",
+      "line": true
+    }
+  },
+  "page-hero": {
+    "type": "page-hero",
+    "data": {
+      "eyebrow": "Page",
+      "title": "Title",
+      "text": "",
+      "size": "short"
+    }
+  },
+  "hero-image": {
+    "type": "hero-image",
+    "data": {
+      "eyebrow": "",
+      "title": "Title",
+      "text": "",
+      "image": "hero-1.jpg",
+      "align": "left",
+      "height": "large",
+      "buttons": [
+        {
+          "label": "Button",
+          "url": "/contact/",
+          "style": "white"
+        }
+      ]
+    }
+  },
+  "hero-split": {
+    "type": "hero-split",
+    "data": {
+      "eyebrow": "",
+      "title": "Title",
+      "text": "",
+      "image": "portfolio-2.jpg",
+      "buttons": [
+        {
+          "label": "Button",
+          "url": "/contact/"
+        }
+      ]
+    }
+  },
+  "hero-slider": {
+    "type": "hero-slider",
+    "data": {
+      "slides": [
+        {
+          "eyebrow": "",
+          "title": "Slide one",
+          "text": "",
+          "image": "hero-1.jpg"
+        },
+        {
+          "eyebrow": "",
+          "title": "Slide two",
+          "text": "",
+          "image": "hero-2.jpg"
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Button",
+          "url": "/contact/",
+          "style": "white"
+        }
+      ]
+    }
+  }
+}
