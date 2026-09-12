@@ -17,6 +17,23 @@ headerStyle: dark
     <div class="rt-prose rt-prose-narrow" data-reveal>
       {% if excerpt %}<p class="rt-lead">{{ excerpt }}</p>{% endif %}
       {{ content | safe }}
+      {% set _author = collections.team | where("title", author) %}
+      <footer class="rt-article-foot">
+        {% if _author.length %}
+          {% set a = _author[0] %}
+          <div class="rt-author-card">
+            {{ ui.image(a.data.image, a.data.title, "rt-author-img", "1/1") }}
+            <div>
+              <span class="rt-author-label">Written by</span>
+              <strong>{{ a.data.title }}</strong> · {{ a.data.role }}
+              {% if a.data.excerpt %}<p>{{ a.data.excerpt }}</p>{% endif %}
+            </div>
+          </div>
+        {% elif author %}
+          <p class="rt-author-card"><span class="rt-author-label">Written by</span> <strong>{{ author }}</strong></p>
+        {% endif %}
+        <p class="rt-article-updated">Published {{ date | date }} · <a href="/blog/">Back to the journal</a></p>
+      </footer>
     </div>
     <aside class="rt-article-aside" data-reveal style="--d:.1s">
       <h5>Share</h5>
@@ -34,5 +51,5 @@ headerStyle: dark
   </div>
 </article>
 
-{% set section = { type: "blog-grid", theme: "beige", data: { eyebrow: "Keep reading", title: "More from the journal", limit: 3, exclude: page.url, button: { label: "All articles", url: "/blog/", style: "outline" } } } %}
+{% set section = { type: "blog-grid", theme: "beige", data: { eyebrow: "Keep reading", title: "More from the journal", limit: 3, exclude: page.url, button: { label: "All articles", url: "/blog/", style: "outline" }, footButton: true } } %}
 {% set s = section.data %}{% set _id = "related" %}{% include "sections/blog-grid.njk" %}

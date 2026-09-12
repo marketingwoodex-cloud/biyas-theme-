@@ -19,3 +19,11 @@ CNC handles the repetitive cuts; hands do the fitting. Each kitchen is dry-assem
 ## Finishing
 
 A sealed spray booth for lacquers, and a quiet corner for hand-oiling. Nothing leaves without a sample approved by the designer.
+
+## Why it changes the drawings
+
+When the person detailing a kitchen has stood at the bench that will build it, the drawings change. Panel sizes match sheet sizes, so there is less waste. Shadow gaps are dimensioned to the tolerance the machine actually holds. Installation sequences are drawn, not improvised. The result is fewer surprises on site and a price that holds.
+
+## Visiting
+
+Clients are welcome at two points in every project: when their timber arrives, and when their joinery is dry-assembled before finishing. Both visits are short, both are useful, and both tend to end with the same comment — that it is much bigger in real life than on the drawing.

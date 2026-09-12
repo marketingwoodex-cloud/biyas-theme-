@@ -22,10 +22,21 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+{# Performance: preload the first hero image on pages that open with a hero (LCP element) #}
+{% set _lcp = "" %}
+{% if sections and sections.length %}
+  {% set _first = sections[0] %}
+  {% if _first.type == "hero-slider" and _first.data.slides and _first.data.slides.length %}{% set _lcp = _first.data.slides[0].image %}
+  {% elif _first.type in ["page-hero", "hero-static", "hero-split"] and _first.data.image %}{% set _lcp = _first.data.image %}{% endif %}
+{% elif (imageWide or image) and layout != "post.njk" %}{% set _lcp = imageWide or image %}{% endif %}
+{% if _lcp %}<link rel="preload" as="image" href="{{ _lcp | media }}" fetchpriority="high">{% endif %}
+
+<link rel="stylesheet" href="/assets/css/theme.css">
+{# Web fonts load non-blocking (swap in when ready); the <noscript> keeps them for no-JS visitors #}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family={{ site.theme.fonts.googleFonts }}&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/theme.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ site.theme.fonts.googleFonts }}&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family={{ site.theme.fonts.googleFonts }}&display=swap"></noscript>
 
 {# Brand tokens from site.json override the CSS defaults #}
 <style id="brand-tokens">
@@ -58,7 +69,10 @@
   "priceRange": "{{ site.seo.business.priceRange }}",
   "address": { "@type": "PostalAddress", "streetAddress": "{{ site.contact.addressLines[0] }}", "addressLocality": "{{ site.contact.addressLines[1] }}" },
   "geo": { "@type": "GeoCoordinates", "latitude": {{ site.seo.business.geo.lat }}, "longitude": {{ site.seo.business.geo.lng }} },
-  "sameAs": [{% for s in site.social %}"{{ s.url }}"{% if not loop.last %},{% endif %}{% endfor %}]
+  {#- only list social profiles that point at a real account (not bare "https://instagram.com/" placeholders) -#}
+  {%- set _same = [] -%}
+  {%- for s in site.social -%}{%- if s.url and (s.url | replace("https://", "") | replace("http://", "") | replace("www.", "")).split("/").length > 1 and (s.url | replace("https://", "") | replace("http://", "") | replace("www.", "")).split("/")[1] -%}{%- set _same = (_same.push(s.url), _same) -%}{%- endif -%}{%- endfor -%}
+  "sameAs": {{ _same | dump | safe }}
 }
 </script>
 {% if headExtra %}{{ headExtra | safe }}{% endif %}

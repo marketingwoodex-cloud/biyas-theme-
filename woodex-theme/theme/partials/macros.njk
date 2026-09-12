@@ -1,7 +1,8 @@
 {#
   SHARED MACROS — import with:  {% import "partials/macros.njk" as ui %}
   ui.button(btn, extraClass)     btn = { label, url, style: "solid"|"outline"|"text"|"white", newTab? }
-  ui.sectionHead(s, align)       renders eyebrow/tag, title, text from any section data
+  ui.sectionHead(s, align)       renders eyebrow/tag, title, text AND s.button (the section's single CTA)
+                                 — use s.footButton on a section when you want the CTA under the grid instead
   ui.image(src, alt, cls, ratio) media-aware <img> with lazy loading
   ui.wrapperClass(section)       background/spacing classes for the section wrapper
 #}
@@ -35,14 +36,24 @@
     {% if s.eyebrow %}<div class="rt-tag rt-overflow-hidden" data-reveal><span class="rt-tag-dot"></span>{{ s.eyebrow }}</div>{% endif %}
     {% if s.title %}<{{ s.titleTag or "h2" }} class="rt-section-title{% if light %} rt-text-color-white{% endif %}" data-split>{{ s.title | mdInline | safe }}</{{ s.titleTag or "h2" }}>{% endif %}
     {% if s.text %}<div class="rt-section-text{% if light %} rt-text-color-light{% endif %}" data-reveal style="--d:.15s">{{ s.text | md | safe }}</div>{% endif %}
-    {% if s.button and s.button.label %}<div class="rt-section-head-cta" data-reveal style="--d:.25s">{{ button(s.button) }}</div>{% endif %}
+    {% if s.button and s.button.label and not s.footButton %}<div class="rt-section-head-cta" data-reveal style="--d:.25s">{{ button(s.button) }}</div>{% endif %}
   </div>
   {% endif %}
 {% endmacro %}
 
+{#
+  ui.image(src, alt, cls, ratio, loading)
+  ratio "4/5" also sets width/height attributes (1200 × 1500) so the browser reserves space before the file
+  arrives (no layout shift); CSS `aspect-ratio` + `object-fit: cover` keep the visual size.
+#}
 {% macro image(src, alt="", cls="", ratio="", loading="lazy") %}
   {% if src %}
-  <img class="{{ cls }}" src="{{ src | media }}" alt="{{ alt }}" loading="{{ loading }}" decoding="async"{% if ratio %} style="aspect-ratio:{{ ratio }}"{% endif %}>
+  {%- set _dims = "" -%}
+  {%- if ratio and ("/" in ratio) -%}
+    {%- set _w = ratio.split("/")[0] | trim | float -%}{%- set _h = ratio.split("/")[1] | trim | float -%}
+    {%- if _w > 0 and _h > 0 %}{% set _dims = ' width="1200" height="' ~ ((1200 * _h / _w) | round) ~ '"' %}{% endif -%}
+  {%- endif -%}
+  <img class="{{ cls }}" src="{{ src | media }}" alt="{{ alt }}"{{ _dims | safe }} loading="{{ loading }}" decoding="async"{% if loading == "eager" %} fetchpriority="high"{% endif %}{% if ratio %} style="aspect-ratio:{{ ratio }}"{% endif %}>
   {% endif %}
 {% endmacro %}
 

@@ -1,6 +1,6 @@
 {#
   SECTION: map — embedded map + studio card (uses site.contact.mapEmbed)
-  data: { title, text, embed?, height }
+  data: { title, text, embed?, height } — address, hours, phone and email come from site.contact
 #}
 {% set c = site.contact %}
 <section class="{{ 'rt-section rt-theme-' ~ (section.theme or 'light') }} rt-space-{{ section.spacing or 'none' }} rt-map" id="{{ _id }}">
@@ -9,6 +9,10 @@
     <div class="rt-map-card" data-reveal>
       <h5>{{ s.title or 'Visit the studio' }}</h5>
       <p>{% for l in c.addressLines %}{{ l }}<br>{% endfor %}{{ c.hours }}</p>
+      <div class="rt-map-contact">
+        {% if c.phone %}<a href="tel:{{ c.phone | replace(' ', '') }}">{{ c.phone }}</a>{% endif %}
+        {% if c.email %}<a href="mailto:{{ c.email }}">{{ c.email }}</a>{% endif %}
+      </div>
       <a class="rt-service-button" href="{{ c.mapLink }}" target="_blank" rel="noopener"><span>Open in maps</span><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
     </div>
   </div>

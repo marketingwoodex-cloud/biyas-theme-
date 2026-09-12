@@ -12,14 +12,16 @@
     <div class="rt-overlay-v4"></div>
   </div>
   {% if site.theme.introCurtain %}
-  <div class="rt-curtains" aria-hidden="true">{% for i in range(0, 10) %}<span class="rt-curtain"></span>{% endfor %}</div>
+  <div class="rt-curtains" aria-hidden="true">{% for i in range(0, 10) %}<span class="rt-curtain-cell"><span class="rt-curtain"></span></span>{% endfor %}</div>
   {% endif %}
   <div class="rt-container rt-hero-v4-content">
     <div class="rt-hero-v4-copy">
       {% for sl in s.slides %}
         <div class="rt-hero-slide{% if loop.first %} is-active{% endif %}" data-slide="{{ loop.index0 }}">
           {% if sl.eyebrow %}<div class="rt-tag rt-text-color-white rt-overflow-hidden rt-slide-mask"><span class="rt-slide">{{ sl.eyebrow }}</span></div>{% endif %}
-          <h1 class="rt-gap-off rt-text-color-white rt-hero-title" data-split-hero>{{ sl.title | mdInline | safe }}</h1>
+          {# only the first slide is the page <h1>; the others use <h2> so the page keeps a single h1 #}
+          {% set _tag = "h1" if loop.first else "h2" %}
+          <{{ _tag }} class="rt-gap-off rt-text-color-white rt-hero-title" data-split-hero>{{ sl.title | mdInline | safe }}</{{ _tag }}>
           {% if sl.text %}<p class="rt-hero-text rt-text-color-white rt-slide-mask"><span class="rt-slide">{{ sl.text }}</span></p>{% endif %}
         </div>
       {% endfor %}

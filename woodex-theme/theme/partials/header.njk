@@ -32,12 +32,12 @@
                 <span class="rt-menu-text">{{ item.label }}</span>
                 <svg class="rt-menu-chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
               </a>
-              <div class="rt-dropdown{% if item.mega %} rt-mega{% endif %}" role="menu">
+              <div class="rt-dropdown{% if item.mega %} rt-mega{% endif %}">
                 <div class="rt-dropdown-inner">
                   <ul class="rt-dropdown-list">
                     {% for c in item.children %}
                       <li>
-                        <a href="{{ c.url }}" class="rt-dropdown-link" role="menuitem">
+                        <a href="{{ c.url }}" class="rt-dropdown-link">
                           {% if c.icon %}<span class="rt-dropdown-icon"><svg aria-hidden="true"><use href="#i-{{ c.icon }}"/></svg></span>{% endif %}
                           <span class="rt-dropdown-copy">
                             <span class="rt-dropdown-title">{{ c.label }}</span>
@@ -96,9 +96,9 @@
             <a href="{{ item.url }}" class="rt-mobile-link{% if item.nav == navKey %} is-current{% endif %}"><span>{{ item.label }}</span></a>
             {% if item.children %}
               <button class="rt-mobile-expand" type="button" aria-label="Expand {{ item.label }}" aria-expanded="false"><svg aria-hidden="true"><use href="#i-plus"/></svg></button>
-              <ul class="rt-mobile-sub">
+              <div class="rt-mobile-sub"><ul class="rt-mobile-sub-list">
                 {% for c in item.children %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% endfor %}
-              </ul>
+              </ul></div>
             {% endif %}
           </li>
         {% endfor %}

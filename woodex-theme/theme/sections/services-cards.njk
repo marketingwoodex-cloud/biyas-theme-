@@ -1,6 +1,6 @@
 {#
   SECTION: services-cards — stacked/sticky service cards (home) or plain grid
-  data: { eyebrow, title, text, source:"services" (auto from content/services) | items:[{title,text,image,url,icon}], limit:3, layout:"stacked"|"grid", button }
+  data: { eyebrow, title, text, source:"services" (auto from content/services) | items:[{title,text,image,url,icon}], limit:3, layout:"stacked"|"grid", button, footButton?: true|{label,url,style} }
 #}
 {% import "partials/macros.njk" as ui %}
 {% set _items = [] %}
@@ -25,6 +25,6 @@
         </article>
       {% endfor %}
     </div>
-    {% if s.button %}<div class="rt-section-foot" data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+    {% if s.footButton %}<div class="rt-section-foot" data-reveal>{{ ui.button(s.button if s.footButton === true else s.footButton) }}</div>{% endif %}
   </div>
 </section>

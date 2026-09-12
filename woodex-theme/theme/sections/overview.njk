@@ -1,6 +1,6 @@
 {#
   SECTION: overview — scroll-pinned image swap with numbered list (home "design documentation")
-  data: { eyebrow, title, text, items:[{ title, text, image }], button }
+  data: { eyebrow, title, text, items:[{ title, text, image }], button, footButton? }
 #}
 {% import "partials/macros.njk" as ui %}
 <section class="{{ ui.wrapperClass(section) }} rt-overview-v6" id="{{ _id }}" data-pin>
@@ -15,7 +15,7 @@
           </li>
         {% endfor %}
       </ol>
-      {% if s.button %}<div data-reveal>{{ ui.button(s.button) }}</div>{% endif %}
+      {% if s.footButton %}<div class="rt-overview-foot" data-reveal>{{ ui.button(s.button if s.footButton === true else s.footButton) }}</div>{% endif %}
     </div>
     <div class="rt-overview-media">
       {% for it in s.items %}<img class="rt-overview-img{% if loop.first %} is-active{% endif %}" data-overview-img="{{ loop.index0 }}" src="{{ it.image | media }}" alt="{{ it.alt or it.title }}" loading="lazy">{% endfor %}

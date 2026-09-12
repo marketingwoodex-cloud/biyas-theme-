@@ -11,11 +11,14 @@ imageWide: hero-3.jpg
 featured: false
 excerpt: "A weekend house in the hills, furnished almost entirely with pieces from our workshop in local walnut."
 gallery:
-  - { src: service-1.jpg, alt: "Detail view" }
-  - { src: portfolio-4.jpg, alt: "Living space" }
-  - { src: room-1.jpg, alt: "Material palette" }
+  - { src: service-1.jpg, alt: "Living room with bookshelves" }
+  - { src: portfolio-4.jpg, alt: "Reading corner with oak shelving" }
+  - { src: room-1.jpg, alt: "Dining room with pendant lights" }
 client: "Private client"
-services: ["Residential interiors", "Bespoke joinery"]
+services: ["Residential interiors", "Bespoke joinery", "Renovation & fit-out"]
+duration: "5 months"
+team: "Amina Raza, Tariq Malik"
+materials: "Local walnut, wool, hand-made brick, slate"
 ---
 ## Brief
 
@@ -28,3 +31,11 @@ Local walnut, wool textiles and a deep fireplace wall. Furniture designed and bu
 ## Result
 
 A house that asks nothing of its owners but to arrive.
+
+## Materials & makers
+
+Almost every piece — beds, dining table, the low lounge sofa frames — was designed for the room and built in our workshop from walnut sourced in the north. Wool throws and rugs were woven locally to our colour palette, and the fireplace wall is hand-made brick laid by a mason from the village.
+
+## Timeline
+
+Design through the monsoon, workshop production through the autumn, and a spring installation once the road reopened. The house was furnished and ready in a single ten-day install.

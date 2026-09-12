@@ -23,12 +23,21 @@ headerStyle: light
         {% if year %}<div><dt>Year</dt><dd>{{ year }}</dd></div>{% endif %}
         {% if size %}<div><dt>Size</dt><dd>{{ size }}</dd></div>{% endif %}
         {% if scope %}<div><dt>Scope</dt><dd>{{ scope }}</dd></div>{% endif %}
+        {% if duration %}<div><dt>Duration</dt><dd>{{ duration }}</dd></div>{% endif %}
+        {% if materials %}<div><dt>Materials</dt><dd>{{ materials }}</dd></div>{% endif %}
+        {% if team %}<div><dt>Team</dt><dd>{{ team }}</dd></div>{% endif %}
         {% if services %}<div><dt>Services</dt><dd>{% for sv in services %}{% set _svc = collections.services | where("title", sv) %}{% if _svc.length %}<a href="{{ _svc[0].url }}">{{ sv }}</a>{% else %}{{ sv }}{% endif %}{% if not loop.last %}, {% endif %}{% endfor %}</dd></div>{% endif %}
       </dl>
     </aside>
     <div class="rt-prose" data-reveal style="--d:.1s">
       {% if excerpt %}<p class="rt-lead">{{ excerpt }}</p>{% endif %}
       {{ content | safe }}
+      {% if testimonial and testimonial.quote %}
+      <figure class="rt-pullquote">
+        <blockquote>{{ testimonial.quote }}</blockquote>
+        <figcaption><strong>{{ testimonial.author }}</strong>{% if testimonial.role %} · {{ testimonial.role }}{% endif %}</figcaption>
+      </figure>
+      {% endif %}
     </div>
   </div>
 </section>
@@ -37,6 +46,9 @@ headerStyle: light
   {% set section = { type: "gallery", spacing: "tight", data: { images: gallery, columns: 3 } } %}
   {% set s = section.data %}{% set _id = "gallery" %}{% include "sections/gallery.njk" %}
 {% endif %}
+
+{% set section = { type: "cta", theme: "light", data: { eyebrow: "Your project", title: "Planning something similar?", text: "Tell us about the space and we'll suggest the right scope, budget range and timeline.", buttons: [{ label: "Start a conversation", url: "/contact/", style: "white" }, { label: "See all projects", url: "/portfolio/", style: "text" }] } } %}
+{% set s = section.data %}{% set _id = "cta" %}{% include "sections/cta.njk" %}
 
 {# next / previous project #}
 {% set _all = collections.projects %}

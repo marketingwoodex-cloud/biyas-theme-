@@ -18,8 +18,10 @@ process:
   - { title: "Design development", text: "Detailed drawings, joinery, lighting and finishes." }
   - { title: "Delivery", text: "Procurement, site coordination and styling." }
 faq:
-  - { q: "How long does a typical project take?", a: "Most residential projects run 10–20 weeks from concept to handover; commercial fit-outs are scheduled around your opening date." }
-  - { q: "Do you work outside Lahore?", a: "Yes — we deliver projects across Pakistan and remotely for international clients through our visualisation and documentation packages." }
+  - { q: "How long does a full home take?", a: "A single floor refresh runs 8–12 weeks; a full villa is typically 5–8 months from concept to a styled handover. We agree the programme in writing before design starts." }
+  - { q: "Can we live in the house during the work?", a: "Often yes for phased refurbishments. For full renovations with services work we usually recommend moving out for the strip-out and first-fix stages — we plan the phasing with you." }
+  - { q: "Do you supply furniture and décor as well?", a: "Yes. Loose furniture, rugs, lighting and art are specified in the same schedule as the joinery, and we can procure and install everything for the handover day." }
+  - { q: "What if we only need a single room?", a: "We take on single rooms — kitchens, studies, primary suites — with the same documentation. The consultation package is a good first step if you want advice before committing." }
 ---
 ## Homes designed around daily life
 
@@ -32,3 +34,11 @@ A complete design package — plans, elevations, joinery details, lighting layou
 ## Typical scope
 
 From a considered refresh of a living floor to full villas delivered turnkey, including bespoke kitchens, wardrobes and made-to-measure furniture from our own workshop.
+
+## Who it's for
+
+Families building or renovating a primary home, apartment owners who want the last renovation they'll need to do, and farmhouse owners who want the interior to belong to its landscape. If you want one team responsible for the finished result — rather than a designer, a contractor and a carpenter each blaming the other — this is the service for you.
+
+## How we price it
+
+Design fees are fixed per stage and quoted after the first site visit. Joinery and furniture are itemised, with allowances agreed before anything is ordered, so the budget you sign is the budget you spend. Construction is either tendered to contractors we trust or delivered under our own [renovation & fit-out](/services/renovation-fit-out/) service.

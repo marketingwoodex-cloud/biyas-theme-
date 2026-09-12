@@ -1,6 +1,6 @@
 {#
   SECTION: intro-split — big statement + supporting text/image (about story, home intro)
-  data: { eyebrow, title, text (markdown), image, imagePosition:"right"|"left", button, features:[{title,text}], signature? }
+  data: { eyebrow, title, text (markdown), image, imagePosition:"right"|"left", button, features:[{title,text}], stats:[{value,label}]?, signature? }
 #}
 {% import "partials/macros.njk" as ui %}
 <section class="{{ ui.wrapperClass(section) }} rt-intro-split rt-img-{{ s.imagePosition or 'right' }}" id="{{ _id }}">
@@ -12,6 +12,11 @@
         {% for f in s.features %}
           <li data-reveal style="--d:{{ 0.2 + loop.index0 * 0.08 }}s"><svg aria-hidden="true"><use href="#i-check"/></svg><span><strong>{{ f.title }}</strong>{% if f.text %} — {{ f.text }}{% endif %}</span></li>
         {% endfor %}
+      </ul>
+      {% endif %}
+      {% if s.stats %}
+      <ul class="rt-intro-stats" data-reveal style="--d:.2s">
+        {% for st in s.stats %}<li><strong>{{ st.value }}</strong><span>{{ st.label }}</span></li>{% endfor %}
       </ul>
       {% endif %}
       {% if s.signature %}<p class="rt-signature" data-reveal>{{ s.signature }}</p>{% endif %}

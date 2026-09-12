@@ -72,9 +72,18 @@ excerpt: "One sentence."
 gallery: [{ src: room-1.jpg, alt: "Detail" }]
 client: "Private client"
 services: ["Residential interiors", "Bespoke joinery"]   # must match service titles → links + related work
+duration: "6 months"           # optional facts — rendered in the sticky facts card when present
+team: "Amina Raza, Tariq Malik"
+materials: "Fumed oak, Indus limestone, brushed brass"
+testimonial:                   # optional — rendered as a pull-quote after the body
+  quote: "They listened more than they talked."
+  author: "Sara & Omar H."
+  role: "Homeowners"
 ---
-## Brief / Approach / Result …
+## Brief / Approach / Result / Materials & makers / Timeline …
 ```
+
+Every project page ends with a "Planning something similar?" CTA band and a link to the next project — both come from `theme/layouts/project.njk`, so there is nothing to add per project.
 
 ## Journal posts — `content/posts/<slug>.md`
 

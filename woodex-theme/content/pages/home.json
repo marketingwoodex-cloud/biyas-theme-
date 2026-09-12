@@ -73,11 +73,17 @@
         "title": "Design and craft under one roof",
         "text": "Most studios draw and hand over. We draw, build and install — which means the details that make a space feel finished are decided by the people who will make them.",
         "image": "feature-1.jpg",
+        "alt": "Curved walnut wall panelling and lounge seating in a Woodex hospitality interior",
         "imagePosition": "right",
         "features": [
           { "title": "In-house workshop", "text": "kitchens, wardrobes and furniture made to the millimetre" },
           { "title": "Fixed-scope pricing", "text": "itemised allowances, no surprises" },
           { "title": "One site lead", "text": "weekly reports and a shared photo log" }
+        ],
+        "stats": [
+          { "value": "120+", "label": "Projects" },
+          { "value": "12", "label": "Years" },
+          { "value": "96%", "label": "Return or refer" }
         ],
         "button": { "label": "About the studio", "url": "/about/", "style": "text" }
       }
@@ -110,7 +116,8 @@
         "featuredOnly": true,
         "limit": 3,
         "columns": 3,
-        "button": { "label": "View all projects", "url": "/portfolio/", "style": "outline" }
+        "button": { "label": "View all projects", "url": "/portfolio/", "style": "outline" },
+        "footButton": true
       }
     },
     {

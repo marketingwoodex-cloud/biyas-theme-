@@ -8,6 +8,8 @@ Every page in `content/pages/*.json` is an ordered list of these sections. Each 
 
 Common `data` keys used by most sections: `eyebrow` (small label), `title` (supports *markdown* inline), `text` (markdown), `align` (`left|center`), `button` `{label,url,style}` where style is `solid | outline | text | white`.
 
+A section renders its `button` **once**, in the section head. To place it under the grid instead (services-cards, portfolio-grid, blog-grid, overview) set `"footButton": true` — or give `footButton` its own `{label,url,style}` object for a different foot CTA.
+
 Images are referenced by filename from `content/media/` (or absolute/URL). Sections marked **auto** read from `content/<collection>/` — add a Markdown file and it appears.
 
 Append a section with demo data: `npm run import:preset --section=<type> --into=<page>`
@@ -282,7 +284,7 @@ compact list of recognitions / press mentions
 
 big statement + supporting text/image (about story, home intro)
 
-**Data shape:** `{ eyebrow, title, text (markdown), image, imagePosition:"right"|"left", button, features:[{title,text}], signature? }`
+**Data shape:** `{ eyebrow, title, text (markdown), image, alt?, imagePosition:"right"|"left", button, features:[{title,text}], stats:[{value,label}]?, signature? }` — `stats` renders a small proof strip (e.g. `120+ Projects · 12 Years`) under the features.
 
 ```json
 {
